@@ -1,0 +1,505 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <ThingDef Abstract="True" Name="Bullet_LaserGeneric" ParentName="BaseBullet">
+    <thingClass>Rimlaser.Bullet_LaserRifle</thingClass>
+    <drawOffscreen>true</drawOffscreen>
+	
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <speed>10000</speed>
+    </projectile>
+
+  </ThingDef>
+
+  <ThingDef Abstract="True" Name="Bullet_LaserQuality" ParentName="Bullet_LaserGeneric">
+	<graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>1.5</drawSize>
+    </graphicData>
+	
+	<graphicDataCap>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>1.5</drawSize>
+    </graphicDataCap>
+	
+	<graphicAwful>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>1.5</drawSize>
+    </graphicAwful>
+    <graphicAwfulCap>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>1.5</drawSize>
+    </graphicAwfulCap>
+	
+	<graphicPoor>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>1.5</drawSize>
+    </graphicPoor>
+    <graphicPoorCap>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>1.5</drawSize>
+    </graphicPoorCap>
+	
+	<graphicNormal>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>1.5</drawSize>
+    </graphicNormal>
+    <graphicNormalCap>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>1.5</drawSize>
+    </graphicNormalCap>
+	
+	<graphicGood>
+      <texPath>Rimlaser/Effects/LaserGood</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>1.5</drawSize>
+    </graphicGood>
+    <graphicGoodCap>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>1.5</drawSize>
+    </graphicGoodCap>
+	
+	<graphicExcellent>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>1.5</drawSize>
+    </graphicExcellent>
+    <graphicExcellentCap>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>1.5</drawSize>
+    </graphicExcellentCap>
+	
+	<graphicMasterwork>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>1.5</drawSize>
+    </graphicMasterwork>
+    <graphicMasterworkCap>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>1.5</drawSize>
+    </graphicMasterworkCap>
+	
+	<graphicLegendary>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>1.5</drawSize>
+    </graphicLegendary>
+    <graphicLegendaryCap>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>1.5</drawSize>
+    </graphicLegendaryCap>
+
+  </ThingDef>
+
+  <ThingDef Abstract="True" Name="Bullet_LaserColored" ParentName="Bullet_LaserQuality">
+	<graphicData><texPath>Rimlaser/Effects/LaserRed</texPath></graphicData>
+	<graphicDataCap><texPath>Rimlaser/Effects/LaserRedCap</texPath></graphicDataCap>
+	
+	<graphicAwful><texPath>Rimlaser/Effects/LaserAwful</texPath></graphicAwful>
+	<graphicAwfulCap><texPath>Rimlaser/Effects/LaserAwfulCap</texPath></graphicAwfulCap>
+	
+	<graphicPoor><texPath>Rimlaser/Effects/LaserPoor</texPath></graphicPoor>
+	<graphicPoorCap><texPath>Rimlaser/Effects/LaserPoorCap</texPath></graphicPoorCap>
+	
+	<graphicNormal><texPath>Rimlaser/Effects/LaserNormal</texPath></graphicNormal>
+	<graphicNormalCap><texPath>Rimlaser/Effects/LaserNormalCap</texPath></graphicNormalCap>
+	
+	<graphicGood><texPath>Rimlaser/Effects/LaserGood</texPath></graphicGood>
+	<graphicGoodCap><texPath>Rimlaser/Effects/LaserGoodCap</texPath></graphicGoodCap>
+	
+	<graphicExcellent><texPath>Rimlaser/Effects/LaserExcellent</texPath></graphicExcellent>
+	<graphicExcellentCap><texPath>Rimlaser/Effects/LaserExcellentCap</texPath></graphicExcellentCap>
+	
+	<graphicMasterwork><texPath>Rimlaser/Effects/LaserMasterwork</texPath></graphicMasterwork>
+	<graphicMasterworkCap><texPath>Rimlaser/Effects/LaserMasterworkCap</texPath></graphicMasterworkCap>
+	
+	<graphicLegendary><texPath>Rimlaser/Effects/LaserLegendary</texPath></graphicLegendary>
+	<graphicLegendaryCap><texPath>Rimlaser/Effects/LaserLegendaryCap</texPath></graphicLegendaryCap>
+  </ThingDef>  
+  
+  <ThingDef Abstract="True" Name="Bullet_LaserInc" ParentName="Bullet_LaserColored">
+	<graphicAwful><texPath>Rimlaser/Effects/LaserIncAwful</texPath></graphicAwful>
+	<graphicPoor><texPath>Rimlaser/Effects/LaserIncPoor</texPath></graphicPoor>
+	<graphicNormal><texPath>Rimlaser/Effects/LaserIncNormal</texPath></graphicNormal>
+	<graphicGood><texPath>Rimlaser/Effects/LaserIncGood</texPath></graphicGood>
+	<graphicExcellent><texPath>Rimlaser/Effects/LaserIncExcellent</texPath></graphicExcellent>
+	<graphicMasterwork><texPath>Rimlaser/Effects/LaserIncMasterwork</texPath></graphicMasterwork>
+	<graphicLegendary><texPath>Rimlaser/Effects/LaserIncLegendary</texPath></graphicLegendary>
+  </ThingDef>  
+
+  <ThingDef Name="BaseLaserGun" ParentName="BaseHumanMakeableGun" Abstract="True">
+    <techLevel>Spacer</techLevel>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>Interact_ChargeRifle</soundInteract>
+	
+    <recipeMaker>
+      <researchPrerequisite>RimlaserLasers</researchPrerequisite>
+      <skillRequirements>
+        <Crafting>10</Crafting>
+      </skillRequirements>
+      <recipeUsers Inherit="False">
+        <li>FabricationBench</li>
+      </recipeUsers>
+    </recipeMaker>
+	
+    <weaponTags>
+      <li>SpacerGun</li>
+    </weaponTags>
+	
+  </ThingDef>
+
+  <!-- LASER RIFLE -->
+
+  <ThingDef ParentName="Bullet_LaserColored" Class="Rimlaser.Bullet_LaserRifleDef">
+    <defName>Bullet_LaserRifle</defName>
+    <label>laser rifle beam</label>
+    
+    <projectile>
+      <damageAmountBase>12</damageAmountBase>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseLaserGun" Class="Rimlaser.LaserGunDef">
+    <defName>Rimlaser_LaserRifle</defName>
+    <label>laser rifle</label>
+    <description>A futuristic laser rifle design. Does about as mucu damage as the pistol per beam, but fires twice as fast and is designed to work at greater range. Features an efficient miniature power plant built into the gun that provides limitless firepower for the duration of any ground skirmish.</description>
+    <graphicData>
+      <texPath>Rimlaser/Weapons/LaserRifle</texPath>
+    </graphicData>
+	
+    <statBases>
+      <WorkToMake>40000</WorkToMake>
+      <Mass>5.5</Mass>
+      <AccuracyTouch>0.60</AccuracyTouch>
+      <AccuracyShort>0.70</AccuracyShort>
+      <AccuracyMedium>0.65</AccuracyMedium>
+      <AccuracyLong>0.55</AccuracyLong>
+      <RangedWeapon_Cooldown>0.57</RangedWeapon_Cooldown>
+    </statBases>
+	
+    <costList>
+      <RimlaserCrystal>1</RimlaserCrystal>
+      <Plasteel>60</Plasteel>
+      <ComponentSpacer>5</ComponentSpacer>
+    </costList>
+
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_LaserRifle</defaultProjectile>
+        <warmupTime>1.0</warmupTime>
+        <range>30.9</range>
+        <soundCast>LaserRifle_Fire</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+	
+    <tools>
+      <li>
+        <label>stock</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>9</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+      <li>
+        <label>barrel</label>
+        <capacities>
+          <li>Blunt</li>
+          <li>Poke</li>
+        </capacities>
+        <power>9</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>
+	
+	<barrelLength>0.95</barrelLength>
+	
+  </ThingDef>
+  
+  <!-- LASER PISTOL -->
+  
+  <ThingDef ParentName="Bullet_LaserColored" Class="Rimlaser.Bullet_LaserRifleDef">
+    <defName>Bullet_LaserPistol</defName>
+    <label>laser pistol beam</label>
+    
+    <projectile>
+      <damageAmountBase>12</damageAmountBase>
+    </projectile>
+	
+	<beamWidth>0.6</beamWidth>
+  </ThingDef>
+  
+  <ThingDef ParentName="BaseLaserGun" Class="Rimlaser.LaserGunDef">
+    <defName>Rimlaser_LaserPistol</defName>
+    <label>laser pistol</label>
+    <description>A futuristic laser pistol design. Quite powerful, has a decent range for a pistol and is quick on the draw. Features an efficient miniature power plant built into the gun that provides limitless firepower for the duration of any ground skirmish.</description>
+    <graphicData>
+      <texPath>Rimlaser/Weapons/LaserPistol</texPath>
+    </graphicData>
+    <statBases>
+      <WorkToMake>4000</WorkToMake>
+      <Mass>2.4</Mass>
+      <AccuracyTouch>0.88</AccuracyTouch>
+      <AccuracyShort>0.8</AccuracyShort>
+      <AccuracyMedium>0.45</AccuracyMedium>
+      <AccuracyLong>0.35</AccuracyLong>
+      <RangedWeapon_Cooldown>1.1</RangedWeapon_Cooldown>
+    </statBases>
+	
+    <costList>
+      <RimlaserCrystal>1</RimlaserCrystal>
+      <Plasteel>40</Plasteel>
+      <ComponentSpacer>4</ComponentSpacer>
+    </costList>
+
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_LaserPistol</defaultProjectile>
+        <warmupTime>0.3</warmupTime>
+        <range>25.9</range>
+        <soundCast>LaserPistol_fire</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+	
+    <tools>
+      <li>
+        <label>grip</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>9</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+      <li>
+        <label>barrel</label>
+        <capacities>
+          <li>Blunt</li>
+          <li>Poke</li>
+        </capacities>
+        <power>9</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>
+	
+	<barrelLength>0.8</barrelLength>
+	
+  </ThingDef>
+  
+  <!-- HEAVY LASER -->
+  
+  <ThingDef ParentName="Bullet_LaserColored" Class="Rimlaser.Bullet_LaserRifleDef">
+    <defName>Bullet_LaserHeavy</defName>
+    <label>heavy laser beam</label>
+    
+    <projectile>
+      <damageAmountBase>48</damageAmountBase>
+    </projectile>
+	
+	<beamWidth>1.8</beamWidth>
+	<lifetime>120</lifetime>
+	<impulse>6</impulse>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseLaserGun" Class="Rimlaser.LaserGunDef">
+    <defName>Rimlaser_LaserHeavy</defName>
+    <label>heavy laser</label>
+    <description>A grotesque looking heavy laser gun. Inflicts gigantic amounts of damage, but hard to operate at any distance. Features an efficient miniature power plant built into the gun that provides limitless firepower for the duration of any ground skirmish.</description>
+    <graphicData>
+      <texPath>Rimlaser/Weapons/LaserHeavy</texPath>
+    </graphicData>
+    <statBases>
+      <Mass>18</Mass>
+      <AccuracyTouch>0.3</AccuracyTouch>
+      <AccuracyShort>0.7</AccuracyShort>
+      <AccuracyMedium>0.7</AccuracyMedium>
+      <AccuracyLong>0.5</AccuracyLong>
+      <RangedWeapon_Cooldown>3.6</RangedWeapon_Cooldown>
+      <WorkToMake>60000</WorkToMake>
+    </statBases>
+	
+    <costList>
+      <RimlaserCrystal>1</RimlaserCrystal>
+      <Plasteel>80</Plasteel>
+      <ComponentSpacer>6</ComponentSpacer>
+    </costList>
+
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_LaserHeavy</defaultProjectile>
+        <warmupTime>1.7</warmupTime>
+        <range>36.9</range>
+        <soundCast>LaserHeavy_fire</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+	
+    <tools>
+      <li>
+        <label>barrel</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>16</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>
+	
+	<barrelLength>0.95</barrelLength>
+	
+  </ThingDef>
+
+  <!-- INCENDIARY LASER -->
+
+  <ThingDef ParentName="Bullet_LaserInc" Class="Rimlaser.Bullet_LaserRifleDef">
+    <defName>Bullet_LaserIncendiary</defName>
+    <label>incendiary laser beam</label>
+    
+    <projectile>
+      <damageDef>Flame</damageDef>
+      <damageAmountBase>16</damageAmountBase>
+    </projectile>
+	
+	<beamWidth>1.4</beamWidth>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseLaserGun" Class="Rimlaser.LaserGunDef">
+    <defName>Rimlaser_LaserIncendiary</defName>
+    <label>incendiary laser</label>
+    <description>A clever design that despite doing mot much damage for its size, has tendency to ignite its target. Features an efficient miniature power plant built into the gun that provides limitless firepower for the duration of any ground skirmish.</description>
+    <graphicData>
+      <texPath>Rimlaser/Weapons/LaserIncendiary</texPath>
+    </graphicData>
+    <statBases>
+      <Mass>10</Mass>
+      <AccuracyTouch>0.6</AccuracyTouch>
+      <AccuracyShort>0.8</AccuracyShort>
+      <AccuracyMedium>0.8</AccuracyMedium>
+      <AccuracyLong>0.7</AccuracyLong>
+      <RangedWeapon_Cooldown>2.4</RangedWeapon_Cooldown>
+      <WorkToMake>60000</WorkToMake>
+    </statBases>
+	
+    <costList>
+      <RimlaserCrystal>1</RimlaserCrystal>
+      <Plasteel>80</Plasteel>
+      <ComponentSpacer>5</ComponentSpacer>
+    </costList>
+
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_LaserIncendiary</defaultProjectile>
+        <warmupTime>1.4</warmupTime>
+        <range>36.9</range>
+        <soundCast>LaserIncendiary_fire</soundCast>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+	
+    <tools>
+      <li>
+        <label>barrel</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>12</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>
+	
+	<barrelLength>0.95</barrelLength>
+	
+  </ThingDef>
+
+  <!-- SNIPER LASER -->
+
+  <ThingDef ParentName="Bullet_LaserColored" Class="Rimlaser.Bullet_LaserRifleDef">
+    <defName>Bullet_LaserSniper</defName>
+    <label>sniper laser beam</label>
+    
+    <projectile>
+      <damageAmountBase>30</damageAmountBase>
+    </projectile>
+	
+	<beamWidth>0.9</beamWidth>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseLaserGun" Class="Rimlaser.LaserGunDef">
+    <defName>Rimlaser_LaserSniper</defName>
+    <label>laser sniper rifle</label>
+    <description>A long range laser rifle. Does a good amount of damage and at great range, but bulky and nearly impossible to operate at close range. Features an efficient miniature power plant built into the gun that provides limitless firepower for the duration of any ground skirmish.</description>
+    <graphicData>
+      <texPath>Rimlaser/Weapons/LaserSniper</texPath>
+    </graphicData>
+    <statBases>
+      <Mass>10</Mass>
+      <AccuracyTouch>0.1</AccuracyTouch>
+      <AccuracyShort>0.2</AccuracyShort>
+      <AccuracyMedium>0.7</AccuracyMedium>
+      <AccuracyLong>1.0</AccuracyLong>
+      <RangedWeapon_Cooldown>3.0</RangedWeapon_Cooldown>
+      <WorkToMake>60000</WorkToMake>
+    </statBases>
+	
+    <costList>
+      <RimlaserCrystal>1</RimlaserCrystal>
+      <Plasteel>100</Plasteel>
+      <ComponentSpacer>5</ComponentSpacer>
+    </costList>
+
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_LaserSniper</defaultProjectile>
+        <warmupTime>3.0</warmupTime>
+        <range>52</range>
+        <soundCast>LaserSniper_fire</soundCast>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+	
+    <tools>
+      <li>
+        <label>barrel</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>10</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>
+	
+	<barrelLength>0.925</barrelLength>
+	
+  </ThingDef>
+
+  
+</Defs>

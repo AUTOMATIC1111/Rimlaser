@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <ThingDef ParentName="ResourceBase">
+    <defName>RimlaserCrystal</defName>
+    <label>crystal</label>
+    <description>A crystal that is used as a lasing medium for solid-state lasers.</description>
+    <graphicData>
+      <texPath>Rimlaser/Items/Crystal</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <soundInteract>RimlaserCrystal_Drop</soundInteract>
+    <stackLimit>5</stackLimit>
+    <soundDrop>RimlaserCrystal_Drop</soundDrop>
+    <statBases>
+      <MarketValue>500</MarketValue>
+      <Mass>0.5</Mass>
+      <StuffPower_Armor_Sharp>5.0</StuffPower_Armor_Sharp>
+      <StuffPower_Armor_Blunt>5.0</StuffPower_Armor_Blunt>
+      <StuffPower_Armor_Heat>5.0</StuffPower_Armor_Heat>
+      <StuffPower_Insulation_Cold>3</StuffPower_Insulation_Cold>
+      <StuffPower_Insulation_Heat>0</StuffPower_Insulation_Heat>
+      <SharpDamageMultiplier>10</SharpDamageMultiplier>
+      <BluntDamageMultiplier>1</BluntDamageMultiplier>
+    </statBases>
+    <useHitPoints>false</useHitPoints>
+    <thingCategories>
+      <li>ResourcesRaw</li>
+    </thingCategories>
+    <tradeTags>
+      <li>ExoticMisc</li>
+    </tradeTags>
+    <deepCommonality>1</deepCommonality>
+    <deepCountPerPortion>1</deepCountPerPortion>
+    <deepLumpSizeRange>
+      <min>4</min>
+      <max>12</max>
+    </deepLumpSizeRange>
+    <stuffProps>
+      <categories>
+        <li>Metallic</li>
+      </categories>
+      <commonality>0.2</commonality>
+      <constructEffect>ConstructMetal</constructEffect>
+      <color>(105,105,105)</color>
+      <soundImpactStuff>BulletImpact_Metal</soundImpactStuff>
+      <soundMeleeHitSharp>MeleeHit_Metal_Sharp</soundMeleeHitSharp>
+      <soundMeleeHitBlunt>MeleeHit_Metal_Blunt</soundMeleeHitBlunt>
+      <statOffsets>
+        <Beauty>10</Beauty>
+      </statOffsets>
+      <statFactors>
+        <MaxHitPoints>1</MaxHitPoints>
+        <Flammability>0.01</Flammability>
+      </statFactors>
+      <smeltable>false</smeltable>
+    </stuffProps>
+	
+  </ThingDef>
+  
+</Defs>

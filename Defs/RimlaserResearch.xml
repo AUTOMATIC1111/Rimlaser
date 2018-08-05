@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ResearchProjectDef>
+    <defName>RimlaserLasers</defName>
+    <label>lasers</label>
+    <description>Build weapons which employ light amplification by stimulated emission of radiation. Note that these also require advanced components, and you'll also need rare crystals to make laser weapons.</description>
+    <baseCost>3000</baseCost>
+    <techLevel>Spacer</techLevel>
+    <prerequisites>
+      <li>ChargedShot</li>
+    </prerequisites>
+    <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+    <requiredResearchFacilities>
+      <li>MultiAnalyzer</li>
+    </requiredResearchFacilities>
+    <researchViewX>14</researchViewX>
+    <researchViewY>4</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>RimlaserLaserTurrets</defName>
+    <label>lasers turrets</label>
+    <description>Heavy laser mounted onto the autocannon chassis.</description>
+    <baseCost>1200</baseCost>
+    <techLevel>Spacer</techLevel>
+    <prerequisites>
+      <li>RimlaserLasers</li>
+      <li>HeavyTurrets</li>
+    </prerequisites>
+    <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+    <requiredResearchFacilities>
+      <li>MultiAnalyzer</li>
+    </requiredResearchFacilities>
+    <researchViewX>16</researchViewX>
+    <researchViewY>3</researchViewY>
+  </ResearchProjectDef>
+
+</Defs>

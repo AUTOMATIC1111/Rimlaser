@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!--=============== Laser turret ===============-->
+
+  <ThingDef ParentName="BuildingBase" Name="LaserTurret" Class="Rimlaser.Building_LaserGunDef">
+    <defName>Turret_Laser</defName>
+    <label>laser turret</label>
+    <description>A heavy laser turret. Does not require barrel maintenance, but consumes 30Wd per shot from batteries.</description>
+    <thingClass>Rimlaser.Building_LaserGun</thingClass>
+    <graphicData>
+      <texPath>Rimlaser/Buildings/TurretLaser_Base</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1.5, 1.5)</drawSize>
+      <damageData>
+        <rect>(0.2,0.2,0.6,0.6)</rect>
+      </damageData>
+      <shadowData>
+        <volume>(1.5,0.35,1.4)</volume>
+        <offset>(0,0,-0.05)</offset>
+      </shadowData>
+    </graphicData>
+    <uiIconPath>Rimlaser/Buildings/TurretLaser_MenuIcon</uiIconPath>
+    <altitudeLayer>Building</altitudeLayer>
+    <stealable>false</stealable>
+    <rotatable>false</rotatable>
+    <size>(2,2)</size>
+    <statBases>
+      <MaxHitPoints>450</MaxHitPoints>
+      <Flammability>0.7</Flammability>
+      <WorkToBuild>10000</WorkToBuild>
+      <Mass>100</Mass>
+      <Beauty>-20</Beauty>
+      <ShootingAccuracyTurret>0.96</ShootingAccuracyTurret>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>8</explosiveRadius>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+        <chanceNeverExplodeFromDamage>0</chanceNeverExplodeFromDamage>
+      </li>
+      <li Class="CompProperties_Forbiddable"/>
+      <li Class="CompProperties_Power">
+        <compClass>Rimlaser.CompPowerTraderExtended</compClass>
+        <basePowerConsumption>150</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Breakdownable"/>
+      <li>
+        <compClass>CompQuality</compClass>
+      </li>
+    </comps>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <fillPercent>0.5</fillPercent>
+    <hasTooltip>true</hasTooltip>
+    <costList>
+      <Plasteel>80</Plasteel>
+      <ComponentSpacer>6</ComponentSpacer>
+      <RimlaserCrystal>1</RimlaserCrystal>
+    </costList>
+    <costStuffCount>250</costStuffCount>
+	<stuffCategories>
+      <li>Metallic</li>
+      <li>Stony</li>
+    </stuffCategories>
+
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <designationCategory>Security</designationCategory>
+    <specialDisplayRadius>36.9</specialDisplayRadius>
+    <constructionSkillPrerequisite>10</constructionSkillPrerequisite>
+    <building>
+      <ai_combatDangerous>true</ai_combatDangerous>
+      <turretGunDef>Rimlaser_LaserHeavy</turretGunDef>
+      <turretBurstCooldownTime>3.5</turretBurstCooldownTime>
+      <turretTopGraphicPath>Rimlaser/Weapons/LaserHeavyMounted</turretTopGraphicPath>
+      <turretTopDrawSize>1.75</turretTopDrawSize>
+      <turretTopOffset>(0, 0.05)</turretTopOffset>
+    </building>
+    <placeWorkers>
+      <li>PlaceWorker_TurretTop</li>
+    </placeWorkers>
+    <researchPrerequisites>
+      <li>RimlaserLaserTurrets</li>
+    </researchPrerequisites>
+    <uiIconScale>0.95</uiIconScale>
+
+	<beamPowerConsumption>30</beamPowerConsumption>
+  </ThingDef>
+
+</Defs>
