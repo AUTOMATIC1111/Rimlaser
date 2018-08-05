@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 
   <!-- LASER RIFLE -->
@@ -6,7 +6,7 @@
   <Bullet_LaserRifle.label>レーザーライフルビーム</Bullet_LaserRifle.label>
 
   <Rimlaser_LaserRifle.label>レーザーライフル</Rimlaser_LaserRifle.label>
-  <Rimlaser_LaserRifle.description>未来的なレーザーライフルのデザインです。レーザーピストルと同じ程度のダメージを与えますが、発射速度は2倍で、より広い射程まで届くように設計されています。あらゆる地上で行われる小競り合いで、無限の火力を提供します。銃に組み込まれた効率的な小型発電器を特徴としています。</Rimlaser_LaserRifle.description>
+  <Rimlaser_LaserRifle.description>未来的なレーザーライフルのデザインです。レーザーピストルと同じ程度のダメージを与えますが、発射速度は2倍で、より広い射程まで届くように設計されています。</Rimlaser_LaserRifle.description>
   <Rimlaser_LaserRifle.tools.0.label>ストック</Rimlaser_LaserRifle.tools.0.label>
   <Rimlaser_LaserRifle.tools.1.label>バレル</Rimlaser_LaserRifle.tools.1.label>
 
@@ -16,7 +16,7 @@
   <Bullet_LaserPistol.label>レーザーピストルビーム</Bullet_LaserPistol.label>
 
   <Rimlaser_LaserPistol.label>レーザーピストル</Rimlaser_LaserPistol.label>
-  <Rimlaser_LaserPistol.description>未来的なレーザーピストルのデザインです。非常に強力で、ピストルとして普通の射程範囲を持っており、素早い早撃ちに最適です。あらゆる地上で行われる小競り合いで、無限の火力を提供します。銃に組み込まれた効率的な小型発電器を特徴としています。</Rimlaser_LaserPistol.description>
+  <Rimlaser_LaserPistol.description>未来的なレーザーピストルのデザインです。非常に強力で、ピストルとして普通の射程範囲を持っており、素早い早撃ちに最適です。</Rimlaser_LaserPistol.description>
   <Rimlaser_LaserPistol.tools.0.label>グリップ</Rimlaser_LaserPistol.tools.0.label>
   <Rimlaser_LaserPistol.tools.1.label>バレル</Rimlaser_LaserPistol.tools.1.label>
 
@@ -26,7 +26,7 @@
   <Bullet_LaserHeavy.label>ヘビーレーザービーム</Bullet_LaserHeavy.label>
 
   <Rimlaser_LaserHeavy.label>ヘビーレーザーガン</Rimlaser_LaserHeavy.label>
-  <Rimlaser_LaserHeavy.description>いかついヘビーレーザー銃です。巨大なダメージを与えますが、どんな射程距離でも命中操作するのが難しいです。あらゆる地上で行われる小競り合いで、無限の火力を提供します。銃に組み込まれた効率的な小型発電器を特徴としています。</Rimlaser_LaserHeavy.description>
+  <Rimlaser_LaserHeavy.description>いかついヘビーレーザー銃です。巨大なダメージを与えますが、どんな射程距離でも命中操作するのが難しいです。</Rimlaser_LaserHeavy.description>
   <Rimlaser_LaserHeavy.tools.0.label>バレル</Rimlaser_LaserHeavy.tools.0.label>
 
 
@@ -35,7 +35,7 @@
   <Bullet_LaserIncendiary.label>火炎レーザービーム</Bullet_LaserIncendiary.label>
 
   <Rimlaser_LaserIncendiary.label>火炎レーザーガン</Rimlaser_LaserIncendiary.label>
-  <Rimlaser_LaserIncendiary.description>その大きさに似合わずあまりダメージを与えませんが、目標に対して着火することが目的という独創的なデザインです。あらゆる地上で行われる小競り合いで、無限の火力を提供します。銃に組み込まれた効率的な小型発電器を特徴としています。</Rimlaser_LaserIncendiary.description>
+  <Rimlaser_LaserIncendiary.description>その大きさに似合わずあまりダメージを与えませんが、目標に対して着火することが目的という独創的なデザインです。</Rimlaser_LaserIncendiary.description>
   <Rimlaser_LaserIncendiary.tools.0.label>バレル</Rimlaser_LaserIncendiary.tools.0.label>
 
 
@@ -44,8 +44,16 @@
   <Bullet_LaserSniper.label>スナイパーレーザービーム</Bullet_LaserSniper.label>
 
   <Rimlaser_LaserSniper.label>レーザースナイパーライフル</Rimlaser_LaserSniper.label>
-  <Rimlaser_LaserSniper.description>長距離射程のレーザーライフルです。かなりの強力なダメージを与え、広い射程範囲を持ちますが、取り回し辛く、近距離での照準操作はほとんど不可能です。あらゆる地上で行われる小競り合いで、無限の火力を提供します。銃に組み込まれた効率的な小型発電器を特徴としています。</Rimlaser_LaserSniper.description>
+  <Rimlaser_LaserSniper.description>長距離射程のレーザーライフルです。かなりの強力なダメージを与え、広い射程範囲を持ちますが、取り回し辛く、近距離での照準操作はほとんど不可能です。</Rimlaser_LaserSniper.description>
   <Rimlaser_LaserSniper.tools.0.label>バレル</Rimlaser_LaserSniper.tools.0.label>
+
+  <!-- TESTLA GUN -->
+
+  <Bullet_Tesla.label>高圧の雷撃</Bullet_Tesla.label>
+
+  <Rimlaser_TeslaGun.label>テスラガン</Rimlaser_TeslaGun.label>
+  <Rimlaser_TeslaGun.description>雷撃銃です。非常に短い射程範囲でしか攻撃することができませんが、相手を停止力させる力が優秀です。</Rimlaser_TeslaGun.description>
+  <Rimlaser_TeslaGun.tools.0.label>バレル</Rimlaser_TeslaGun.tools.0.label>
 
 
 </LanguageData>
