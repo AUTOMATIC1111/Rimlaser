@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Laser turret -->
+
+  <Turret_Laser.label>タレット (レーザー)</Turret_Laser.label>
+  <Turret_Laser.description>ヘビーレーザーガンを搭載したタレットです。バレルのメンテナンスは必要ありませんが、内蔵されたバッテリーからの1発あたり30Wdを消費します。バッテリーの電力が切れると射撃不可能になるので注意が必要です。</Turret_Laser.description>
+  <Turret_Laser_Blueprint.label>タレット (レーザー)(設計)</Turret_Laser_Blueprint.label>
+  <Turret_Laser_Frame.label>タレット (レーザー)(施工)</Turret_Laser_Frame.label>
+  <Turret_Laser_Frame.description>ヘビーレーザーガンを搭載したタレットです。バレルのメンテナンスは必要ありませんが、内蔵されたバッテリーからの1発あたり30Wdを消費します。バッテリーの電力が切れると射撃不可能になるので注意が必要です。</Turret_Laser_Frame.description>
+
+
+</LanguageData>

@@ -4,5 +4,8 @@
   <RimlaserLasers.label>レーザー兵器</RimlaserLasers.label>
   <RimlaserLasers.description>電磁波(光)を増幅し、コヒーレント光を発生させるレーザー発振器を用いて人工的なレーザー光を放射するレーザー武器を作成します。これらの作成には先進コンポーネントが必要であり、レーザー兵器を作るためには希少な結晶体(クリスタル)が必要になることに注意してください。</RimlaserLasers.description>
 
+  <RimlaserLaserTurrets.label>タレット(レーザー)</RimlaserLaserTurrets.label>
+  <RimlaserLaserTurrets.description>ヘビーレーザーガンがオートキャノンタレットの砲座に取り付けられています。</RimlaserLaserTurrets.description>
+
 
 </LanguageData>
