@@ -24,7 +24,6 @@ namespace Rimlaser
 
 
         public void SetTextures(GraphicData main, GraphicData caps) {
-            Log.Warning("main: "+main+", caps: "+ caps+ ", graphicData: "+ def.graphicData+ ", graphicDataCap: " + def.graphicDataCap);
             if (main == null) {
                 materialBeam = def.graphicData.Graphic.MatSingle;
                 materialBeamCap = def.graphicDataCap == null ? null : def.graphicDataCap.Graphic.MatSingle;
@@ -67,7 +66,6 @@ namespace Rimlaser
                 case QualityCategory.Masterwork: SetTextures(def.graphicMasterwork, def.graphicMasterworkCap); break;
                 case QualityCategory.Legendary: SetTextures(def.graphicLegendary, def.graphicLegendaryCap); break;
             }
-            Log.Warning("materialBeam: " + materialBeam + ", materialBeamCap: " + materialBeamCap);
 
             var capSize = def.capSize * def.beamWidth;
             var capOverlap = def.capOverlap * def.beamWidth;
