@@ -107,6 +107,27 @@
   </SoundDef>
 
   <SoundDef>
+    <defName>Tesla_fire</defName>  
+    <context>MapOnly</context>
+    <eventNames />  
+    <maxSimultaneous>4</maxSimultaneous>  
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>Rimlaser/Tesla</clipFolderPath>
+          </li>
+        </grains>      
+        <pitchRange>
+          <min>0.7</min>
+          <max>1.3</max>
+        </pitchRange>      
+        <sustainLoop>False</sustainLoop>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <SoundDef>
     <defName>RimlaserCrystal_Drop</defName>  
     <context>MapOnly</context>
     <eventNames />  

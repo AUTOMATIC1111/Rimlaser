@@ -5,10 +5,9 @@
     <drawOffscreen>true</drawOffscreen>
 	
     <projectile>
-      <damageDef>Bullet</damageDef>
+      <damageDef>Bomb</damageDef>
       <speed>10000</speed>
     </projectile>
-
   </ThingDef>
 
   <ThingDef Abstract="True" Name="Bullet_LaserQuality" ParentName="Bullet_LaserGeneric">
@@ -101,7 +100,6 @@
       <shaderType>TransparentPostLight</shaderType>
       <drawSize>1.5</drawSize>
     </graphicLegendaryCap>
-
   </ThingDef>
 
   <ThingDef Abstract="True" Name="Bullet_LaserColored" ParentName="Bullet_LaserQuality">
@@ -177,7 +175,7 @@
   <ThingDef ParentName="BaseLaserGun" Class="Rimlaser.LaserGunDef">
     <defName>Rimlaser_LaserRifle</defName>
     <label>laser rifle</label>
-    <description>A futuristic laser rifle design. Does about as mucu damage as the pistol per beam, but fires twice as fast and is designed to work at greater range. Features an efficient miniature power plant built into the gun that provides limitless firepower for the duration of any ground skirmish.</description>
+    <description>A futuristic laser rifle design. Does about as mucu damage as the pistol per beam, but fires twice as fast and is designed to work at greater range.</description>
     <graphicData>
       <texPath>Rimlaser/Weapons/LaserRifle</texPath>
     </graphicData>
@@ -251,7 +249,7 @@
   <ThingDef ParentName="BaseLaserGun" Class="Rimlaser.LaserGunDef">
     <defName>Rimlaser_LaserPistol</defName>
     <label>laser pistol</label>
-    <description>A futuristic laser pistol design. Quite powerful, has a decent range for a pistol and is quick on the draw. Features an efficient miniature power plant built into the gun that provides limitless firepower for the duration of any ground skirmish.</description>
+    <description>A futuristic laser pistol design. Quite powerful, has a decent range for a pistol and is quick on the draw.</description>
     <graphicData>
       <texPath>Rimlaser/Weapons/LaserPistol</texPath>
     </graphicData>
@@ -326,7 +324,7 @@
   <ThingDef ParentName="BaseLaserGun" Class="Rimlaser.LaserGunDef">
     <defName>Rimlaser_LaserHeavy</defName>
     <label>heavy laser</label>
-    <description>A grotesque looking heavy laser gun. Inflicts gigantic amounts of damage, but hard to operate at any distance. Features an efficient miniature power plant built into the gun that provides limitless firepower for the duration of any ground skirmish.</description>
+    <description>A grotesque looking heavy laser gun. Inflicts gigantic amounts of damage, but hard to operate at any distance.</description>
     <graphicData>
       <texPath>Rimlaser/Weapons/LaserHeavy</texPath>
     </graphicData>
@@ -391,7 +389,7 @@
   <ThingDef ParentName="BaseLaserGun" Class="Rimlaser.LaserGunDef">
     <defName>Rimlaser_LaserIncendiary</defName>
     <label>incendiary laser</label>
-    <description>A clever design that despite doing mot much damage for its size, has tendency to ignite its target. Features an efficient miniature power plant built into the gun that provides limitless firepower for the duration of any ground skirmish.</description>
+    <description>A clever design that despite doing mot much damage for its size, has tendency to ignite its target.</description>
     <graphicData>
       <texPath>Rimlaser/Weapons/LaserIncendiary</texPath>
     </graphicData>
@@ -454,7 +452,7 @@
   <ThingDef ParentName="BaseLaserGun" Class="Rimlaser.LaserGunDef">
     <defName>Rimlaser_LaserSniper</defName>
     <label>laser sniper rifle</label>
-    <description>A long range laser rifle. Does a good amount of damage and at great range, but bulky and nearly impossible to operate at close range. Features an efficient miniature power plant built into the gun that provides limitless firepower for the duration of any ground skirmish.</description>
+    <description>A long range laser rifle. Does a good amount of damage and at great range, but bulky and nearly impossible to operate at close range.</description>
     <graphicData>
       <texPath>Rimlaser/Weapons/LaserSniper</texPath>
     </graphicData>
@@ -501,5 +499,75 @@
 	
   </ThingDef>
 
-  
+  <!-- TESTLA GUN -->
+
+  <ThingDef ParentName="Bullet_LaserGeneric" Class="Rimlaser.Bullet_LaserRifleDef">
+    <defName>Bullet_Tesla</defName>
+    <label>bolt of lightning</label>
+		
+	<graphicData>
+      <texPath>Rimlaser/Effects/Lightning</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>1.5</drawSize>
+    </graphicData>
+
+    <projectile>
+      <damageAmountBase>6</damageAmountBase>
+      <stoppingPower>6</stoppingPower>
+    </projectile>
+	
+	<beamWidth>1.0</beamWidth>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseLaserGun" Class="Rimlaser.LaserGunDef">
+    <defName>Rimlaser_TeslaGun</defName>
+    <label>Tesla gun</label>
+    <description>A lightning gun. Can only attack at very short range, but has good stopping power.</description>
+    <graphicData>
+      <texPath>Rimlaser/Weapons/Lightning</texPath>
+    </graphicData>
+    <statBases>
+      <Mass>20</Mass>
+      <AccuracyTouch>0.75</AccuracyTouch>
+      <AccuracyShort>0.55</AccuracyShort>
+      <AccuracyMedium>0.15</AccuracyMedium>
+      <AccuracyLong>0.05</AccuracyLong>
+      <RangedWeapon_Cooldown>0.5</RangedWeapon_Cooldown>
+      <WorkToMake>60000</WorkToMake>
+    </statBases>
+	
+    <costList>
+      <RimlaserCrystal>1</RimlaserCrystal>
+      <Plasteel>100</Plasteel>
+      <ComponentSpacer>5</ComponentSpacer>
+    </costList>
+
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_Tesla</defaultProjectile>
+        <warmupTime>0.75</warmupTime>
+        <range>10</range>
+        <soundCast>Tesla_fire</soundCast>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+	
+    <tools>
+      <li>
+        <label>barrel</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>16</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>
+	
+	<barrelLength>1.025</barrelLength>
+	
+  </ThingDef>
+
 </Defs>
