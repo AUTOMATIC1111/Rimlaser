@@ -6,7 +6,7 @@ using Verse;
 
 namespace Rimlaser
 {
-    class LaserGunDef : ThingDef
+    public class LaserGunDef : ThingDef
     {
         public float barrelLength = 0.9f;
     }

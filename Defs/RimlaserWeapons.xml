@@ -229,7 +229,7 @@
       </li>
     </tools>
 	
-	<barrelLength>0.95</barrelLength>
+	<barrelLength>0.875</barrelLength>
 	
   </ThingDef>
   
@@ -302,7 +302,7 @@
       </li>
     </tools>
 	
-	<barrelLength>0.8</barrelLength>
+	<barrelLength>0.75</barrelLength>
 	
   </ThingDef>
   
@@ -343,7 +343,11 @@
       <Plasteel>80</Plasteel>
       <ComponentSpacer>6</ComponentSpacer>
     </costList>
-
+	
+    <equippedStatOffsets>
+      <MoveSpeed>-0.25</MoveSpeed>
+    </equippedStatOffsets>
+	
     <verbs>
       <li>
         <verbClass>Verb_Shoot</verbClass>
@@ -368,7 +372,7 @@
       </li>
     </tools>
 	
-	<barrelLength>0.95</barrelLength>
+	<barrelLength>0.9</barrelLength>
 	
   </ThingDef>
 
@@ -409,6 +413,9 @@
       <ComponentSpacer>5</ComponentSpacer>
     </costList>
 
+    <equippedStatOffsets>
+      <MoveSpeed>-0.10</MoveSpeed>
+    </equippedStatOffsets>
     <verbs>
       <li>
         <verbClass>Verb_Shoot</verbClass>
@@ -432,7 +439,7 @@
       </li>
     </tools>
 	
-	<barrelLength>0.95</barrelLength>
+	<barrelLength>0.875</barrelLength>
 	
   </ThingDef>
 
@@ -472,6 +479,9 @@
       <ComponentSpacer>5</ComponentSpacer>
     </costList>
 
+    <equippedStatOffsets>
+      <MoveSpeed>-0.10</MoveSpeed>
+    </equippedStatOffsets>
     <verbs>
       <li>
         <verbClass>Verb_Shoot</verbClass>
@@ -495,11 +505,90 @@
       </li>
     </tools>
 	
-	<barrelLength>0.925</barrelLength>
+	<barrelLength>0.875</barrelLength>
 	
   </ThingDef>
 
-  <!-- TESTLA GUN -->
+  <!-- MINIGUN -->
+  <ThingDef ParentName="Bullet_LaserColored" Class="Rimlaser.Bullet_LaserRifleDef">
+    <defName>Bullet_LaserMinigun</defName>
+    <label>minigun laser beam</label>
+    
+    <projectile>
+      <damageAmountBase>10</damageAmountBase>
+    </projectile>
+	
+	<beamWidth>0.4</beamWidth>
+	<lifetime>16</lifetime>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseLaserGun" Class="Rimlaser.SpinningLaserGunDef">
+    <defName>Rimlaser_LaserMinigun</defName>
+    <label>laser minigun</label>
+    <description>A laser gun with three barrels spinned by an electric motor. Due to fragility of rotating parts it has to take a long time to spin up, but once it starts firing it fires very fast, and with somewhat better precision than its gunpowder variation.</description>
+    <thingClass>Rimlaser.SpinningLaserGun</thingClass>
+	
+    <graphicData>
+      <texPath>Rimlaser/Weapons/LaserMinigun-1</texPath>
+    </graphicData>
+	
+	<frames>
+		<li><texPath>Rimlaser/Weapons/LaserMinigun-1</texPath><graphicClass>Graphic_Single</graphicClass></li>
+		<li><texPath>Rimlaser/Weapons/LaserMinigun-2</texPath><graphicClass>Graphic_Single</graphicClass></li>
+		<li><texPath>Rimlaser/Weapons/LaserMinigun-3</texPath><graphicClass>Graphic_Single</graphicClass></li>
+		<li><texPath>Rimlaser/Weapons/LaserMinigun-4</texPath><graphicClass>Graphic_Single</graphicClass></li>
+	</frames>
+	<rotationSpeed>1.0</rotationSpeed>
+
+    <statBases>
+      <Mass>20</Mass>
+      <AccuracyTouch>0.35</AccuracyTouch>
+      <AccuracyShort>0.35</AccuracyShort>
+      <AccuracyMedium>0.3</AccuracyMedium>
+      <AccuracyLong>0.25</AccuracyLong>
+      <RangedWeapon_Cooldown>2.0</RangedWeapon_Cooldown>
+      <WorkToMake>60000</WorkToMake>
+    </statBases>
+
+    <costList>
+      <RimlaserCrystal>1</RimlaserCrystal>
+      <Plasteel>100</Plasteel>
+      <ComponentSpacer>5</ComponentSpacer>
+    </costList>
+
+    <equippedStatOffsets>
+      <MoveSpeed>-0.25</MoveSpeed>
+    </equippedStatOffsets>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_LaserMinigun</defaultProjectile>
+        <warmupTime>5.0</warmupTime>
+        <range>30</range>
+        <soundCast>LaserMinigun_fire</soundCast>
+        <muzzleFlashScale>9</muzzleFlashScale>
+        <soundAiming>LaserMinigun_warmup</soundAiming>
+        <burstShotCount>30</burstShotCount>
+        <ticksBetweenBurstShots>10</ticksBetweenBurstShots>
+      </li>
+    </verbs>
+	
+    <tools>
+      <li>
+        <label>barrel</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>16</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>
+	
+	<barrelLength>0.86</barrelLength>
+  </ThingDef>
+  
+  <!-- TESLA GUN -->
 
   <ThingDef ParentName="Bullet_LaserGeneric" Class="Rimlaser.Bullet_LaserRifleDef">
     <defName>Bullet_Tesla</defName>

@@ -66,6 +66,7 @@ namespace Rimlaser
                 case QualityCategory.Masterwork: SetTextures(def.graphicMasterwork, def.graphicMasterworkCap); break;
                 case QualityCategory.Legendary: SetTextures(def.graphicLegendary, def.graphicLegendaryCap); break;
             }
+            Log.Warning("materialBeam: " + materialBeam + ", materialBeamCap: " + materialBeamCap);
 
             var capSize = def.capSize * def.beamWidth;
             var capOverlap = def.capOverlap * def.beamWidth;
@@ -75,29 +76,38 @@ namespace Rimlaser
                 capOverlap = 0;
             }
 
-            Vector3 dir = (destination - origin).normalized;
-            Vector3 a = origin + dir * (defWeapon == null ? 0.9f : defWeapon.barrelLength);
-            Vector3 b = destination;
+            Vector3 rotationAngle = ExactRotation.eulerAngles;
+            rotationAngle.x = 0;
+            rotationAngle.z = 0;
+            Quaternion rotation = Quaternion.Euler(rotationAngle);
+
             float altitude = def.Altitude;
+            Vector3 dest = destination; dest.y = altitude;
+            Vector3 orig = origin; orig.y = altitude;
+
+            Vector3 dir = (dest - orig).normalized;
+            Vector3 a = origin + dir * (defWeapon == null ? 0.9f : defWeapon.barrelLength);
+            Vector3 b = dest;
             float length = (b - a).magnitude;
 
             Vector3 drawingScale = new Vector3(def.beamWidth, 1f, length - capSize * 2 + capOverlap * 2);
-            Vector3 drawingScaleCap = new Vector3(def.beamWidth, 1f, def.beamWidth);
-
+ 
             Vector3 drawingPosition = (a + b) / 2;
             drawingPosition.y = altitude;
-            drawingMatrix.SetTRS(drawingPosition, ExactRotation, drawingScale);
+            drawingMatrix.SetTRS(drawingPosition, rotation, drawingScale);
 
             if (materialBeamCap != null)
             {
+                Vector3 drawingScaleCap = new Vector3(def.beamWidth, 1f, def.beamWidth);
+
                 Vector3 drawingPositionCapB = b - dir * capSize / 2;
                 drawingPositionCapB.y = altitude;
-                drawingMatrixCapB.SetTRS(drawingPositionCapB, ExactRotation, drawingScaleCap);
+                drawingMatrixCapB.SetTRS(drawingPositionCapB, rotation, drawingScaleCap);
 
-                Vector3 angle = ExactRotation.eulerAngles; angle.y += 180;
+                rotationAngle.y += 180;
                 Vector3 drawingPositionCapA = a + dir * capSize / 2;
                 drawingPositionCapA.y = altitude;
-                drawingMatrixCapA.SetTRS(drawingPositionCapA, Quaternion.Euler(angle), drawingScaleCap);
+                drawingMatrixCapA.SetTRS(drawingPositionCapA, Quaternion.Euler(rotationAngle), drawingScaleCap);
             }
 
             setupComplete = true;

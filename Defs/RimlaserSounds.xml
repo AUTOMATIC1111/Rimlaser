@@ -1,7 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
+  <SoundDef Abstract="True" Name="RimlaserSound">
+  </SoundDef>
 
-  <SoundDef>
+
+  <SoundDef ParentName="RimlaserSound">
     <defName>LaserRifle_Fire</defName>  
     <context>MapOnly</context>
     <eventNames />  
@@ -12,7 +15,8 @@
           <li Class="AudioGrain_Folder">
             <clipFolderPath>Rimlaser/LaserRifle_fire</clipFolderPath>
           </li>
-        </grains>      
+        </grains>
+        <volumeRange><min>8</min><max>8</max></volumeRange>
         <pitchRange>
           <min>0.9082353</min>        
           <max>1.045882</max>
@@ -22,7 +26,7 @@
     </subSounds>
   </SoundDef>
   
-  <SoundDef>
+  <SoundDef ParentName="RimlaserSound">
     <defName>LaserPistol_fire</defName>  
     <context>MapOnly</context>
     <eventNames />  
@@ -34,6 +38,7 @@
             <clipFolderPath>Rimlaser/LaserPistol_fire</clipFolderPath>
           </li>
         </grains>      
+        <volumeRange><min>8</min><max>8</max></volumeRange>
         <pitchRange>
           <min>0.9082353</min>        
           <max>1.045882</max>
@@ -43,7 +48,7 @@
     </subSounds>
   </SoundDef>
 
-  <SoundDef>
+  <SoundDef ParentName="RimlaserSound">
     <defName>LaserHeavy_fire</defName>  
     <context>MapOnly</context>
     <eventNames />  
@@ -55,6 +60,7 @@
             <clipFolderPath>Rimlaser/LaserHeavy_fire</clipFolderPath>
           </li>
         </grains>      
+        <volumeRange><min>8</min><max>8</max></volumeRange>
         <pitchRange>
           <min>0.9082353</min>        
           <max>1.045882</max>
@@ -64,7 +70,7 @@
     </subSounds>
   </SoundDef>
 
-  <SoundDef>
+  <SoundDef ParentName="RimlaserSound">
     <defName>LaserIncendiary_fire</defName>  
     <context>MapOnly</context>
     <eventNames />  
@@ -76,6 +82,7 @@
             <clipFolderPath>Rimlaser/LaserIncendiary_fire</clipFolderPath>
           </li>
         </grains>      
+        <volumeRange><min>8</min><max>8</max></volumeRange>
         <pitchRange>
           <min>0.9082353</min>        
           <max>1.045882</max>
@@ -85,7 +92,7 @@
     </subSounds>
   </SoundDef>
 
-  <SoundDef>
+  <SoundDef ParentName="RimlaserSound">
     <defName>LaserSniper_fire</defName>  
     <context>MapOnly</context>
     <eventNames />  
@@ -97,6 +104,7 @@
             <clipFolderPath>Rimlaser/LaserSniper_fire</clipFolderPath>
           </li>
         </grains>      
+        <volumeRange><min>8</min><max>8</max></volumeRange>
         <pitchRange>
           <min>0.9082353</min>        
           <max>1.045882</max>
@@ -106,7 +114,53 @@
     </subSounds>
   </SoundDef>
 
-  <SoundDef>
+  <SoundDef ParentName="RimlaserSound">
+    <defName>LaserMinigun_fire</defName>  
+    <context>MapOnly</context>
+    <eventNames />  
+    <maxSimultaneous>4</maxSimultaneous>  
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>Rimlaser/LaserMinigun_fire</clipFolderPath>
+          </li>
+        </grains>      
+        <volumeRange><min>8</min><max>8</max></volumeRange>
+        <pitchRange>
+          <min>0.9082353</min>        
+          <max>1.045882</max>
+        </pitchRange>      
+        <sustainLoop>False</sustainLoop>
+      </li>
+    </subSounds>
+  </SoundDef>
+  
+  <SoundDef ParentName="RimlaserSound">
+    <defName>LaserMinigun_warmup</defName>
+    <sustain>true</sustain>
+    <context>MapOnly</context>
+    <eventNames />
+    <maxSimultaneous>2</maxSimultaneous>
+    <priorityMode>PrioritizeNearest</priorityMode>  
+    <subSounds>
+      <li>
+        <tempoAffectedByGameSpeed>true</tempoAffectedByGameSpeed>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Rimlaser/LaserMinigun_warmup</clipPath>
+          </li>
+        </grains>      
+        <volumeRange><min>8</min><max>8</max></volumeRange>
+        <pitchRange>
+          <min>0.99</min>        
+          <max>1.01</max>
+        </pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <SoundDef ParentName="RimlaserSound">
     <defName>Tesla_fire</defName>  
     <context>MapOnly</context>
     <eventNames />  
@@ -118,6 +172,7 @@
             <clipFolderPath>Rimlaser/Tesla</clipFolderPath>
           </li>
         </grains>      
+        <volumeRange><min>8</min><max>8</max></volumeRange>
         <pitchRange>
           <min>0.7</min>
           <max>1.3</max>
@@ -127,7 +182,7 @@
     </subSounds>
   </SoundDef>
 
-  <SoundDef>
+  <SoundDef ParentName="RimlaserSound">
     <defName>RimlaserCrystal_Drop</defName>  
     <context>MapOnly</context>
     <eventNames />  
@@ -139,10 +194,7 @@
             <clipPath>Rimlaser/CrystalDrop</clipPath>
           </li>
         </grains>      
-        <volumeRange>
-          <min>25</min>        
-          <max>25</max>
-        </volumeRange>
+        <volumeRange><min>25</min><max>25</max></volumeRange>
         <pitchRange>
           <min>0.88</min>
           <max>1.12</max>
