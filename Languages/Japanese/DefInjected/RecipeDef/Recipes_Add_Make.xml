@@ -26,6 +26,10 @@
   <Make_Rimlaser_LaserSniper.description>レーザースナイパーライフルを作る。</Make_Rimlaser_LaserSniper.description>
   <Make_Rimlaser_LaserSniper.jobString>レーザースナイパーライフルを製作中</Make_Rimlaser_LaserSniper.jobString>
 
+  <Make_Rimlaser_LaserMinigun.label>レーザーガトリングガンを作る</Make_Rimlaser_LaserMinigun.label>
+  <Make_Rimlaser_LaserMinigun.description>レーザーガトリングガンを作る。</Make_Rimlaser_LaserMinigun.description>
+  <Make_Rimlaser_LaserMinigun.jobString>レーザーガトリングガンを製作中</Make_Rimlaser_LaserMinigun.jobString>
+
   <Make_Rimlaser_TeslaGun.label>テスラガンを作る</Make_Rimlaser_TeslaGun.label>
   <Make_Rimlaser_TeslaGun.description>テスラガンを作る。</Make_Rimlaser_TeslaGun.description>
   <Make_Rimlaser_TeslaGun.jobString>テスラガンを製作中</Make_Rimlaser_TeslaGun.jobString>

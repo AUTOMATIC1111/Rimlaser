@@ -47,7 +47,16 @@
   <Rimlaser_LaserSniper.description>長距離射程のレーザーライフルです。かなりの強力なダメージを与え、広い射程範囲を持ちますが、取り回し辛く、近距離での照準操作はほとんど不可能です。</Rimlaser_LaserSniper.description>
   <Rimlaser_LaserSniper.tools.0.label>バレル</Rimlaser_LaserSniper.tools.0.label>
 
-  <!-- TESTLA GUN -->
+  <!-- MINIGUN -->
+
+  <Bullet_LaserMinigun.label>レーザーガトリングビーム</Bullet_LaserMinigun.label>
+
+  <Rimlaser_LaserMinigun.label>レーザーガトリングガン</Rimlaser_LaserMinigun.label>
+  <Rimlaser_LaserMinigun.description>電気モーターで高速回転する3本の銃身を備えたレーザー銃です。回転する部品が脆弱なために、射撃の準備には長い時間を要しますが、一度起動すると非常に発射速度で発砲できて、火薬式のばら撒きよりも幾分良好な命中精度になっています。</Rimlaser_LaserMinigun.description>
+  <Rimlaser_LaserMinigun.tools.0.label>バレル</Rimlaser_LaserMinigun.tools.0.label>
+
+
+  <!-- TESLA GUN -->
 
   <Bullet_Tesla.label>高圧の雷撃</Bullet_Tesla.label>
 
