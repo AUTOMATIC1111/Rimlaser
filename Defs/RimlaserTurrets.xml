@@ -1,13 +1,99 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-  <!--=============== Laser turret ===============-->
-
-  <ThingDef ParentName="BuildingBase" Name="LaserTurret" Class="Rimlaser.Building_LaserGunDef">
-    <defName>Turret_Laser</defName>
-    <label>laser turret</label>
-    <description>A heavy laser turret. Does not require barrel maintenance, but consumes 30Wd per shot from batteries.</description>
+  <ThingDef Abstract="true" ParentName="BuildingBase" Name="RimlaserTuretBase">
     <thingClass>Rimlaser.Building_LaserGun</thingClass>
+    <altitudeLayer>Building</altitudeLayer>
+    <stealable>false</stealable>
+    <rotatable>false</rotatable>
+    <tickerType>Normal</tickerType>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <designationCategory>Security</designationCategory>
+    <placeWorkers>
+      <li>PlaceWorker_TurretTop</li>
+    </placeWorkers>
+    <researchPrerequisites>
+      <li>RimlaserLaserTurrets</li>
+    </researchPrerequisites>
+
+ </ThingDef>
+
+  <!--=============== Laser Rifle turret ===============-->
+  <ThingDef ParentName="RimlaserTuretBase" Class="Rimlaser.Building_LaserGunDef">
+    <defName>MiniTurret_Laser</defName>
+    <label>laser mini-turret</label>
+    <description>A turret with an equivalent of a laser rifle mounted on top of it. Does not require barrel maintenance, but consumes 5Wd per shot from batteries.</description>
+    <graphicData>
+      <texPath>Rimlaser/Buildings/MiniTurretLaser_Base</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(3,3)</drawSize>
+      <damageData>
+        <rect>(0.2,0.2,0.6,0.6)</rect>
+      </damageData>
+      <shadowData>
+        <volume>(0.27,0.25,0.27)</volume>
+        <offset>(0,0,0)</offset>
+      </shadowData>
+    </graphicData>
+    <uiIconPath>Rimlaser/Buildings/MiniTurretLaser_MenuIcon</uiIconPath>
+    <uiIconScale>0.90</uiIconScale>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsSecurity</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>120</MaxHitPoints>
+      <Flammability>0.7</Flammability>
+      <WorkToBuild>3500</WorkToBuild>
+      <Mass>10</Mass>
+      <Beauty>-20</Beauty>
+      <ShootingAccuracyTurret>0.96</ShootingAccuracyTurret>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>3.9</explosiveRadius>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+        <chanceNeverExplodeFromDamage>0.0</chanceNeverExplodeFromDamage>
+      </li>
+      <li Class="CompProperties_Forbiddable"/>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>80</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Breakdownable"/>
+      <li>
+        <compClass>CompQuality</compClass>
+      </li>
+    </comps>
+    <fillPercent>0.4</fillPercent>
+    <hasTooltip>true</hasTooltip>
+    <costList>
+      <Steel>60</Steel>
+      <Plasteel>20</Plasteel>
+      <ComponentSpacer>2</ComponentSpacer>
+      <RimlaserCrystal>1</RimlaserCrystal>
+    </costList>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <specialDisplayRadius>30.9</specialDisplayRadius>
+    <constructionSkillPrerequisite>10</constructionSkillPrerequisite>
+    <building>
+      <ai_combatDangerous>true</ai_combatDangerous>
+      <turretGunDef>Rimlaser_LaserRifleMounted</turretGunDef>
+      <turretBurstCooldownTime>0.57</turretBurstCooldownTime>
+      <turretTopGraphicPath>Rimlaser/Weapons/LaserRifleMounted</turretTopGraphicPath>
+    </building>
+    <designationHotKey>Misc2</designationHotKey>
+
+	<beamPowerConsumption>5</beamPowerConsumption>
+  </ThingDef>
+
+  <!--=============== Heavy Laser turret ===============-->
+  <ThingDef ParentName="RimlaserTuretBase" Class="Rimlaser.Building_LaserGunDef">
+    <defName>Turret_Laser</defName>
+    <label>heavy laser turret</label>
+    <description>A heavy laser turret. Does not require barrel maintenance, but consumes 30Wd per shot from batteries.</description>
     <graphicData>
       <texPath>Rimlaser/Buildings/TurretLaser_Base</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -21,9 +107,7 @@
       </shadowData>
     </graphicData>
     <uiIconPath>Rimlaser/Buildings/TurretLaser_MenuIcon</uiIconPath>
-    <altitudeLayer>Building</altitudeLayer>
-    <stealable>false</stealable>
-    <rotatable>false</rotatable>
+    <uiIconScale>0.95</uiIconScale>
     <size>(2,2)</size>
     <statBases>
       <MaxHitPoints>450</MaxHitPoints>
@@ -33,7 +117,6 @@
       <Beauty>-20</Beauty>
       <ShootingAccuracyTurret>0.96</ShootingAccuracyTurret>
     </statBases>
-    <tickerType>Normal</tickerType>
     <comps>
       <li Class="CompProperties_Explosive">
         <explosiveRadius>8</explosiveRadius>
@@ -42,7 +125,7 @@
       </li>
       <li Class="CompProperties_Forbiddable"/>
       <li Class="CompProperties_Power">
-        <compClass>Rimlaser.CompPowerTraderExtended</compClass>
+        <compClass>CompPowerTrader</compClass>
         <basePowerConsumption>150</basePowerConsumption>
       </li>
       <li Class="CompProperties_Flickable"/>
@@ -51,8 +134,6 @@
         <compClass>CompQuality</compClass>
       </li>
     </comps>
-    <passability>PassThroughOnly</passability>
-    <pathCost>50</pathCost>
     <fillPercent>0.5</fillPercent>
     <hasTooltip>true</hasTooltip>
     <costList>
@@ -67,7 +148,6 @@
     </stuffCategories>
 
     <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
-    <designationCategory>Security</designationCategory>
     <specialDisplayRadius>36.9</specialDisplayRadius>
     <constructionSkillPrerequisite>10</constructionSkillPrerequisite>
     <building>
@@ -78,13 +158,7 @@
       <turretTopDrawSize>1.75</turretTopDrawSize>
       <turretTopOffset>(0, 0.05)</turretTopOffset>
     </building>
-    <placeWorkers>
-      <li>PlaceWorker_TurretTop</li>
-    </placeWorkers>
-    <researchPrerequisites>
-      <li>RimlaserLaserTurrets</li>
-    </researchPrerequisites>
-    <uiIconScale>0.95</uiIconScale>
+    <designationHotKey>Misc2</designationHotKey>
 
 	<beamPowerConsumption>30</beamPowerConsumption>
   </ThingDef>

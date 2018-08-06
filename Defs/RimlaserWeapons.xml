@@ -172,8 +172,8 @@
     </projectile>
   </ThingDef>
 
-  <ThingDef ParentName="BaseLaserGun" Class="Rimlaser.LaserGunDef">
-    <defName>Rimlaser_LaserRifle</defName>
+  <ThingDef ParentName="BaseLaserGun" Name="Rimlaser_LaserRifle" Class="Rimlaser.LaserGunDef">
+    <defName Inherit="False">Rimlaser_LaserRifle</defName>
     <label>laser rifle</label>
     <description>A futuristic laser rifle design. Does about as mucu damage as the pistol per beam, but fires twice as fast and is designed to work at greater range.</description>
     <graphicData>
@@ -232,6 +232,12 @@
 	<barrelLength>0.875</barrelLength>
 	
   </ThingDef>
+  
+  <ThingDef ParentName="Rimlaser_LaserRifle" Class="Rimlaser.LaserGunDef">
+    <defName>Rimlaser_LaserRifleMounted</defName>
+    <barrelLength>0.85</barrelLength>
+  </ThingDef>
+  
   
   <!-- LASER PISTOL -->
   

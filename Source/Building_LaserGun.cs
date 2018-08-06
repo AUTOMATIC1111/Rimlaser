@@ -5,7 +5,7 @@ namespace Rimlaser
 {
     public class Building_LaserGun : Building_TurretGun
     {
-        CompPowerTraderExtended power;
+        CompPowerTrader power;
         public bool isCharged = false;
         public int previousBurstCooldownTicksLeft = 0;
 
@@ -22,7 +22,7 @@ namespace Rimlaser
         {
             base.SpawnSetup(map, respawningAfterLoad);
 
-            power = GetComp<CompPowerTraderExtended>();
+            power = GetComp<CompPowerTrader>();
         }
         
         public override void Tick()
@@ -35,11 +35,8 @@ namespace Rimlaser
 
             if (!isCharged)
             {
-                float powerRequired = (def as Building_LaserGunDef).beamPowerConsumption;
-
-                if (power.AvailablePower() >= powerRequired)
+                if (Drain((def as Building_LaserGunDef).beamPowerConsumption))
                 {
-                    power.Drain(powerRequired);
                     isCharged = true;
                 }
             }
@@ -49,5 +46,47 @@ namespace Rimlaser
                 base.Tick();
             }
         }
+
+        public float AvailablePower()
+        {
+            if (power.PowerNet == null) return 0;
+
+            float availablePower = 0;
+            foreach (var battery in power.PowerNet.batteryComps)
+            {
+                availablePower += battery.StoredEnergy;
+            }
+            return availablePower;
+        }
+        public bool Drain(float amount)
+        {
+            if (amount <= 0) return true;
+            if (AvailablePower() < amount) return false;
+
+            foreach (var battery in power.PowerNet.batteryComps)
+            {
+                var drain = battery.StoredEnergy > amount ? amount : battery.StoredEnergy;
+                battery.DrawPower(drain);
+                amount -= drain;
+
+                if (amount <= 0) break;
+            }
+
+            return true;
+        }
+
+        public override string GetInspectString()
+        {
+            string result = base.GetInspectString();
+
+            if (!isCharged)
+            {
+                result += "\n";
+                result += "LaserTurretNotCharged".Translate();
+            }
+
+            return result;
+        }
+
     }
 }
