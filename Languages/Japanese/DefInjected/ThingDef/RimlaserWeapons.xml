@@ -10,6 +10,11 @@
   <Rimlaser_LaserRifle.tools.0.label>ストック</Rimlaser_LaserRifle.tools.0.label>
   <Rimlaser_LaserRifle.tools.1.label>バレル</Rimlaser_LaserRifle.tools.1.label>
 
+  <Rimlaser_LaserRifleMounted.label>タレット用レーザーガン</Rimlaser_LaserRifleMounted.label>
+  <Rimlaser_LaserRifleMounted.description>レーザーライフルと同等の未来的なタレット用のレーザーガンです。レーザーピストルと同じ程度のダメージを与えますが、発射速度は2倍で、より広い射程まで届くように設計されています。</Rimlaser_LaserRifleMounted.description>
+  <Rimlaser_LaserRifleMounted.tools.0.label>ストック</Rimlaser_LaserRifleMounted.tools.0.label>
+  <Rimlaser_LaserRifleMounted.tools.1.label>バレル</Rimlaser_LaserRifleMounted.tools.1.label>
+
 
   <!-- LASER PISTOL -->
 
