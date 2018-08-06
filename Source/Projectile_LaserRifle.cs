@@ -16,15 +16,18 @@ namespace Rimlaser
         public Matrix4x4 drawingMatrixCapB = default(Matrix4x4);
         Material materialBeam;
         Material materialBeamCap;
-        new Bullet_LaserRifleDef def {
+        new Bullet_LaserRifleDef def
+        {
             get { return base.def as Bullet_LaserRifleDef; }
         }
 
         int destroyDelay = -1;
 
 
-        public void SetTextures(GraphicData main, GraphicData caps) {
-            if (main == null) {
+        public void SetTextures(GraphicData main, GraphicData caps)
+        {
+            if (main == null)
+            {
                 materialBeam = def.graphicData.Graphic.MatSingle;
                 materialBeamCap = def.graphicDataCap == null ? null : def.graphicDataCap.Graphic.MatSingle;
                 return;
@@ -42,7 +45,8 @@ namespace Rimlaser
             var pawn = this.launcher as Pawn;
             if (pawn != null && pawn.equipment != null)
             {
-                foreach (var thing in pawn.equipment.GetDirectlyHeldThings()) {
+                foreach (var thing in pawn.equipment.GetDirectlyHeldThings())
+                {
                     if (thing.def as LaserGunDef == null) continue;
                     if (thing.TryGetQuality(out quality)) break;
                 }
@@ -53,7 +57,7 @@ namespace Rimlaser
             {
                 building.TryGetQuality(out quality);
             }
-            
+
             var defWeapon = equipmentDef as LaserGunDef;
 
             switch (quality)
@@ -86,7 +90,7 @@ namespace Rimlaser
             float length = (b - a).magnitude;
 
             Vector3 drawingScale = new Vector3(def.beamWidth, 1f, length - capSize * 2 + capOverlap * 2);
- 
+
             Vector3 drawingPosition = (a + b) / 2;
             drawingMatrix.SetTRS(drawingPosition, rotation, drawingScale);
 
@@ -103,7 +107,7 @@ namespace Rimlaser
 
             setupComplete = true;
         }
-        
+
         public override void Destroy(DestroyMode mode)
         {
             if (destroyDelay == -1)
@@ -135,14 +139,14 @@ namespace Rimlaser
             {
                 base.Tick();
             }
-      
+
         }
 
         public override void Draw()
         {
             SetupMatrices();
 
-            float opacity = (float) Math.Sin(Math.Pow(1.0 - 1.0 * ticks / def.lifetime, def.impulse) * Math.PI);
+            float opacity = (float)Math.Sin(Math.Pow(1.0 - 1.0 * ticks / def.lifetime, def.impulse) * Math.PI);
             Graphics.DrawMesh(MeshPool.plane10, drawingMatrix, FadedMaterialPool.FadedVersionOf(materialBeam, opacity), 0);
 
             if (materialBeamCap != null)
@@ -150,6 +154,43 @@ namespace Rimlaser
                 Graphics.DrawMesh(MeshPool.plane10, drawingMatrixCapA, FadedMaterialPool.FadedVersionOf(materialBeamCap, opacity), 0);
                 Graphics.DrawMesh(MeshPool.plane10, drawingMatrixCapB, FadedMaterialPool.FadedVersionOf(materialBeamCap, opacity), 0);
             }
+        }
+
+        void TriggerEffect(EffecterDef effect, Vector3 position)
+        {
+            TriggerEffect(effect, IntVec3.FromVector3(position));
+        }
+
+        void TriggerEffect(EffecterDef effect, IntVec3 dest)
+        {
+            if (effect == null) return;
+
+            var targetInfo = new TargetInfo(dest, Map, false);
+
+            Effecter effecter = effect.Spawn();
+            effecter.Trigger(targetInfo, targetInfo);
+            effecter.Cleanup();
+        }
+
+        protected override void Impact(Thing hitThing)
+        {
+            if (destroyDelay != -1) return;
+            Destroy(DestroyMode.Vanish);
+
+            if (hitThing == null)
+            {
+                TriggerEffect(def.explosionEffect, destination);
+            }
+            else
+            {
+                if (hitThing is Pawn && (hitThing as Pawn).RaceProps.meatDef != null)
+                {
+                    TriggerEffect(def.hitLivingEffect, hitThing.Position);
+                }
+                TriggerEffect(def.explosionEffect, ExactPosition);
+            }
+
+            base.Impact(hitThing);
         }
     }
 }

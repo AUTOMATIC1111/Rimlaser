@@ -16,6 +16,9 @@ namespace Rimlaser
 
         public float beamWidth = 1.0f;
 
+        public EffecterDef explosionEffect;
+        public EffecterDef hitLivingEffect;
+
         public GraphicData graphicDataCap;
 
         public GraphicData graphicAwful;

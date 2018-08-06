@@ -4,6 +4,9 @@
     <thingClass>Rimlaser.Bullet_LaserRifle</thingClass>
     <drawOffscreen>true</drawOffscreen>
 	
+    <explosionEffect>RimlaserLaserImpact</explosionEffect>
+    <hitLivingEffect>RimlaserLaserLivingImpact</hitLivingEffect>
+    
     <projectile>
       <damageDef>Bomb</damageDef>
       <speed>10000</speed>
@@ -229,7 +232,7 @@
       </li>
     </tools>
 	
-	<barrelLength>0.875</barrelLength>
+	<barrelLength>0.825</barrelLength>
 	
   </ThingDef>
   
@@ -378,7 +381,7 @@
       </li>
     </tools>
 	
-	<barrelLength>0.9</barrelLength>
+	<barrelLength>0.86</barrelLength>
 	
   </ThingDef>
 
@@ -661,7 +664,7 @@
       </li>
     </tools>
 	
-	<barrelLength>1.025</barrelLength>
+	<barrelLength>0.875</barrelLength>
 	
   </ThingDef>
 
