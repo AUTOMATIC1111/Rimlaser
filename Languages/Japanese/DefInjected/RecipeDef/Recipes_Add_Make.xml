@@ -10,6 +10,10 @@
   <Make_Rimlaser_LaserRifle.description>レーザーライフルを作る。</Make_Rimlaser_LaserRifle.description>
   <Make_Rimlaser_LaserRifle.jobString>レーザーライフルを製作中</Make_Rimlaser_LaserRifle.jobString>
 
+  <Make_Rimlaser_LaserRifleMounted.label>タレット用レーザーガンを作る</Make_Rimlaser_LaserRifleMounted.label>
+  <Make_Rimlaser_LaserRifleMounted.description>タレット用レーザーガンを作る。</Make_Rimlaser_LaserRifleMounted.description>
+  <Make_Rimlaser_LaserRifleMounted.jobString>タレット用レーザーガンを製作中</Make_Rimlaser_LaserRifleMounted.jobString>
+
   <Make_Rimlaser_LaserPistol.label>レーザーピストルを作る</Make_Rimlaser_LaserPistol.label>
   <Make_Rimlaser_LaserPistol.description>レーザーピストルを作る。</Make_Rimlaser_LaserPistol.description>
   <Make_Rimlaser_LaserPistol.jobString>レーザーピストルを製作中</Make_Rimlaser_LaserPistol.jobString>
