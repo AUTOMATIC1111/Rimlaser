@@ -3,7 +3,7 @@
 
   <RimlaserCrystal.label>クリスタル</RimlaserCrystal.label>
   <RimlaserCrystal.description>固体レーザーのレーザー媒質(励起光源)として使用される結晶体です。</RimlaserCrystal.description>
-  <RimlaserCrystal.stuffProps.stuffAdjective>クリスタル</RimlaserCrystal.stuffProps.stuffAdjective>
+  <!-- <RimlaserCrystal.stuffProps.stuffAdjective>クリスタル</RimlaserCrystal.stuffProps.stuffAdjective> -->
 
 
 </LanguageData>
