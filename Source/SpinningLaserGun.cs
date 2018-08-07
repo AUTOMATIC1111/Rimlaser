@@ -6,7 +6,7 @@ using Verse;
 
 namespace Rimlaser
 {
-    class SpinningLaserGun : ThingWithComps
+    class SpinningLaserGun : LaserGun
     {
         enum State
         {

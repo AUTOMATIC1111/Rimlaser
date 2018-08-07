@@ -6,7 +6,7 @@ using Verse;
 
 namespace Rimlaser
 {
-    public class Bullet_LaserRifle : Bullet
+    public class LaserBeam : Bullet
     {
         int ticks = 0;
 
@@ -16,9 +16,9 @@ namespace Rimlaser
         public Matrix4x4 drawingMatrixCapB = default(Matrix4x4);
         Material materialBeam;
         Material materialBeamCap;
-        new Bullet_LaserRifleDef def
+        new LaserBeamDef def
         {
-            get { return base.def as Bullet_LaserRifleDef; }
+            get { return base.def as LaserBeamDef; }
         }
 
         int destroyDelay = -1;
@@ -37,18 +37,21 @@ namespace Rimlaser
             materialBeamCap = caps == null ? null : caps.Graphic.MatSingle;
         }
 
-        void SetColor() {
+        void SetColor(out IDrawnWeaponWithRotation drawnWeaponWithRotation) {
             QualityCategory quality = QualityCategory.Awful;
             IBeamColorThing gun = null;
+            drawnWeaponWithRotation = null;
+
             var pawn = this.launcher as Pawn;
             if (pawn != null && pawn.equipment != null)
             {
                 foreach (var thing in pawn.equipment.GetDirectlyHeldThings())
                 {
                     if (gun == null) gun = thing as IBeamColorThing;
+                    if (drawnWeaponWithRotation == null) drawnWeaponWithRotation = thing as IDrawnWeaponWithRotation;
+
                     if (thing.def as LaserGunDef == null) continue;
                     if (thing.TryGetQuality(out quality)) break;
-
                 }
             }
 
@@ -56,6 +59,7 @@ namespace Rimlaser
             if (building != null)
             {
                 if (gun == null) gun = building as IBeamColorThing;
+                if (drawnWeaponWithRotation == null) drawnWeaponWithRotation = building as IDrawnWeaponWithRotation;
                 building.TryGetQuality(out quality);
             }
 
@@ -81,7 +85,7 @@ namespace Rimlaser
             {
                 colorIndex = 0;
             }
-
+            
 
             switch (colorIndex)
             {
@@ -99,7 +103,8 @@ namespace Rimlaser
         {
             if (setupComplete) return;
 
-            SetColor();
+            IDrawnWeaponWithRotation weapon;
+            SetColor(out weapon);
 
             var capSize = def.capSize * def.beamWidth;
             var capOverlap = def.capOverlap * def.beamWidth;
@@ -134,6 +139,12 @@ namespace Rimlaser
 
                 Vector3 drawingPositionCapA = a + dir * capSize / 2;
                 drawingMatrixCapA.SetTRS(drawingPositionCapA, Quaternion.LookRotation(orig - dest), drawingScaleCap);
+            }
+
+            if (weapon != null)
+            {
+                float angle = (destination - origin).AngleFlat() - (intendedTarget.CenterVector3 - origin).AngleFlat();
+                weapon.RotationOffset = (angle + 180) % 360 - 180;
             }
 
             setupComplete = true;

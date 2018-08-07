@@ -45,6 +45,10 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="0Harmony, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Assemblies\0Harmony.dll</HintPath>
+    </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>..\..\..\RimWorldWin_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
@@ -70,16 +74,18 @@
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Building_LaserGun.cs" />
     <Compile Include="Building_LaserGunDef.cs" />
-    <Compile Include="Bullet_LaserRifleDef.cs" />
+    <Compile Include="LaserBeamDef.cs" />
     <Compile Include="IBeamColorThing.cs" />
+    <Compile Include="IDrawnWeaponWithRotation.cs" />
     <Compile Include="JobDefOf.cs" />
     <Compile Include="JobDriver_ChangeLaserColor.cs" />
     <Compile Include="LaserBeamColoring.cs" />
     <Compile Include="LaserGun.cs" />
+    <Compile Include="PatchGunDrawing.cs" />
     <Compile Include="SpinningLaserGun.cs" />
     <Compile Include="SpinningLaserGunDef.cs" />
     <Compile Include="LaserGunDef.cs" />
-    <Compile Include="Projectile_LaserRifle.cs" />
+    <Compile Include="LaserBeam.cs" />
     <Compile Include="Rimlaser.cs" />
     <Compile Include="ThingDefOf.cs" />
   </ItemGroup>

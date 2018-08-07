@@ -6,7 +6,7 @@ using Verse;
 
 namespace Rimlaser
 {
-    public class Bullet_LaserRifleDef : ThingDef
+    public class LaserBeamDef : ThingDef
     {
         public float capSize = 1.0f;
         public float capOverlap = 1.1f / 64;

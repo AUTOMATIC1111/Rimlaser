@@ -31,7 +31,7 @@
   </ThingDef>
 
   <ThingDef Abstract="True" Name="Bullet_LaserGeneric" ParentName="BaseBullet">
-    <thingClass>Rimlaser.Bullet_LaserRifle</thingClass>
+    <thingClass>Rimlaser.LaserBeam</thingClass>
     <drawOffscreen>true</drawOffscreen>
 	
     <explosionEffect>RimlaserLaserImpact</explosionEffect>
@@ -173,7 +173,7 @@
 
   <!-- LASER RIFLE -->
 
-  <ThingDef ParentName="Bullet_LaserColored" Class="Rimlaser.Bullet_LaserRifleDef">
+  <ThingDef ParentName="Bullet_LaserColored" Class="Rimlaser.LaserBeamDef">
     <defName>Bullet_LaserRifle</defName>
     <label>laser rifle beam</label>
     
@@ -251,7 +251,7 @@
   
   <!-- LASER PISTOL -->
   
-  <ThingDef ParentName="Bullet_LaserColored" Class="Rimlaser.Bullet_LaserRifleDef">
+  <ThingDef ParentName="Bullet_LaserColored" Class="Rimlaser.LaserBeamDef">
     <defName>Bullet_LaserPistol</defName>
     <label>laser pistol beam</label>
     
@@ -324,7 +324,7 @@
   
   <!-- HEAVY LASER -->
   
-  <ThingDef ParentName="Bullet_LaserColored" Class="Rimlaser.Bullet_LaserRifleDef">
+  <ThingDef ParentName="Bullet_LaserColored" Class="Rimlaser.LaserBeamDef">
     <defName>Bullet_LaserHeavy</defName>
     <label>heavy laser beam</label>
     
@@ -394,7 +394,7 @@
 
   <!-- INCENDIARY LASER -->
 
-  <ThingDef ParentName="Bullet_LaserInc" Class="Rimlaser.Bullet_LaserRifleDef">
+  <ThingDef ParentName="Bullet_LaserInc" Class="Rimlaser.LaserBeamDef">
     <defName>Bullet_LaserIncendiary</defName>
     <label>incendiary laser beam</label>
     
@@ -461,7 +461,7 @@
 
   <!-- SNIPER LASER -->
 
-  <ThingDef ParentName="Bullet_LaserColored" Class="Rimlaser.Bullet_LaserRifleDef">
+  <ThingDef ParentName="Bullet_LaserColored" Class="Rimlaser.LaserBeamDef">
     <defName>Bullet_LaserSniper</defName>
     <label>sniper laser beam</label>
     
@@ -526,7 +526,7 @@
   </ThingDef>
 
   <!-- MINIGUN -->
-  <ThingDef ParentName="Bullet_LaserColored" Class="Rimlaser.Bullet_LaserRifleDef">
+  <ThingDef ParentName="Bullet_LaserColored" Class="Rimlaser.LaserBeamDef">
     <defName>Bullet_LaserMinigun</defName>
     <label>minigun laser beam</label>
     
@@ -606,7 +606,7 @@
   
   <!-- TESLA GUN -->
 
-  <ThingDef ParentName="Bullet_LaserGeneric" Class="Rimlaser.Bullet_LaserRifleDef">
+  <ThingDef ParentName="Bullet_LaserGeneric" Class="Rimlaser.LaserBeamDef">
     <defName>Bullet_Tesla</defName>
     <label>bolt of lightning</label>
 		
