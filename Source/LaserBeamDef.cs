@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 using Verse;
 
 namespace Rimlaser
@@ -19,21 +20,40 @@ namespace Rimlaser
         public EffecterDef explosionEffect;
         public EffecterDef hitLivingEffect;
 
-        public GraphicData graphicDataCap;
+        public List<string> textureBeam;
+        public List<string> textureCap;
 
-        public GraphicData graphicAwful;
-        public GraphicData graphicAwfulCap;
-        public GraphicData graphicPoor;
-        public GraphicData graphicPoorCap;
-        public GraphicData graphicNormal;
-        public GraphicData graphicNormalCap;
-        public GraphicData graphicGood;
-        public GraphicData graphicGoodCap;
-        public GraphicData graphicExcellent;
-        public GraphicData graphicExcellentCap;
-        public GraphicData graphicMasterwork;
-        public GraphicData graphicMasterworkCap;
-        public GraphicData graphicLegendary;
-        public GraphicData graphicLegendaryCap;
+        private List<Material> materialBeam = new List<Material> ();
+        private List<Material> materialCap = new List<Material> ();
+
+        void CreateGraphics()
+        {
+            for (int i = 0; i < textureBeam.Count; i++)
+            {
+                string beam = textureBeam[i];
+                string cap = i < textureCap.Count ? textureCap[i] : null;
+
+                materialBeam.Add(MaterialPool.MatFrom(beam, ShaderDatabase.TransparentPostLight));
+                materialCap.Add(cap == null ? null : MaterialPool.MatFrom(cap, ShaderDatabase.TransparentPostLight));
+            }
+        }
+
+        public void GetMaterials(int index, out Material beam, out Material cap)
+        {
+            if (materialBeam.Count == 0 && textureBeam.Count != 0)
+                CreateGraphics();
+
+            if (materialBeam.Count == 0) {
+                beam = null;
+                cap = null;
+                return;
+            }
+
+            if (index >= materialBeam.Count || index < 0)
+                index = 0;
+
+            beam = materialBeam[index];
+            cap = materialCap[index];
+        }
     }
 }

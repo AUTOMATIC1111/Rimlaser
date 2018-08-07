@@ -33,6 +33,13 @@
   <ThingDef Abstract="True" Name="Bullet_LaserGeneric" ParentName="BaseBullet">
     <thingClass>Rimlaser.LaserBeam</thingClass>
     <drawOffscreen>true</drawOffscreen>
+    
+    	<graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <texPath>Rimlaser/Effects/LaserRed</texPath>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>1.5</drawSize>
+    </graphicData>
 	
     <explosionEffect>RimlaserLaserImpact</explosionEffect>
     <hitLivingEffect>RimlaserLaserLivingImpact</hitLivingEffect>
@@ -43,132 +50,38 @@
     </projectile>
   </ThingDef>
 
-  <ThingDef Abstract="True" Name="Bullet_LaserQuality" ParentName="Bullet_LaserGeneric">
-	<graphicData>
-      <graphicClass>Graphic_Single</graphicClass>
-      <shaderType>TransparentPostLight</shaderType>
-      <drawSize>1.5</drawSize>
-    </graphicData>
-	
-	<graphicDataCap>
-      <graphicClass>Graphic_Single</graphicClass>
-      <shaderType>TransparentPostLight</shaderType>
-      <drawSize>1.5</drawSize>
-    </graphicDataCap>
-	
-	<graphicAwful>
-      <graphicClass>Graphic_Single</graphicClass>
-      <shaderType>TransparentPostLight</shaderType>
-      <drawSize>1.5</drawSize>
-    </graphicAwful>
-    <graphicAwfulCap>
-      <graphicClass>Graphic_Single</graphicClass>
-      <shaderType>TransparentPostLight</shaderType>
-      <drawSize>1.5</drawSize>
-    </graphicAwfulCap>
-	
-	<graphicPoor>
-      <graphicClass>Graphic_Single</graphicClass>
-      <shaderType>TransparentPostLight</shaderType>
-      <drawSize>1.5</drawSize>
-    </graphicPoor>
-    <graphicPoorCap>
-      <graphicClass>Graphic_Single</graphicClass>
-      <shaderType>TransparentPostLight</shaderType>
-      <drawSize>1.5</drawSize>
-    </graphicPoorCap>
-	
-	<graphicNormal>
-      <graphicClass>Graphic_Single</graphicClass>
-      <shaderType>TransparentPostLight</shaderType>
-      <drawSize>1.5</drawSize>
-    </graphicNormal>
-    <graphicNormalCap>
-      <graphicClass>Graphic_Single</graphicClass>
-      <shaderType>TransparentPostLight</shaderType>
-      <drawSize>1.5</drawSize>
-    </graphicNormalCap>
-	
-	<graphicGood>
-      <texPath>Rimlaser/Effects/LaserGood</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-      <shaderType>TransparentPostLight</shaderType>
-      <drawSize>1.5</drawSize>
-    </graphicGood>
-    <graphicGoodCap>
-      <graphicClass>Graphic_Single</graphicClass>
-      <shaderType>TransparentPostLight</shaderType>
-      <drawSize>1.5</drawSize>
-    </graphicGoodCap>
-	
-	<graphicExcellent>
-      <graphicClass>Graphic_Single</graphicClass>
-      <shaderType>TransparentPostLight</shaderType>
-      <drawSize>1.5</drawSize>
-    </graphicExcellent>
-    <graphicExcellentCap>
-      <graphicClass>Graphic_Single</graphicClass>
-      <shaderType>TransparentPostLight</shaderType>
-      <drawSize>1.5</drawSize>
-    </graphicExcellentCap>
-	
-	<graphicMasterwork>
-      <graphicClass>Graphic_Single</graphicClass>
-      <shaderType>TransparentPostLight</shaderType>
-      <drawSize>1.5</drawSize>
-    </graphicMasterwork>
-    <graphicMasterworkCap>
-      <graphicClass>Graphic_Single</graphicClass>
-      <shaderType>TransparentPostLight</shaderType>
-      <drawSize>1.5</drawSize>
-    </graphicMasterworkCap>
-	
-	<graphicLegendary>
-      <graphicClass>Graphic_Single</graphicClass>
-      <shaderType>TransparentPostLight</shaderType>
-      <drawSize>1.5</drawSize>
-    </graphicLegendary>
-    <graphicLegendaryCap>
-      <graphicClass>Graphic_Single</graphicClass>
-      <shaderType>TransparentPostLight</shaderType>
-      <drawSize>1.5</drawSize>
-    </graphicLegendaryCap>
-  </ThingDef>
-
-  <ThingDef Abstract="True" Name="Bullet_LaserColored" ParentName="Bullet_LaserQuality">
-	<graphicData><texPath>Rimlaser/Effects/LaserRed</texPath></graphicData>
-	<graphicDataCap><texPath>Rimlaser/Effects/LaserRedCap</texPath></graphicDataCap>
-	
-	<graphicAwful><texPath>Rimlaser/Effects/LaserAwful</texPath></graphicAwful>
-	<graphicAwfulCap><texPath>Rimlaser/Effects/LaserAwfulCap</texPath></graphicAwfulCap>
-	
-	<graphicPoor><texPath>Rimlaser/Effects/LaserPoor</texPath></graphicPoor>
-	<graphicPoorCap><texPath>Rimlaser/Effects/LaserPoorCap</texPath></graphicPoorCap>
-	
-	<graphicNormal><texPath>Rimlaser/Effects/LaserNormal</texPath></graphicNormal>
-	<graphicNormalCap><texPath>Rimlaser/Effects/LaserNormalCap</texPath></graphicNormalCap>
-	
-	<graphicGood><texPath>Rimlaser/Effects/LaserGood</texPath></graphicGood>
-	<graphicGoodCap><texPath>Rimlaser/Effects/LaserGoodCap</texPath></graphicGoodCap>
-	
-	<graphicExcellent><texPath>Rimlaser/Effects/LaserExcellent</texPath></graphicExcellent>
-	<graphicExcellentCap><texPath>Rimlaser/Effects/LaserExcellentCap</texPath></graphicExcellentCap>
-	
-	<graphicMasterwork><texPath>Rimlaser/Effects/LaserMasterwork</texPath></graphicMasterwork>
-	<graphicMasterworkCap><texPath>Rimlaser/Effects/LaserMasterworkCap</texPath></graphicMasterworkCap>
-	
-	<graphicLegendary><texPath>Rimlaser/Effects/LaserLegendary</texPath></graphicLegendary>
-	<graphicLegendaryCap><texPath>Rimlaser/Effects/LaserLegendaryCap</texPath></graphicLegendaryCap>
+  <ThingDef Abstract="True" Name="Bullet_LaserColored" ParentName="Bullet_LaserGeneric">
+    <textureBeam>
+      <li>Rimlaser/Effects/LaserAwful</li>
+      <li>Rimlaser/Effects/LaserPoor</li>
+      <li>Rimlaser/Effects/LaserNormal</li>
+      <li>Rimlaser/Effects/LaserGood</li>
+      <li>Rimlaser/Effects/LaserExcellent</li>
+      <li>Rimlaser/Effects/LaserMasterwork</li>
+      <li>Rimlaser/Effects/LaserLegendary</li>
+    </textureBeam>
+  
+    <textureCap>
+      <li>Rimlaser/Effects/LaserAwfulCap</li>
+      <li>Rimlaser/Effects/LaserPoorCap</li>
+      <li>Rimlaser/Effects/LaserNormalCap</li>
+      <li>Rimlaser/Effects/LaserGoodCap</li>
+      <li>Rimlaser/Effects/LaserExcellentCap</li>
+      <li>Rimlaser/Effects/LaserMasterworkCap</li>
+      <li>Rimlaser/Effects/LaserLegendaryCap</li>
+    </textureCap>
   </ThingDef>  
   
-  <ThingDef Abstract="True" Name="Bullet_LaserInc" ParentName="Bullet_LaserColored">
-	<graphicAwful><texPath>Rimlaser/Effects/LaserIncAwful</texPath></graphicAwful>
-	<graphicPoor><texPath>Rimlaser/Effects/LaserIncPoor</texPath></graphicPoor>
-	<graphicNormal><texPath>Rimlaser/Effects/LaserIncNormal</texPath></graphicNormal>
-	<graphicGood><texPath>Rimlaser/Effects/LaserIncGood</texPath></graphicGood>
-	<graphicExcellent><texPath>Rimlaser/Effects/LaserIncExcellent</texPath></graphicExcellent>
-	<graphicMasterwork><texPath>Rimlaser/Effects/LaserIncMasterwork</texPath></graphicMasterwork>
-	<graphicLegendary><texPath>Rimlaser/Effects/LaserIncLegendary</texPath></graphicLegendary>
+  <ThingDef Abstract="True" Name="Bullet_LaserInc" ParentName="Bullet_LaserGeneric">
+    <textureBeam>
+      <li>Rimlaser/Effects/LaserIncAwful</li>
+      <li>Rimlaser/Effects/LaserIncPoor</li>
+      <li>Rimlaser/Effects/LaserIncNormal</li>
+      <li>Rimlaser/Effects/LaserIncGood</li>
+      <li>Rimlaser/Effects/LaserIncExcellent</li>
+      <li>Rimlaser/Effects/LaserIncMasterwork</li>
+      <li>Rimlaser/Effects/LaserIncLegendary</li>
+    </textureBeam>
   </ThingDef>  
 
   <!-- LASER RIFLE -->
@@ -609,13 +522,10 @@
   <ThingDef ParentName="Bullet_LaserGeneric" Class="Rimlaser.LaserBeamDef">
     <defName>Bullet_Tesla</defName>
     <label>bolt of lightning</label>
-		
-	<graphicData>
-      <texPath>Rimlaser/Effects/Lightning</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-      <shaderType>TransparentPostLight</shaderType>
-      <drawSize>1.5</drawSize>
-    </graphicData>
+
+    <textureBeam>
+      <li>Rimlaser/Effects/Lightning</li>
+    </textureBeam>
 
     <projectile>
       <damageAmountBase>6</damageAmountBase>

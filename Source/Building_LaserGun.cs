@@ -14,7 +14,7 @@ namespace Rimlaser
 
         public int BeamColor
         {
-            get { return beamColorIndex; }
+            get { return LaserColor.IndexBasedOnThingQuality(beamColorIndex, this); }
             set { beamColorIndex = value; }
         }
 

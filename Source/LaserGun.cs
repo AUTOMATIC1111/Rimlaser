@@ -14,7 +14,7 @@ namespace Rimlaser
 
         public int BeamColor
         {
-            get { return beamColorIndex; }
+            get { return LaserColor.IndexBasedOnThingQuality(beamColorIndex, this); }
             set { beamColorIndex = value; }
         }
 
@@ -57,16 +57,20 @@ namespace Rimlaser
             
             yield break;
         }
-            
-        void UpdateRotationOffset(int ticks) {
+
+        void UpdateRotationOffset(int ticks)
+        {
             if (rotationOffset == 0) return;
             if (ticks <= 0) return;
             if (ticks > 30) ticks = 30;
 
-            if (rotationOffset > 0) {
+            if (rotationOffset > 0)
+            {
                 rotationOffset -= rotationSpeed;
                 if (rotationOffset < 0) rotationOffset = 0;
-            } else if (rotationOffset < 0) {
+            }
+            else if (rotationOffset < 0)
+            {
                 rotationOffset += rotationSpeed;
                 if (rotationOffset > 0) rotationOffset = 0;
             }

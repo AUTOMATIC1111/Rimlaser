@@ -24,44 +24,30 @@ namespace Rimlaser
         int destroyDelay = -1;
 
 
-        public void SetTextures(GraphicData main, GraphicData caps)
+        public void SetTextures(int index)
         {
-            if (main == null)
+            def.GetMaterials(index, out materialBeam, out materialBeamCap);
+
+            if (materialBeam == null)
             {
                 materialBeam = def.graphicData.Graphic.MatSingle;
-                materialBeamCap = def.graphicDataCap == null ? null : def.graphicDataCap.Graphic.MatSingle;
-                return;
+                materialBeamCap = null;
             }
-
-            materialBeam = main.Graphic.MatSingle;
-            materialBeamCap = caps == null ? null : caps.Graphic.MatSingle;
         }
 
         void SetColor(out IDrawnWeaponWithRotation drawnWeaponWithRotation) {
-            QualityCategory quality = QualityCategory.Awful;
             IBeamColorThing gun = null;
             drawnWeaponWithRotation = null;
 
-            var pawn = this.launcher as Pawn;
+            Pawn pawn = this.launcher as Pawn;
             if (pawn != null && pawn.equipment != null)
             {
-                foreach (var thing in pawn.equipment.GetDirectlyHeldThings())
-                {
-                    if (gun == null) gun = thing as IBeamColorThing;
-                    if (drawnWeaponWithRotation == null) drawnWeaponWithRotation = thing as IDrawnWeaponWithRotation;
-
-                    if (thing.def as LaserGunDef == null) continue;
-                    if (thing.TryGetQuality(out quality)) break;
-                }
+                if (gun == null) gun = pawn.equipment.Primary as IBeamColorThing;
+                if (drawnWeaponWithRotation == null) drawnWeaponWithRotation = pawn.equipment.Primary as IDrawnWeaponWithRotation;
             }
 
-            var building = this.launcher as Building_LaserGun;
-            if (building != null)
-            {
-                if (gun == null) gun = building as IBeamColorThing;
-                if (drawnWeaponWithRotation == null) drawnWeaponWithRotation = building as IDrawnWeaponWithRotation;
-                building.TryGetQuality(out quality);
-            }
+            if (gun == null) gun = launcher as IBeamColorThing;
+            if (drawnWeaponWithRotation == null) drawnWeaponWithRotation = launcher as IDrawnWeaponWithRotation;
 
             int colorIndex = -1;
             if (gun != null && gun.BeamColor != -1)
@@ -70,33 +56,10 @@ namespace Rimlaser
             }
             if (colorIndex == -1)
             {
-                switch (quality)
-                {
-                    case QualityCategory.Awful: colorIndex = 0; break;
-                    case QualityCategory.Poor: colorIndex = 1; break;
-                    case QualityCategory.Normal: colorIndex = 2; break;
-                    case QualityCategory.Good: colorIndex = 3; break;
-                    case QualityCategory.Excellent: colorIndex = 4; break;
-                    case QualityCategory.Masterwork: colorIndex = 5; break;
-                    case QualityCategory.Legendary: colorIndex = 6; break;
-                }
+                colorIndex = 2;
             }
-            if (colorIndex == -1)
-            {
-                colorIndex = 0;
-            }
-            
 
-            switch (colorIndex)
-            {
-                case 0: SetTextures(def.graphicAwful, def.graphicAwfulCap); break;
-                case 1: SetTextures(def.graphicPoor, def.graphicPoorCap); break;
-                case 2: SetTextures(def.graphicNormal, def.graphicNormalCap); break;
-                case 3: SetTextures(def.graphicGood, def.graphicGoodCap); break;
-                case 4: SetTextures(def.graphicExcellent, def.graphicExcellentCap); break;
-                case 5: SetTextures(def.graphicMasterwork, def.graphicMasterworkCap); break;
-                case 6: SetTextures(def.graphicLegendary, def.graphicLegendaryCap); break;
-            }
+            SetTextures(colorIndex);
         }
 
         public void SetupMatrices()

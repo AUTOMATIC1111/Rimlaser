@@ -20,6 +20,27 @@ namespace Rimlaser
             new LaserColor { index = 6, name = "RimlaserBeamRedBlack", allowed = false },
         };
 
+        internal static int IndexBasedOnThingQuality(int index, Thing gun)
+        {
+            if (index != -1) return index;
+
+            QualityCategory qc;
+            if (gun.TryGetQuality(out qc)) {
+                switch (qc)
+                {
+                    case QualityCategory.Awful: return 0;
+                    case QualityCategory.Poor: return 1;
+                    case QualityCategory.Normal: return 2;
+                    case QualityCategory.Good: return 3;
+                    case QualityCategory.Excellent: return 4;
+                    case QualityCategory.Masterwork: return 5;
+                    case QualityCategory.Legendary: return 6;
+                }
+            }
+
+            return 2;
+        }
+
         public int index;
         public string name;
         public bool allowed = true;
