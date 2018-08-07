@@ -56,9 +56,13 @@ namespace Rimlaser
             Thing prism = FindClosestPrism(pawn);
             if (prism == null) yield break;
 
+            int currentIndex=-1;
+            if (gun is IBeamColorThing) currentIndex = (gun as IBeamColorThing).BeamColor;
+
             foreach (LaserColor color in colors)
             {
                 if (!color.allowed) continue;
+                if (currentIndex == color.index) continue;
 
                 string caption = string.Format("RimlaserChangeBeamColor".Translate(), color.name.Translate());
 

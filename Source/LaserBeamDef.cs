@@ -31,7 +31,7 @@ namespace Rimlaser
             for (int i = 0; i < textureBeam.Count; i++)
             {
                 string beam = textureBeam[i];
-                string cap = i < textureCap.Count ? textureCap[i] : null;
+                string cap = textureCap != null && i < textureCap.Count ? textureCap[i] : null;
 
                 materialBeam.Add(MaterialPool.MatFrom(beam, ShaderDatabase.TransparentPostLight));
                 materialCap.Add(cap == null ? null : MaterialPool.MatFrom(cap, ShaderDatabase.TransparentPostLight));
