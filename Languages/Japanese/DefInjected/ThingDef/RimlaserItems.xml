@@ -1,9 +1,15 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 
   <RimlaserCrystal.label>クリスタル</RimlaserCrystal.label>
   <RimlaserCrystal.description>固体レーザーのレーザー媒質(励起光源)として使用される結晶体です。</RimlaserCrystal.description>
-  <!-- <RimlaserCrystal.stuffProps.stuffAdjective>クリスタル</RimlaserCrystal.stuffProps.stuffAdjective> -->
+
+  <UnfinishedRimlaserPrism.label>未完成のプリズム</UnfinishedRimlaserPrism.label>
+
+  <RimlaserPrism.label>プリズム</RimlaserPrism.label>
+  <RimlaserPrism.description>各種レーザーガンのビームの色を変更するために使用するプリズムです。（戦闘能力には影響を与えません）。</RimlaserPrism.description>
+
+  <UnfinishedLaserGun.label>未完成のレーザー銃</UnfinishedLaserGun.label>
 
 
 </LanguageData>
