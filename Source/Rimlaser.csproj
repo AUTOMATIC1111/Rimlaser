@@ -59,7 +59,9 @@
       <HintPath>..\..\..\RimWorldWin_Data\Managed\UnityEngine.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <None Include="..\About\**" />
+    <None Include="..\About\About.xml" />
+    <None Include="..\About\preview.png" />
+    <None Include="..\About\PublishedFileId.txt" />
     <None Include="..\Defs\**" />
     <None Include="..\Languages\**" />
     <None Include="..\Patches\**" />
