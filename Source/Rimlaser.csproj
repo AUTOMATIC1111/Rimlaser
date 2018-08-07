@@ -71,11 +71,17 @@
     <Compile Include="Building_LaserGun.cs" />
     <Compile Include="Building_LaserGunDef.cs" />
     <Compile Include="Bullet_LaserRifleDef.cs" />
+    <Compile Include="IBeamColorThing.cs" />
+    <Compile Include="JobDefOf.cs" />
+    <Compile Include="JobDriver_ChangeLaserColor.cs" />
+    <Compile Include="LaserBeamColoring.cs" />
+    <Compile Include="LaserGun.cs" />
     <Compile Include="SpinningLaserGun.cs" />
     <Compile Include="SpinningLaserGunDef.cs" />
     <Compile Include="LaserGunDef.cs" />
     <Compile Include="Projectile_LaserRifle.cs" />
     <Compile Include="Rimlaser.cs" />
+    <Compile Include="ThingDefOf.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

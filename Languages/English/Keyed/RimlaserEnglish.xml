@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
   <LaserTurretNotCharged>(Not enough power stored to fire)</LaserTurretNotCharged>
+  <RimlaserChangeBeamColor>Change color: {0}</RimlaserChangeBeamColor>
+  
+  <RimlaserBeamBrown>brown</RimlaserBeamBrown>
+  <RimlaserBeamOrange>orange</RimlaserBeamOrange>
+  <RimlaserBeamRed>red</RimlaserBeamRed>
+  <RimlaserBeamPink>pink</RimlaserBeamPink>
+  <RimlaserBeamBlue>blue</RimlaserBeamBlue>
+  <RimlaserBeamTeal>teal</RimlaserBeamTeal>
+  <RimlaserBeamRedBlack>red-black</RimlaserBeamRedBlack>
 </LanguageData>

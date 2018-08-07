@@ -1,5 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
+  <ThingDef Name="BaseLaserGun" ParentName="BaseHumanMakeableGun" Abstract="True">
+    <techLevel>Spacer</techLevel>
+    <thingClass>Rimlaser.LaserGun</thingClass>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>Interact_ChargeRifle</soundInteract>
+ <repairEffect>Repair</repairEffect>
+
+    <recipeMaker>
+      <researchPrerequisite>RimlaserLasers</researchPrerequisite>
+      <skillRequirements>
+        <Crafting>10</Crafting>
+      </skillRequirements>
+      <recipeUsers Inherit="False">
+        <li>FabricationBench</li>
+      </recipeUsers>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Machining</soundWorking>
+    </recipeMaker>
+	
+    <weaponTags>
+      <li>SpacerGun</li>
+    </weaponTags>
+	
+    <supportsColors>true</supportsColors>
+    
+  </ThingDef>
+
   <ThingDef Abstract="True" Name="Bullet_LaserGeneric" ParentName="BaseBullet">
     <thingClass>Rimlaser.Bullet_LaserRifle</thingClass>
     <drawOffscreen>true</drawOffscreen>
@@ -140,29 +170,6 @@
 	<graphicMasterwork><texPath>Rimlaser/Effects/LaserIncMasterwork</texPath></graphicMasterwork>
 	<graphicLegendary><texPath>Rimlaser/Effects/LaserIncLegendary</texPath></graphicLegendary>
   </ThingDef>  
-
-  <ThingDef Name="BaseLaserGun" ParentName="BaseHumanMakeableGun" Abstract="True">
-    <techLevel>Spacer</techLevel>
-    <graphicData>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-    <soundInteract>Interact_ChargeRifle</soundInteract>
-	
-    <recipeMaker>
-      <researchPrerequisite>RimlaserLasers</researchPrerequisite>
-      <skillRequirements>
-        <Crafting>10</Crafting>
-      </skillRequirements>
-      <recipeUsers Inherit="False">
-        <li>FabricationBench</li>
-      </recipeUsers>
-    </recipeMaker>
-	
-    <weaponTags>
-      <li>SpacerGun</li>
-    </weaponTags>
-	
-  </ThingDef>
 
   <!-- LASER RIFLE -->
 
@@ -665,7 +672,8 @@
     </tools>
 	
 	<barrelLength>0.875</barrelLength>
-	
+	<supportsColors>false</supportsColors>
+    
   </ThingDef>
 
 </Defs>

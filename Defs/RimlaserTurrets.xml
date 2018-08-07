@@ -16,7 +16,8 @@
     <researchPrerequisites>
       <li>RimlaserLaserTurrets</li>
     </researchPrerequisites>
-
+    
+    <supportsColors>true</supportsColors>
  </ThingDef>
 
   <!--=============== Laser Rifle turret ===============-->

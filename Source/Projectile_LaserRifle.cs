@@ -37,39 +37,69 @@ namespace Rimlaser
             materialBeamCap = caps == null ? null : caps.Graphic.MatSingle;
         }
 
-        public void SetupMatrices()
-        {
-            if (setupComplete) return;
-
+        void SetColor() {
             QualityCategory quality = QualityCategory.Awful;
+            IBeamColorThing gun = null;
             var pawn = this.launcher as Pawn;
             if (pawn != null && pawn.equipment != null)
             {
                 foreach (var thing in pawn.equipment.GetDirectlyHeldThings())
                 {
+                    if (gun == null) gun = thing as IBeamColorThing;
                     if (thing.def as LaserGunDef == null) continue;
                     if (thing.TryGetQuality(out quality)) break;
+
                 }
             }
 
             var building = this.launcher as Building_LaserGun;
             if (building != null)
             {
+                if (gun == null) gun = building as IBeamColorThing;
                 building.TryGetQuality(out quality);
             }
 
-            var defWeapon = equipmentDef as LaserGunDef;
-
-            switch (quality)
+            int colorIndex = -1;
+            if (gun != null && gun.BeamColor != -1)
             {
-                case QualityCategory.Awful: SetTextures(def.graphicAwful, def.graphicAwfulCap); break;
-                case QualityCategory.Poor: SetTextures(def.graphicPoor, def.graphicPoorCap); break;
-                case QualityCategory.Normal: SetTextures(def.graphicNormal, def.graphicNormalCap); break;
-                case QualityCategory.Good: SetTextures(def.graphicGood, def.graphicGoodCap); break;
-                case QualityCategory.Excellent: SetTextures(def.graphicExcellent, def.graphicExcellentCap); break;
-                case QualityCategory.Masterwork: SetTextures(def.graphicMasterwork, def.graphicMasterworkCap); break;
-                case QualityCategory.Legendary: SetTextures(def.graphicLegendary, def.graphicLegendaryCap); break;
+                colorIndex = gun.BeamColor;
             }
+            if (colorIndex == -1)
+            {
+                switch (quality)
+                {
+                    case QualityCategory.Awful: colorIndex = 0; break;
+                    case QualityCategory.Poor: colorIndex = 1; break;
+                    case QualityCategory.Normal: colorIndex = 2; break;
+                    case QualityCategory.Good: colorIndex = 3; break;
+                    case QualityCategory.Excellent: colorIndex = 4; break;
+                    case QualityCategory.Masterwork: colorIndex = 5; break;
+                    case QualityCategory.Legendary: colorIndex = 6; break;
+                }
+            }
+            if (colorIndex == -1)
+            {
+                colorIndex = 0;
+            }
+
+
+            switch (colorIndex)
+            {
+                case 0: SetTextures(def.graphicAwful, def.graphicAwfulCap); break;
+                case 1: SetTextures(def.graphicPoor, def.graphicPoorCap); break;
+                case 2: SetTextures(def.graphicNormal, def.graphicNormalCap); break;
+                case 3: SetTextures(def.graphicGood, def.graphicGoodCap); break;
+                case 4: SetTextures(def.graphicExcellent, def.graphicExcellentCap); break;
+                case 5: SetTextures(def.graphicMasterwork, def.graphicMasterworkCap); break;
+                case 6: SetTextures(def.graphicLegendary, def.graphicLegendaryCap); break;
+            }
+        }
+
+        public void SetupMatrices()
+        {
+            if (setupComplete) return;
+
+            SetColor();
 
             var capSize = def.capSize * def.beamWidth;
             var capOverlap = def.capOverlap * def.beamWidth;
@@ -84,6 +114,7 @@ namespace Rimlaser
             Vector3 orig = origin; orig.y = altitude;
             Quaternion rotation = Quaternion.LookRotation(dest - orig);
 
+            var defWeapon = equipmentDef as LaserGunDef;
             Vector3 dir = (dest - orig).normalized;
             Vector3 a = orig + dir * (defWeapon == null ? 0.9f : defWeapon.barrelLength);
             Vector3 b = dest;

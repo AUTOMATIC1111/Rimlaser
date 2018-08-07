@@ -1,13 +1,22 @@
 ﻿using RimWorld;
+using System.Collections.Generic;
 using Verse;
 
 namespace Rimlaser
 {
-    public class Building_LaserGun : Building_TurretGun
+    public class Building_LaserGun : Building_TurretGun, IBeamColorThing
     {
         CompPowerTrader power;
         public bool isCharged = false;
         public int previousBurstCooldownTicksLeft = 0;
+
+        new public Building_LaserGunDef def => base.def as Building_LaserGunDef;
+
+        public int BeamColor
+        {
+            get { return beamColorIndex; }
+            set { beamColorIndex = value; }
+        }
 
         public override void ExposeData()
         {
@@ -15,8 +24,27 @@ namespace Rimlaser
 
             Scribe_Values.Look<bool>(ref isCharged, "isCharged", false, false);
             Scribe_Values.Look<int>(ref previousBurstCooldownTicksLeft, "previousBurstCooldownTicksLeft", 0, false);
-            
+            Scribe_Values.Look<int>(ref beamColorIndex, "beamColorIndex", -1, false);
         }
+
+
+        public override IEnumerable<FloatMenuOption> GetFloatMenuOptions(Pawn pawn)
+        {
+            foreach (FloatMenuOption o in base.GetFloatMenuOptions(pawn))
+            {
+                if (o != null) yield return o;
+            }
+
+            if (!def.supportsColors) yield break;
+
+            foreach (FloatMenuOption o in LaserColor.GetChangeBeamColorFloatMenuOptions(this, pawn))
+            {
+                if (o != null) yield return o;
+            }
+
+            yield break;
+        }
+
 
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
@@ -24,7 +52,7 @@ namespace Rimlaser
 
             power = GetComp<CompPowerTrader>();
         }
-        
+
         public override void Tick()
         {
             if (burstCooldownTicksLeft > previousBurstCooldownTicksLeft) {
@@ -35,7 +63,7 @@ namespace Rimlaser
 
             if (!isCharged)
             {
-                if (Drain((def as Building_LaserGunDef).beamPowerConsumption))
+                if (Drain(def.beamPowerConsumption))
                 {
                     isCharged = true;
                 }
@@ -88,5 +116,7 @@ namespace Rimlaser
             return result;
         }
 
+        private int beamColorIndex = -1;
     }
+
 }
