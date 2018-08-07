@@ -16,6 +16,9 @@ namespace Rimlaser
         public Matrix4x4 drawingMatrixCapB = default(Matrix4x4);
         Material materialBeam;
         Material materialBeamCap;
+        Vector3 calculatedOrigin;
+        Vector3 calculatedDestination;
+
         new LaserBeamDef def
         {
             get { return base.def as LaserBeamDef; }
@@ -110,7 +113,50 @@ namespace Rimlaser
                 weapon.RotationOffset = (angle + 180) % 360 - 180;
             }
 
+            calculatedOrigin = a;
+            calculatedDestination = b;
+
             setupComplete = true;
+        }
+
+        void SpawnDecorations()
+        {
+            SetupMatrices();
+
+            if (def.decorations == null) return;
+
+            foreach (var decoration in def.decorations) {
+                float spacing = decoration.spacing * def.beamWidth;
+                float initalOffset = decoration.initialOffset * def.beamWidth;
+
+                Vector3 dir = (calculatedDestination - calculatedOrigin).normalized;
+                float angle = (calculatedDestination - calculatedOrigin).AngleFlat();
+                Vector3 offset = dir * spacing;
+                Vector3 position = calculatedOrigin + offset * 0.5f + dir * initalOffset;
+                float length = (calculatedDestination - calculatedOrigin).magnitude - spacing;
+
+                int i = 0;
+                while (length > 0)
+                {
+                    MoteLaserDectoration moteThrown = (MoteLaserDectoration)ThingMaker.MakeThing(decoration.mote, null);
+                    if (moteThrown == null) break;
+
+                    moteThrown.beam = this;
+                    moteThrown.airTimeLeft = def.lifetime;
+                    moteThrown.Scale = def.beamWidth;
+                    moteThrown.exactRotation = angle;
+                    moteThrown.exactPosition = position;
+                    moteThrown.SetVelocity(angle, decoration.speed);
+                    moteThrown.baseSpeed = decoration.speed;
+                    moteThrown.speedJitter = decoration.speedJitter;
+                    moteThrown.speedJitterOffset = decoration.speedJitterOffset * i;
+                    GenSpawn.Spawn(moteThrown, origin.ToIntVec3(), Map, WipeMode.Vanish);
+
+                    position += offset;
+                    length -= spacing;
+                    i++;
+                }
+            }
         }
 
         public override void Destroy(DestroyMode mode)
@@ -118,6 +164,7 @@ namespace Rimlaser
             if (destroyDelay == -1)
             {
                 destroyDelay = def.lifetime - ticks;
+                SpawnDecorations();
             }
 
             if (destroyDelay <= 0)
@@ -147,11 +194,13 @@ namespace Rimlaser
 
         }
 
+        public float Opacity => (float)Math.Sin(Math.Pow(1.0 - 1.0 * ticks / def.lifetime, def.impulse) * Math.PI);
+
         public override void Draw()
         {
             SetupMatrices();
 
-            float opacity = (float)Math.Sin(Math.Pow(1.0 - 1.0 * ticks / def.lifetime, def.impulse) * Math.PI);
+            float opacity = Opacity;
             Graphics.DrawMesh(MeshPool.plane10, drawingMatrix, FadedMaterialPool.FadedVersionOf(materialBeam, opacity), 0);
 
             if (materialBeamCap != null)

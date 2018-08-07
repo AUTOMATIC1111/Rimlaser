@@ -1,14 +1,68 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-  <ThingDef Name="BaseLaserGun" ParentName="BaseHumanMakeableGun" Abstract="True">
+
+  <ThingDef Name="RimlaserBaseGun" Abstract="True" ParentName="BaseWeapon">
+    <techLevel>Industrial</techLevel>
+    <smeltable>true</smeltable>
+    <thingCategories>
+      <li>WeaponsRanged</li>
+    </thingCategories>
+    <inspectorTabs>
+      <li>ITab_Art</li>
+    </inspectorTabs>
+    <statBases>
+      <Flammability>0.5</Flammability>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Art">
+        <nameMaker>NamerArtWeaponGun</nameMaker>
+        <descriptionMaker>ArtDescription_WeaponGun</descriptionMaker>
+        <minQualityForArtistic>Excellent</minQualityForArtistic>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef Name="RimlaserBaseGunWithQuality" Abstract="True" ParentName="RimlaserBaseGun">
+    <comps>
+      <li>
+        <compClass>CompQuality</compClass>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef Name="RimlaserBaseMakeableGun" ParentName="RimlaserBaseGunWithQuality" Abstract="True">
+    <recipeMaker>
+      <workSpeedStat>SmithingSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <recipeUsers>
+        <li>TableMachining</li>
+      </recipeUsers>
+      <unfinishedThingDef>UnfinishedGun</unfinishedThingDef>
+      <researchPrerequisite>Gunsmithing</researchPrerequisite>
+    </recipeMaker>
+  </ThingDef>
+
+
+  <ThingDef Name="BaseNonMakeableLaserGun" ParentName="RimlaserBaseGunWithQuality" Abstract="True">
     <techLevel>Spacer</techLevel>
     <thingClass>Rimlaser.LaserGun</thingClass>
     <graphicData>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <soundInteract>Interact_ChargeRifle</soundInteract>
- <repairEffect>Repair</repairEffect>
+    <repairEffect>Repair</repairEffect>
 
+    <weaponTags>
+      <li>Gun</li>
+      <li>SpacerGun</li>
+    </weaponTags>
+	
+    <supportsColors>true</supportsColors>
+  </ThingDef>
+
+  <ThingDef Name="BaseLaserGun" ParentName="BaseNonMakeableLaserGun" Abstract="True">
     <recipeMaker>
       <researchPrerequisite>RimlaserLasers</researchPrerequisite>
       <skillRequirements>
@@ -20,15 +74,10 @@
       <workSkill>Crafting</workSkill>
       <effectWorking>Smith</effectWorking>
       <soundWorking>Recipe_Machining</soundWorking>
+      <unfinishedThingDef>UnfinishedLaserGun</unfinishedThingDef>
     </recipeMaker>
-	
-    <weaponTags>
-      <li>SpacerGun</li>
-    </weaponTags>
-	
-    <supportsColors>true</supportsColors>
-    
   </ThingDef>
+
 
   <ThingDef Abstract="True" Name="Bullet_LaserGeneric" ParentName="BaseBullet">
     <thingClass>Rimlaser.LaserBeam</thingClass>
@@ -82,7 +131,46 @@
       <li>Rimlaser/Effects/LaserIncMasterwork</li>
       <li>Rimlaser/Effects/LaserIncLegendary</li>
     </textureBeam>
+    
+    <textureCap>
+      <li>Rimlaser/Effects/LaserAwfulCap</li>
+      <li>Rimlaser/Effects/LaserPoorCap</li>
+      <li>Rimlaser/Effects/LaserNormalCap</li>
+      <li>Rimlaser/Effects/LaserGoodCap</li>
+      <li>Rimlaser/Effects/LaserExcellentCap</li>
+      <li>Rimlaser/Effects/LaserMasterworkCap</li>
+      <li>Rimlaser/Effects/LaserLegendaryCap</li>
+    </textureCap>
   </ThingDef>  
+
+  <ThingDef Abstract="True" Name="Bullet_LaserDeathRay" ParentName="Bullet_LaserGeneric">
+    <textureBeam>
+      <li>Rimlaser/Effects/LaserDeathRay</li>
+    </textureBeam>
+  
+    <textureCap>
+      <li>Rimlaser/Effects/LaserDeathRayCap</li>
+    </textureCap>
+
+    	<decorations>
+        <li>
+            <mote>Rimlaser_Mote_LaserDecorationYellow</mote>
+            <spacing>0.8</spacing>
+            <initialOffset>-0.1</initialOffset>
+            <speed>1.0</speed>
+            <speedJitter>0.55</speedJitter>
+            <speedJitterOffset>90</speedJitterOffset>
+        </li>
+        <li>
+            <mote>Rimlaser_Mote_LaserDecorationPurple</mote>
+            <spacing>0.8</spacing>
+            <initialOffset>0.3</initialOffset>
+            <speed>1.0</speed>
+            <speedJitter>0.45</speedJitter>
+            <speedJitterOffset>90</speedJitterOffset>
+        </li>
+     </decorations>
+   </ThingDef>
 
   <!-- LASER RIFLE -->
 
@@ -517,6 +605,79 @@
 	<barrelLength>0.86</barrelLength>
   </ThingDef>
   
+  
+  <!-- DEATH RAY -->
+
+  <ThingDef ParentName="Bullet_LaserDeathRay" Class="Rimlaser.LaserBeamDef">
+    <defName>Bullet_DeathRay</defName>
+    <label>death ray</label>
+
+    <projectile>
+      <damageAmountBase>100</damageAmountBase>
+      <stoppingPower>10</stoppingPower>
+    </projectile>
+	
+	<beamWidth>1.5</beamWidth>
+	<lifetime>120</lifetime>
+	<impulse>6</impulse>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseNonMakeableLaserGun" Class="Rimlaser.LaserGunDef">
+    <defName>Rimlaser_DeathRay</defName>
+    <label>Garin's Hyperboloid</label>
+    <description>A monstrous device that violates first, second and third laws of thermodynamics to bring a concentrated ray of death to anyone who dares to stand in its owner's path.</description>
+    <graphicData>
+      <texPath>Rimlaser/Weapons/Hyperboloid</texPath>
+    </graphicData>
+    
+    <statBases>
+      <Mass>30</Mass>
+      <AccuracyTouch>0.70</AccuracyTouch>
+      <AccuracyShort>0.65</AccuracyShort>
+      <AccuracyMedium>0.60</AccuracyMedium>
+      <AccuracyLong>0.55</AccuracyLong>
+      <RangedWeapon_Cooldown>0.5</RangedWeapon_Cooldown>
+      <WorkToMake>600000</WorkToMake>
+    </statBases>
+	
+    <costList>
+      <RimlaserCrystal>3</RimlaserCrystal>
+      <Plasteel>200</Plasteel>
+      <ComponentSpacer>12</ComponentSpacer>
+    </costList>
+
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_DeathRay</defaultProjectile>
+        <warmupTime>3.5</warmupTime>
+        <range>52</range>
+        <soundCast>DeathRay_fire</soundCast>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+	
+    <tools>
+      <li>
+        <label>barrel</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>16</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>
+	
+    <tradeTags>
+      <li>ExoticMisc</li>
+    </tradeTags>
+
+	<barrelLength>0.9</barrelLength>
+	<supportsColors>false</supportsColors>
+    
+  </ThingDef>
+
   <!-- TESLA GUN -->
 
   <ThingDef ParentName="Bullet_LaserGeneric" Class="Rimlaser.LaserBeamDef">
@@ -540,7 +701,7 @@
     <label>Tesla gun</label>
     <description>A lightning gun. Can only attack at very short range, but has good stopping power.</description>
     <graphicData>
-      <texPath>Rimlaser/Weapons/Lightning</texPath>
+      <texPath>Rimlaser/Weapons/Tesla</texPath>
     </graphicData>
     <statBases>
       <Mass>20</Mass>

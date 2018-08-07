@@ -7,6 +7,17 @@ using Verse;
 
 namespace Rimlaser
 {
+    public class LaserBeamDecoration
+    {
+        public ThingDef mote;
+        public float spacing = 1.0f;
+        public float initialOffset = 0;
+        public float speed = 1.0f;
+        public float speedJitter;
+        public float speedJitterOffset;
+
+    }
+
     public class LaserBeamDef : ThingDef
     {
         public float capSize = 1.0f;
@@ -16,6 +27,9 @@ namespace Rimlaser
         public float impulse = 4.0f;
 
         public float beamWidth = 1.0f;
+
+        public List<LaserBeamDecoration> decorations;
+ //       public ThingDef beamDecoration;
 
         public EffecterDef explosionEffect;
         public EffecterDef hitLivingEffect;

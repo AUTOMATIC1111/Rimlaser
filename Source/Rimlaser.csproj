@@ -66,7 +66,12 @@
     <None Include="..\About\About.xml" />
     <None Include="..\About\preview.png" />
     <None Include="..\About\PublishedFileId.txt" />
-    <None Include="..\Defs\**" />
+    <None Include="..\Defs\RimlaserItems.xml" />
+    <None Include="..\Defs\RimlaserJobs.xml" />
+    <None Include="..\Defs\RimlaserResearch.xml" />
+    <None Include="..\Defs\RimlaserSounds.xml" />
+    <None Include="..\Defs\RimlaserTurrets.xml" />
+    <None Include="..\Defs\RimlaserWeapons.xml" />
     <None Include="..\Languages\**" />
     <None Include="..\Patches\**" />
   </ItemGroup>
@@ -81,6 +86,7 @@
     <Compile Include="JobDriver_ChangeLaserColor.cs" />
     <Compile Include="LaserBeamColoring.cs" />
     <Compile Include="LaserGun.cs" />
+    <Compile Include="MoteLaserDectoration.cs" />
     <Compile Include="PatchGunDrawing.cs" />
     <Compile Include="SpinningLaserGun.cs" />
     <Compile Include="SpinningLaserGunDef.cs" />
@@ -107,7 +113,7 @@
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_UpdateFileVersion="True" BuildVersion_UpdateAssemblyVersion="True" BuildVersion_BuildVersioningStyle="None.None.Increment.TimeStamp" BuildVersion_StartDate="2000/1/1" />
+      <UserProperties BuildVersion_StartDate="2000/1/1" BuildVersion_BuildVersioningStyle="None.None.Increment.TimeStamp" BuildVersion_UpdateAssemblyVersion="True" BuildVersion_UpdateFileVersion="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

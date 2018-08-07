@@ -33,7 +33,7 @@
       <li>Unfinished</li>
     </thingCategories>
   </ThingDef>
-
+  
   <ThingDef ParentName="RimlaserItemBase">
     <defName>RimlaserCrystal</defName>
     <label>crystal</label>
@@ -127,4 +127,12 @@
     </recipeMaker>
   </ThingDef>
 
+  <ThingDef ParentName="RimlaserUnfinishedItemBase">
+    <defName>UnfinishedLaserGun</defName>
+    <label>unfinished laser gun</label>
+    <graphicData>
+      <texPath>Rimlaser/Items/UnfinishedLaserGun</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+  </ThingDef>
 </Defs>

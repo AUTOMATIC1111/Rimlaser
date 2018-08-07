@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
+
   <ThingDef ParentName="MoteBase">
     <defName>Rimlaser_Mote_BloodPuff</defName>
     <graphicData>
@@ -11,6 +12,29 @@
       <solidTime>0.25</solidTime>
       <fadeOutTime>0.1</fadeOutTime>
     </mote>
+  </ThingDef>
+
+  <ThingDef ParentName="MoteBase" Name="Rimlaser_Mote_LaserDecoration">
+    <defName>Rimlaser_Mote_LaserDecorationYellow</defName>
+    <thingClass>Rimlaser.MoteLaserDectoration</thingClass>
+    <graphicData>
+      <texPath>Rimlaser/Effects/LaserDecorationYellow</texPath>
+      <shaderType>TransparentPostLight</shaderType>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.0</fadeInTime>
+      <solidTime>1.0</solidTime>
+      <fadeOutTime>0.0</fadeOutTime>
+    </mote>
+  </ThingDef>
+
+  <ThingDef ParentName="Rimlaser_Mote_LaserDecoration">
+    <defName>Rimlaser_Mote_LaserDecorationPurple</defName>
+    <graphicData>
+      <texPath>Rimlaser/Effects/LaserDecorationPurple</texPath>
+      <shaderType>TransparentPostLight</shaderType>
+    </graphicData>
   </ThingDef>
 
 
