@@ -98,6 +98,15 @@ namespace Rimlaser
                         {
                             state = State.Spinning;
                         }
+                        else
+                        {
+                            warmup = stance as Stance_Warmup;
+                            if (warmup == null)
+                            {
+                                state = State.Idle;
+                                ReachRotationSpeed(0.0f, 30);
+                            }
+                        }
                         break;
                     case State.Spinning:
                         if (! IsBrusting(holder.pawn))

@@ -244,8 +244,37 @@
 	
   </ThingDef>
   
-  <ThingDef ParentName="Rimlaser_LaserRifle" Class="Rimlaser.LaserGunDef">
+  <ThingDef ParentName="BaseNonMakeableLaserGun" Class="Rimlaser.LaserGunDef">
     <defName>Rimlaser_LaserRifleMounted</defName>
+    <label>laser rifle</label>
+    <description>A futuristic laser rifle design. Does about as mucu damage as the pistol per beam, but fires twice as fast and is designed to work at greater range.</description>
+    <graphicData>
+      <texPath>Rimlaser/Weapons/LaserRifle</texPath>
+    </graphicData>
+	
+    <statBases>
+      <WorkToMake>40000</WorkToMake>
+      <Mass>5.5</Mass>
+      <AccuracyTouch>0.60</AccuracyTouch>
+      <AccuracyShort>0.70</AccuracyShort>
+      <AccuracyMedium>0.65</AccuracyMedium>
+      <AccuracyLong>0.55</AccuracyLong>
+      <RangedWeapon_Cooldown>0.57</RangedWeapon_Cooldown>
+    </statBases>
+	
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_LaserRifle</defaultProjectile>
+        <warmupTime>1.0</warmupTime>
+        <range>30.9</range>
+        <soundCast>LaserRifle_Fire</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+	
     <barrelLength>0.85</barrelLength>
   </ThingDef>
   
