@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
   <LaserTurretNotCharged>(十分な電力が残ってない)</LaserTurretNotCharged>
+  <RimlaserChangeBeamColor>ビーム色を変更：{0}</RimlaserChangeBeamColor>
+
+  <RimlaserBeamBrown>ブラウン</RimlaserBeamBrown>
+  <RimlaserBeamOrange>オレンジ</RimlaserBeamOrange>
+  <RimlaserBeamRed>レッド</RimlaserBeamRed>
+  <RimlaserBeamPink>ピンク</RimlaserBeamPink>
+  <RimlaserBeamBlue>ブルー</RimlaserBeamBlue>
+  <RimlaserBeamTeal>ティール</RimlaserBeamTeal>
+  <RimlaserBeamRedBlack>ブラック</RimlaserBeamRedBlack>
 
 </LanguageData>

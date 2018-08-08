@@ -61,6 +61,15 @@
   <Rimlaser_LaserMinigun.tools.0.label>バレル</Rimlaser_LaserMinigun.tools.0.label>
 
 
+  <!-- DEATH RAY -->
+
+  <Bullet_DeathRay.label>デスレーザー</Bullet_DeathRay.label>
+
+  <Rimlaser_DeathRay.label>デスレーザーガン</Rimlaser_DeathRay.label>
+  <Rimlaser_DeathRay.description>熱力学の第1、第2、第3の法則に反して、その所有者の前に立つ人を誰にでも蒸発させる悪魔の装置です。元ネタは「ガーリン技師の双曲線(1926)」という古いロシア人SF作家トルストイの作品に出てくる死の光線銃です。</Rimlaser_DeathRay.description>
+  <Rimlaser_DeathRay.tools.0.label>バレル</Rimlaser_DeathRay.tools.0.label>
+
+
   <!-- TESLA GUN -->
 
   <Bullet_Tesla.label>高圧の雷撃</Bullet_Tesla.label>
