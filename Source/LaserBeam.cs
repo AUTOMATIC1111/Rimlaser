@@ -3,6 +3,7 @@
 using UnityEngine;
 using RimWorld;
 using Verse;
+using System.Collections.Generic;
 
 namespace Rimlaser
 {
@@ -12,12 +13,10 @@ namespace Rimlaser
 
         bool setupComplete = false;
         public Matrix4x4 drawingMatrix = default(Matrix4x4);
-        public Matrix4x4 drawingMatrixCapA = default(Matrix4x4);
-        public Matrix4x4 drawingMatrixCapB = default(Matrix4x4);
         Material materialBeam;
-        Material materialBeamCap;
         Vector3 calculatedOrigin;
         Vector3 calculatedDestination;
+        Mesh mesh;
 
         new LaserBeamDef def
         {
@@ -29,13 +28,10 @@ namespace Rimlaser
 
         public void SetTextures(int index)
         {
-            def.GetMaterials(index, out materialBeam, out materialBeamCap);
+            materialBeam = def.GetBeamMaterial(index);
 
             if (materialBeam == null)
-            {
                 materialBeam = def.graphicData.Graphic.MatSingle;
-                materialBeamCap = null;
-            }
         }
 
         void SetColor(out IDrawnWeaponWithRotation drawnWeaponWithRotation) {
@@ -72,13 +68,7 @@ namespace Rimlaser
             IDrawnWeaponWithRotation weapon;
             SetColor(out weapon);
 
-            var capSize = def.capSize * def.beamWidth;
-            var capOverlap = def.capOverlap * def.beamWidth;
-            if (materialBeamCap == null)
-            {
-                capSize = 0;
-                capOverlap = 0;
-            }
+            float beamWidth = def.beamWidth;
 
             float altitude = def.Altitude;
             Vector3 dest = destination; dest.y = altitude;
@@ -91,22 +81,11 @@ namespace Rimlaser
             Vector3 b = dest;
             float length = (b - a).magnitude;
 
-            Vector3 drawingScale = new Vector3(def.beamWidth, 1f, length - capSize * 2 + capOverlap * 2);
+            Vector3 drawingScale = new Vector3(beamWidth, 1f, length);
 
             Vector3 drawingPosition = (a + b) / 2;
             drawingMatrix.SetTRS(drawingPosition, rotation, drawingScale);
-
-            if (materialBeamCap != null)
-            {
-                Vector3 drawingScaleCap = new Vector3(def.beamWidth, 1f, def.beamWidth);
-
-                Vector3 drawingPositionCapB = b - dir * capSize / 2;
-                drawingMatrixCapB.SetTRS(drawingPositionCapB, rotation, drawingScaleCap);
-
-                Vector3 drawingPositionCapA = a + dir * capSize / 2;
-                drawingMatrixCapA.SetTRS(drawingPositionCapA, Quaternion.LookRotation(orig - dest), drawingScaleCap);
-            }
-
+            
             if (weapon != null)
             {
                 float angle = (destination - origin).AngleFlat() - (intendedTarget.CenterVector3 - origin).AngleFlat();
@@ -115,6 +94,13 @@ namespace Rimlaser
 
             calculatedOrigin = a;
             calculatedDestination = b;
+
+            float textureRatio = 1.0f * materialBeam.mainTexture.width / materialBeam.mainTexture.height;
+            float seamTexture = def.seam < 0 ? textureRatio : def.seam;
+            float capLength = beamWidth / textureRatio / 2f * seamTexture;
+            float seamGeometry = length <= capLength * 2 ? 0.5f : capLength * 2 / length;
+
+            mesh = MeshMakerLaser.Mesh(seamTexture, seamGeometry);
 
             setupComplete = true;
         }
@@ -201,13 +187,7 @@ namespace Rimlaser
             SetupMatrices();
 
             float opacity = Opacity;
-            Graphics.DrawMesh(MeshPool.plane10, drawingMatrix, FadedMaterialPool.FadedVersionOf(materialBeam, opacity), 0);
-
-            if (materialBeamCap != null)
-            {
-                Graphics.DrawMesh(MeshPool.plane10, drawingMatrixCapA, FadedMaterialPool.FadedVersionOf(materialBeamCap, opacity), 0);
-                Graphics.DrawMesh(MeshPool.plane10, drawingMatrixCapB, FadedMaterialPool.FadedVersionOf(materialBeamCap, opacity), 0);
-            }
+            Graphics.DrawMesh(mesh, drawingMatrix, FadedMaterialPool.FadedVersionOf(materialBeam, opacity), 0);
         }
 
         void TriggerEffect(EffecterDef effect, Vector3 position)

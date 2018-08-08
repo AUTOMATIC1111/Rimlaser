@@ -97,10 +97,13 @@
       <damageDef>Bomb</damageDef>
       <speed>10000</speed>
     </projectile>
+    
+    <seam>0.25</seam>
   </ThingDef>
 
   <ThingDef Abstract="True" Name="Bullet_LaserColored" ParentName="Bullet_LaserGeneric">
-    <textureBeam>
+    <seam>0.25</seam>
+    <textures>
       <li>Rimlaser/Effects/LaserAwful</li>
       <li>Rimlaser/Effects/LaserPoor</li>
       <li>Rimlaser/Effects/LaserNormal</li>
@@ -108,21 +111,11 @@
       <li>Rimlaser/Effects/LaserExcellent</li>
       <li>Rimlaser/Effects/LaserMasterwork</li>
       <li>Rimlaser/Effects/LaserLegendary</li>
-    </textureBeam>
-  
-    <textureCap>
-      <li>Rimlaser/Effects/LaserAwfulCap</li>
-      <li>Rimlaser/Effects/LaserPoorCap</li>
-      <li>Rimlaser/Effects/LaserNormalCap</li>
-      <li>Rimlaser/Effects/LaserGoodCap</li>
-      <li>Rimlaser/Effects/LaserExcellentCap</li>
-      <li>Rimlaser/Effects/LaserMasterworkCap</li>
-      <li>Rimlaser/Effects/LaserLegendaryCap</li>
-    </textureCap>
+    </textures>
   </ThingDef>  
   
   <ThingDef Abstract="True" Name="Bullet_LaserInc" ParentName="Bullet_LaserGeneric">
-    <textureBeam>
+    <textures>
       <li>Rimlaser/Effects/LaserIncAwful</li>
       <li>Rimlaser/Effects/LaserIncPoor</li>
       <li>Rimlaser/Effects/LaserIncNormal</li>
@@ -130,27 +123,14 @@
       <li>Rimlaser/Effects/LaserIncExcellent</li>
       <li>Rimlaser/Effects/LaserIncMasterwork</li>
       <li>Rimlaser/Effects/LaserIncLegendary</li>
-    </textureBeam>
-    
-    <textureCap>
-      <li>Rimlaser/Effects/LaserAwfulCap</li>
-      <li>Rimlaser/Effects/LaserPoorCap</li>
-      <li>Rimlaser/Effects/LaserNormalCap</li>
-      <li>Rimlaser/Effects/LaserGoodCap</li>
-      <li>Rimlaser/Effects/LaserExcellentCap</li>
-      <li>Rimlaser/Effects/LaserMasterworkCap</li>
-      <li>Rimlaser/Effects/LaserLegendaryCap</li>
-    </textureCap>
+    </textures>
+    <seam>0.02083333333</seam>
   </ThingDef>  
 
   <ThingDef Abstract="True" Name="Bullet_LaserDeathRay" ParentName="Bullet_LaserGeneric">
-    <textureBeam>
+    <textures>
       <li>Rimlaser/Effects/LaserDeathRay</li>
-    </textureBeam>
-  
-    <textureCap>
-      <li>Rimlaser/Effects/LaserDeathRayCap</li>
-    </textureCap>
+    </textures>
 
     	<decorations>
         <li>
@@ -713,9 +693,10 @@
     <defName>Bullet_Tesla</defName>
     <label>bolt of lightning</label>
 
-    <textureBeam>
+    <textures>
       <li>Rimlaser/Effects/Lightning</li>
-    </textureBeam>
+    </textures>
+    <seam>0</seam>
 
     <projectile>
       <damageAmountBase>6</damageAmountBase>

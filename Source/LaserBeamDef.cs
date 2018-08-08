@@ -27,47 +27,37 @@ namespace Rimlaser
         public float impulse = 4.0f;
 
         public float beamWidth = 1.0f;
+        public float seam = -1f;
 
         public List<LaserBeamDecoration> decorations;
- //       public ThingDef beamDecoration;
 
         public EffecterDef explosionEffect;
         public EffecterDef hitLivingEffect;
 
-        public List<string> textureBeam;
-        public List<string> textureCap;
-
-        private List<Material> materialBeam = new List<Material> ();
-        private List<Material> materialCap = new List<Material> ();
+        public List<string> textures;
+        private List<Material> materials = new List<Material> ();
 
         void CreateGraphics()
         {
-            for (int i = 0; i < textureBeam.Count; i++)
+            for (int i = 0; i < textures.Count; i++)
             {
-                string beam = textureBeam[i];
-                string cap = textureCap != null && i < textureCap.Count ? textureCap[i] : null;
-
-                materialBeam.Add(MaterialPool.MatFrom(beam, ShaderDatabase.TransparentPostLight));
-                materialCap.Add(cap == null ? null : MaterialPool.MatFrom(cap, ShaderDatabase.TransparentPostLight));
+                materials.Add(MaterialPool.MatFrom(textures[i], ShaderDatabase.TransparentPostLight));
             }
         }
 
-        public void GetMaterials(int index, out Material beam, out Material cap)
+        public Material GetBeamMaterial(int index)
         {
-            if (materialBeam.Count == 0 && textureBeam.Count != 0)
+            if (materials.Count == 0 && textures.Count != 0)
                 CreateGraphics();
 
-            if (materialBeam.Count == 0) {
-                beam = null;
-                cap = null;
-                return;
+            if (materials.Count == 0) {
+                return null;
             }
 
-            if (index >= materialBeam.Count || index < 0)
+            if (index >= materials.Count || index < 0)
                 index = 0;
 
-            beam = materialBeam[index];
-            cap = materialCap[index];
+            return materials[index];
         }
     }
 }

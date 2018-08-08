@@ -86,6 +86,7 @@
     <Compile Include="JobDriver_ChangeLaserColor.cs" />
     <Compile Include="LaserBeamColoring.cs" />
     <Compile Include="LaserGun.cs" />
+    <Compile Include="MeshMakerLaser.cs" />
     <Compile Include="MoteLaserDectoration.cs" />
     <Compile Include="PatchGunDrawing.cs" />
     <Compile Include="SpinningLaserGun.cs" />
@@ -113,7 +114,7 @@
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_StartDate="2000/1/1" BuildVersion_BuildVersioningStyle="None.None.Increment.TimeStamp" BuildVersion_UpdateAssemblyVersion="True" BuildVersion_UpdateFileVersion="True" />
+      <UserProperties BuildVersion_UpdateFileVersion="True" BuildVersion_UpdateAssemblyVersion="True" BuildVersion_BuildVersioningStyle="None.None.Increment.TimeStamp" BuildVersion_StartDate="2000/1/1" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
