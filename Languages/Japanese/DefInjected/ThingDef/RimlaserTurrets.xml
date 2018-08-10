@@ -5,10 +5,10 @@
 
   <MiniTurret_Laser.label>タレット (レーザー)</MiniTurret_Laser.label>
   <MiniTurret_Laser.description>通常のタレットの上部に、タレット用レーザーガンが搭載された小型タレットです。バレルの交換は必要ありませんが、1発あたりバッテリーから5Wdの電力を消費します。</MiniTurret_Laser.description>
-  <MiniTurret_Laser_Blueprint.label>タレット (レーザー)(設計)</MiniTurret_Laser_Blueprint.label>
-  <MiniTurret_Laser_Blueprint_Install.label>タレット (レーザー)(移動先)</MiniTurret_Laser_Blueprint_Install.label>
-  <MiniTurret_Laser_Frame.label>タレット (レーザー)(施工)</MiniTurret_Laser_Frame.label>
-  <MiniTurret_Laser_Frame.description>通常のタレットの上部に、タレット用レーザーガンが搭載された小型タレットです。バレルの交換は必要ありませんが、1発あたりバッテリーから5Wdの電力を消費します。</MiniTurret_Laser_Frame.description>
+  <Blueprint_MiniTurret_Laser.label>タレット (レーザー)(設計)</Blueprint_MiniTurret_Laser.label>
+  <Blueprint_Install_MiniTurret_Laser.label>タレット (レーザー)(移動先)</Blueprint_Install_MiniTurret_Laser.label>
+  <Frame_MiniTurret_Laser.label>タレット (レーザー)(施工)</Frame_MiniTurret_Laser.label>
+  <Frame_MiniTurret_Laser.description>通常のタレットの上部に、タレット用レーザーガンが搭載された小型タレットです。バレルの交換は必要ありませんが、1発あたりバッテリーから5Wdの電力を消費します。</Frame_MiniTurret_Laser.description>
 
 
   <!-- Heavy Laser turret -->
