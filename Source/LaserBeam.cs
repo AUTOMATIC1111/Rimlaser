@@ -210,6 +210,7 @@ namespace Rimlaser
         {
             if (destroyDelay != -1) return;
             Destroy(DestroyMode.Vanish);
+            bool shielded = false;
 
             if (hitThing == null)
             {
@@ -217,12 +218,21 @@ namespace Rimlaser
             }
             else
             {
-                if (hitThing is Pawn && (hitThing as Pawn).RaceProps.meatDef != null)
+                //Test PreApplyDamage to confirm that Thing is not shielded
+                DamageInfo shieldTest = new DamageInfo(def.projectile.damageDef, 0.01f,
+                    0.01f, ExactRotation.eulerAngles.y, launcher, null, equipmentDef,
+                    DamageInfo.SourceCategory.ThingOrUnknown, this.intendedTarget.Thing);
+                this.intendedTarget.Thing.PreApplyDamage(ref shieldTest, out shielded);
+
+                if (!shielded && hitThing is Pawn && (hitThing as Pawn).RaceProps.meatDef != null)
                 {
                     TriggerEffect(def.hitLivingEffect, hitThing.Position);
                 }
                 TriggerEffect(def.explosionEffect, ExactPosition);
             }
+
+            if (shielded)
+                this.weaponDamageMultiplier *= 0.5f;
 
             base.Impact(hitThing);
         }
