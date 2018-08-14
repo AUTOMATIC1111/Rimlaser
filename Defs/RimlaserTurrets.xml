@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-  <ThingDef Abstract="true" ParentName="BuildingBase" Name="RimlaserTuretBase">
+  <ThingDef Name="RimlaserBuildingBase" Abstract="True">
+    <category>Building</category>
+    <thingClass>Building</thingClass>
+    <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+    <selectable>true</selectable>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <repairEffect>Repair</repairEffect>
+    <leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+    <filthLeaving>Filth_RubbleBuilding</filthLeaving>
+    <statBases>
+      <SellPriceFactor>0.70</SellPriceFactor>
+    </statBases>
+  </ThingDef>
+
+  <ThingDef Abstract="true" ParentName="RimlaserBuildingBase" Name="RimlaserTuretBase">
     <thingClass>Rimlaser.Building_LaserGun</thingClass>
     <altitudeLayer>Building</altitudeLayer>
     <stealable>false</stealable>
