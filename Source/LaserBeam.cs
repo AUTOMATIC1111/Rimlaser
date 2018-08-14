@@ -218,15 +218,37 @@ namespace Rimlaser
             }
             else
             {
-                //Test PreApplyDamage to confirm that Thing is not shielded
-                DamageInfo shieldTest = new DamageInfo(def.projectile.damageDef, 0.01f,
-                    0.01f, ExactRotation.eulerAngles.y, launcher, null, equipmentDef,
-                    DamageInfo.SourceCategory.ThingOrUnknown, this.intendedTarget.Thing);
-                this.intendedTarget.Thing.PreApplyDamage(ref shieldTest, out shielded);
-
-                if (!shielded && hitThing is Pawn && (hitThing as Pawn).RaceProps.meatDef != null)
+                if (hitThing is Pawn)
                 {
-                    TriggerEffect(def.hitLivingEffect, hitThing.Position);
+                    Pawn hitPawn = hitThing as Pawn;
+                    if (hitPawn.apparel != null)
+                    {
+                        DamageInfo damageTest = new DamageInfo(DamageDefOf.Bomb, 0f, 0f, -1, launcher);
+                        //Check for equipped items that could obstruct the beam
+                        foreach (var apparelItem in hitPawn.apparel.WornApparel)
+                        {
+                            if (apparelItem.CheckPreAbsorbDamage(damageTest))
+                            {
+                                shielded = true;
+                                break;
+                            }                                
+                        }
+                    }
+
+                    if (!shielded && hitPawn.RaceProps.BloodDef != null)
+                    {
+                        //TODO: Consider reappropriating the following color data to use with hitLivingEffect's blood mist.
+                        //if (hitPawn.RaceProps.BloodDef.graphicData.color != null)
+                        //{
+                        //    Log.Message(hitPawn.RaceProps.BloodDef.graphicData.color.ToStringSafe<Color>());
+                        //}
+
+                        //Temporary solution to prevent insects and modded creatures like androids from bleeding red blood
+                        if (hitPawn.RaceProps.BloodDef.defName == "Filth_Blood")
+                        {
+                            TriggerEffect(def.hitLivingEffect, hitThing.Position);
+                        }
+                    }
                 }
                 TriggerEffect(def.explosionEffect, ExactPosition);
             }
