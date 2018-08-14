@@ -210,6 +210,7 @@ namespace Rimlaser
         {
             if (destroyDelay != -1) return;
             Destroy(DestroyMode.Vanish);
+            bool shielded = false;
 
             if (hitThing == null)
             {
@@ -217,12 +218,43 @@ namespace Rimlaser
             }
             else
             {
-                if (hitThing is Pawn && (hitThing as Pawn).RaceProps.meatDef != null)
+                if (hitThing is Pawn)
                 {
-                    TriggerEffect(def.hitLivingEffect, hitThing.Position);
+                    Pawn hitPawn = hitThing as Pawn;
+                    if (hitPawn.apparel != null)
+                    {
+                        DamageInfo damageTest = new DamageInfo(DamageDefOf.Bomb, 0f, 0f, -1, launcher);
+                        //Check for equipped items that could obstruct the beam
+                        foreach (var apparelItem in hitPawn.apparel.WornApparel)
+                        {
+                            if (apparelItem.CheckPreAbsorbDamage(damageTest))
+                            {
+                                shielded = true;
+                                break;
+                            }                                
+                        }
+                    }
+
+                    if (!shielded && hitPawn.RaceProps.BloodDef != null)
+                    {
+                        //TODO: Consider reappropriating the following color data to use with hitLivingEffect's blood mist.
+                        //if (hitPawn.RaceProps.BloodDef.graphicData.color != null)
+                        //{
+                        //    Log.Message(hitPawn.RaceProps.BloodDef.graphicData.color.ToStringSafe<Color>());
+                        //}
+
+                        //Temporary solution to prevent insects and modded creatures like androids from bleeding red blood
+                        if (hitPawn.RaceProps.BloodDef.defName == "Filth_Blood")
+                        {
+                            TriggerEffect(def.hitLivingEffect, hitThing.Position);
+                        }
+                    }
                 }
                 TriggerEffect(def.explosionEffect, ExactPosition);
             }
+
+            if (shielded)
+                this.weaponDamageMultiplier *= 0.5f;
 
             base.Impact(hitThing);
         }
