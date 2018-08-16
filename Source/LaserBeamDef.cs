@@ -27,6 +27,7 @@ namespace Rimlaser
         public float impulse = 4.0f;
 
         public float beamWidth = 1.0f;
+        public float shieldDamageMultiplier = 0.5f;
         public float seam = -1f;
 
         public List<LaserBeamDecoration> decorations;

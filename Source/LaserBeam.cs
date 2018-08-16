@@ -25,6 +25,10 @@ namespace Rimlaser
 
         int destroyDelay = -1;
 
+        public bool IsWeakToShields
+        {
+            get { return def.shieldDamageMultiplier < 1f; }
+        }
 
         public void SetTextures(int index)
         {
@@ -78,7 +82,7 @@ namespace Rimlaser
             //Offset origin for barrel length
             Vector3 a = orig + dir * (defWeapon == null ? 0.9f : defWeapon.barrelLength);
             //Offset destination for impact site (shield, flesh, or otherwise)
-            Vector3 b = dest - dir * (usedTarget.Thing.IsShielded() ? 0.5f : 0.05f);
+            Vector3 b = dest - dir * ((usedTarget.Thing.IsShielded() && this.IsWeakToShields) ? 0.45f : 0.01f);
             float length = (b - a).magnitude;
 
             Vector3 drawingScale = new Vector3(beamWidth, 1f, length);
@@ -216,7 +220,7 @@ namespace Rimlaser
                     Pawn hitPawn = hitThing as Pawn;
                     if (hitPawn.IsShielded())
                     {
-                        this.weaponDamageMultiplier *= 0.5f;
+                        this.weaponDamageMultiplier *= def.shieldDamageMultiplier;
                         // Special effects of a beam hitting a shield
                     }
                     else if (hitPawn.HasBlood("Filth_Blood"))

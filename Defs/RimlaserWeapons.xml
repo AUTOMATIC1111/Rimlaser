@@ -704,6 +704,7 @@
     </projectile>
 	
 	<beamWidth>1.0</beamWidth>
+  <shieldDamageMultiplier>100</shieldDamageMultiplier>
   </ThingDef>
 
   <ThingDef ParentName="BaseLaserGun" Class="Rimlaser.LaserGunDef">
