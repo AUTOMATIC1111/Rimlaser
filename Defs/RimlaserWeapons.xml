@@ -189,7 +189,7 @@
 
     <verbs>
       <li>
-        <verbClass>Verb_Shoot</verbClass>
+        <verbClass>Rimlaser.Verb_ShootBeam</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Bullet_LaserRifle</defaultProjectile>
         <warmupTime>1.0</warmupTime>
@@ -244,7 +244,7 @@
 	
     <verbs>
       <li>
-        <verbClass>Verb_Shoot</verbClass>
+        <verbClass>Rimlaser.Verb_ShootBeam</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Bullet_LaserRifle</defaultProjectile>
         <warmupTime>1.0</warmupTime>
@@ -297,7 +297,7 @@
 
     <verbs>
       <li>
-        <verbClass>Verb_Shoot</verbClass>
+        <verbClass>Rimlaser.Verb_ShootBeam</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Bullet_LaserPistol</defaultProjectile>
         <warmupTime>0.3</warmupTime>
@@ -376,7 +376,7 @@
 	
     <verbs>
       <li>
-        <verbClass>Verb_Shoot</verbClass>
+        <verbClass>Rimlaser.Verb_ShootBeam</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Bullet_LaserHeavy</defaultProjectile>
         <warmupTime>1.7</warmupTime>
@@ -444,7 +444,7 @@
     </equippedStatOffsets>
     <verbs>
       <li>
-        <verbClass>Verb_Shoot</verbClass>
+        <verbClass>Rimlaser.Verb_ShootBeam</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Bullet_LaserIncendiary</defaultProjectile>
         <warmupTime>1.4</warmupTime>
@@ -510,7 +510,7 @@
     </equippedStatOffsets>
     <verbs>
       <li>
-        <verbClass>Verb_Shoot</verbClass>
+        <verbClass>Rimlaser.Verb_ShootBeam</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Bullet_LaserSniper</defaultProjectile>
         <warmupTime>3.0</warmupTime>
@@ -587,7 +587,7 @@
     </equippedStatOffsets>
     <verbs>
       <li>
-        <verbClass>Verb_Shoot</verbClass>
+        <verbClass>Rimlaser.Verb_ShootBeam</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Bullet_LaserMinigun</defaultProjectile>
         <warmupTime>5.0</warmupTime>
@@ -657,7 +657,7 @@
 
     <verbs>
       <li>
-        <verbClass>Verb_Shoot</verbClass>
+        <verbClass>Rimlaser.Verb_ShootBeam</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Bullet_DeathRay</defaultProjectile>
         <warmupTime>3.5</warmupTime>
@@ -731,7 +731,7 @@
 
     <verbs>
       <li>
-        <verbClass>Verb_Shoot</verbClass>
+        <verbClass>Rimlaser.Verb_ShootBeam</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Bullet_Tesla</defaultProjectile>
         <warmupTime>0.75</warmupTime>

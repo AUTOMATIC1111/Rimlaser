@@ -4,6 +4,7 @@ using UnityEngine;
 using RimWorld;
 using Verse;
 using System.Collections.Generic;
+using Rimlaser.Util;
 
 namespace Rimlaser
 {
@@ -11,7 +12,6 @@ namespace Rimlaser
     {
         int ticks = 0;
 
-        bool setupComplete = false;
         public Matrix4x4 drawingMatrix = default(Matrix4x4);
         Material materialBeam;
         Vector3 calculatedOrigin;
@@ -63,8 +63,6 @@ namespace Rimlaser
 
         public void SetupMatrices()
         {
-            if (setupComplete) return;
-
             IDrawnWeaponWithRotation weapon;
             SetColor(out weapon);
 
@@ -77,8 +75,10 @@ namespace Rimlaser
 
             var defWeapon = equipmentDef as LaserGunDef;
             Vector3 dir = (dest - orig).normalized;
+            //Offset origin for barrel length
             Vector3 a = orig + dir * (defWeapon == null ? 0.9f : defWeapon.barrelLength);
-            Vector3 b = dest;
+            //Offset destination for impact site (shield, flesh, or otherwise)
+            Vector3 b = dest - dir * (usedTarget.Thing.IsShielded() ? 0.5f : 0.05f);
             float length = (b - a).magnitude;
 
             Vector3 drawingScale = new Vector3(beamWidth, 1f, length);
@@ -101,14 +101,10 @@ namespace Rimlaser
             float seamGeometry = length <= capLength * 2 ? 0.5f : capLength * 2 / length;
 
             mesh = MeshMakerLaser.Mesh(seamTexture, seamGeometry);
-
-            setupComplete = true;
         }
 
         void SpawnDecorations()
         {
-            SetupMatrices();
-
             if (def.decorations == null) return;
 
             foreach (var decoration in def.decorations) {
@@ -184,8 +180,6 @@ namespace Rimlaser
 
         public override void Draw()
         {
-            SetupMatrices();
-
             float opacity = Opacity;
             Graphics.DrawMesh(mesh, drawingMatrix, FadedMaterialPool.FadedVersionOf(materialBeam, opacity), 0);
         }
@@ -210,7 +204,6 @@ namespace Rimlaser
         {
             if (destroyDelay != -1) return;
             Destroy(DestroyMode.Vanish);
-            bool shielded = false;
 
             if (hitThing == null)
             {
@@ -221,40 +214,26 @@ namespace Rimlaser
                 if (hitThing is Pawn)
                 {
                     Pawn hitPawn = hitThing as Pawn;
-                    if (hitPawn.apparel != null)
+                    if (hitPawn.IsShielded())
                     {
-                        DamageInfo damageTest = new DamageInfo(DamageDefOf.Bomb, 0f, 0f, -1, launcher);
-                        //Check for equipped items that could obstruct the beam
-                        foreach (var apparelItem in hitPawn.apparel.WornApparel)
-                        {
-                            if (apparelItem.CheckPreAbsorbDamage(damageTest))
-                            {
-                                shielded = true;
-                                break;
-                            }                                
-                        }
+                        this.weaponDamageMultiplier *= 0.5f;
+                        // Special effects of a beam hitting a shield
                     }
-
-                    if (!shielded && hitPawn.RaceProps.BloodDef != null)
+                    else if (hitPawn.HasBlood("Filth_Blood"))
                     {
                         //TODO: Consider reappropriating the following color data to use with hitLivingEffect's blood mist.
+                        //if (hitPawn.HasBlood()) <- This just confirms it has some sort of blood
                         //if (hitPawn.RaceProps.BloodDef.graphicData.color != null)
                         //{
                         //    Log.Message(hitPawn.RaceProps.BloodDef.graphicData.color.ToStringSafe<Color>());
                         //}
 
                         //Temporary solution to prevent insects and modded creatures like androids from bleeding red blood
-                        if (hitPawn.RaceProps.BloodDef.defName == "Filth_Blood")
-                        {
-                            TriggerEffect(def.hitLivingEffect, hitThing.Position);
-                        }
+                        TriggerEffect(def.hitLivingEffect, hitThing.Position);
                     }
                 }
                 TriggerEffect(def.explosionEffect, ExactPosition);
             }
-
-            if (shielded)
-                this.weaponDamageMultiplier *= 0.5f;
 
             base.Impact(hitThing);
         }
