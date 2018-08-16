@@ -34,6 +34,7 @@ namespace Rimlaser
 
         public EffecterDef explosionEffect;
         public EffecterDef hitLivingEffect;
+        public ThingDef beamGraphic;
 
         public List<string> textures;
         private List<Material> materials = new List<Material> ();
@@ -60,5 +61,11 @@ namespace Rimlaser
 
             return materials[index];
         }
+
+        public bool IsWeakToShields
+        {
+            get { return shieldDamageMultiplier < 1f; }
+        }
+
     }
 }

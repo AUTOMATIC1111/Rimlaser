@@ -8,7 +8,7 @@ namespace Rimlaser
 {
     class MoteLaserDectoration : MoteThrown
     {
-        public LaserBeam beam;
+        public LaserBeamGraphic beam;
         public float baseSpeed;
         public float speedJitter;
         public float speedJitterOffset;

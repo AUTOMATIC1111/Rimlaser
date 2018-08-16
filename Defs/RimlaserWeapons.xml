@@ -78,12 +78,25 @@
     </recipeMaker>
   </ThingDef>
 
+  <ThingDef>
+    <defName>RimlaserBeamGraphic</defName>
+    <thingClass>Rimlaser.LaserBeamGraphic</thingClass>
+    <drawOffscreen>true</drawOffscreen>
+    <label>laser beam</label>
+    
+    <category>Projectile</category>
+    <tickerType>Normal</tickerType>
+    <altitudeLayer>Projectile</altitudeLayer>
+    <useHitPoints>False</useHitPoints>
+    <neverMultiSelect>True</neverMultiSelect>
+  </ThingDef>
 
   <ThingDef Abstract="True" Name="Bullet_LaserGeneric" ParentName="BaseBullet">
     <thingClass>Rimlaser.LaserBeam</thingClass>
     <drawOffscreen>true</drawOffscreen>
-    
-    	<graphicData>
+    <beamGraphic>RimlaserBeamGraphic</beamGraphic>
+   
+    <graphicData>
       <graphicClass>Graphic_Single</graphicClass>
       <texPath>Rimlaser/Effects/LaserRed</texPath>
       <shaderType>TransparentPostLight</shaderType>
@@ -189,7 +202,7 @@
 
     <verbs>
       <li>
-        <verbClass>Rimlaser.Verb_ShootBeam</verbClass>
+        <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Bullet_LaserRifle</defaultProjectile>
         <warmupTime>1.0</warmupTime>
@@ -244,7 +257,7 @@
 	
     <verbs>
       <li>
-        <verbClass>Rimlaser.Verb_ShootBeam</verbClass>
+        <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Bullet_LaserRifle</defaultProjectile>
         <warmupTime>1.0</warmupTime>
@@ -297,7 +310,7 @@
 
     <verbs>
       <li>
-        <verbClass>Rimlaser.Verb_ShootBeam</verbClass>
+        <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Bullet_LaserPistol</defaultProjectile>
         <warmupTime>0.3</warmupTime>
@@ -376,7 +389,7 @@
 	
     <verbs>
       <li>
-        <verbClass>Rimlaser.Verb_ShootBeam</verbClass>
+        <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Bullet_LaserHeavy</defaultProjectile>
         <warmupTime>1.7</warmupTime>
@@ -444,7 +457,7 @@
     </equippedStatOffsets>
     <verbs>
       <li>
-        <verbClass>Rimlaser.Verb_ShootBeam</verbClass>
+        <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Bullet_LaserIncendiary</defaultProjectile>
         <warmupTime>1.4</warmupTime>
@@ -510,7 +523,7 @@
     </equippedStatOffsets>
     <verbs>
       <li>
-        <verbClass>Rimlaser.Verb_ShootBeam</verbClass>
+        <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Bullet_LaserSniper</defaultProjectile>
         <warmupTime>3.0</warmupTime>
@@ -587,7 +600,7 @@
     </equippedStatOffsets>
     <verbs>
       <li>
-        <verbClass>Rimlaser.Verb_ShootBeam</verbClass>
+        <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Bullet_LaserMinigun</defaultProjectile>
         <warmupTime>5.0</warmupTime>
@@ -657,7 +670,7 @@
 
     <verbs>
       <li>
-        <verbClass>Rimlaser.Verb_ShootBeam</verbClass>
+        <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Bullet_DeathRay</defaultProjectile>
         <warmupTime>3.5</warmupTime>
@@ -732,7 +745,7 @@
 
     <verbs>
       <li>
-        <verbClass>Rimlaser.Verb_ShootBeam</verbClass>
+        <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Bullet_Tesla</defaultProjectile>
         <warmupTime>0.75</warmupTime>
