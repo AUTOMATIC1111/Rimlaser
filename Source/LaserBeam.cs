@@ -46,7 +46,7 @@ namespace Rimlaser
         {
             for (int i = 0; i < count; i++)
             {
-                Vector3 dir = (destination - origin).normalized;
+                Vector3 dir = (b - a).normalized;
                 Vector3 c = b - dir.RotatedBy(Rand.Range(-22.5f,22.5f)) * Rand.Range(1f,4f);
 
                 SpawnBeam(b, c);
