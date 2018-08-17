@@ -32,8 +32,47 @@ namespace Rimlaser
             effecter.Cleanup();
         }
 
+        void SpawnBeam(Vector3 a, Vector3 b)
+        {
+            LaserBeamGraphic graphic = ThingMaker.MakeThing(def.beamGraphic, null) as LaserBeamGraphic;
+            if (graphic == null) return;
+
+            graphic.def = def;
+            graphic.Setup(launcher, a, b);
+            GenSpawn.Spawn(graphic, origin.ToIntVec3(), Map, WipeMode.Vanish);
+        }
+
+        void SpawnBeamReflections(Vector3 a, Vector3 b, int count)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                Vector3 dir = (destination - origin).normalized;
+                Vector3 c = b - dir.RotatedBy(Rand.Range(-22.5f,22.5f)) * Rand.Range(1f,4f);
+
+                SpawnBeam(b, c);
+            }
+        }
+
         protected override void Impact(Thing hitThing)
         {
+            LaserGunDef defWeapon = equipmentDef as LaserGunDef;
+            Vector3 dir = (destination - origin).normalized;
+            Vector3 a = origin + dir * (defWeapon == null ? 0.9f : defWeapon.barrelLength);
+            Vector3 b = destination - dir * ((hitThing.IsShielded() && def.IsWeakToShields) ? 0.45f : 0.01f);
+            a.y = b.y = def.Altitude;
+
+            SpawnBeam(a, b);
+
+            Pawn pawn = launcher as Pawn;
+            IDrawnWeaponWithRotation weapon = null;
+            if (pawn != null && pawn.equipment != null) weapon = pawn.equipment.Primary as IDrawnWeaponWithRotation;
+            if (weapon == null) weapon = launcher as IDrawnWeaponWithRotation;
+            if (weapon != null)
+            {
+                float angle = (destination - origin).AngleFlat() - (intendedTarget.CenterVector3 - origin).AngleFlat();
+                weapon.RotationOffset = (angle + 180) % 360 - 180;
+            }
+
             if (hitThing == null)
             {
                 TriggerEffect(def.explosionEffect, destination);
@@ -46,20 +85,16 @@ namespace Rimlaser
                     if (hitPawn.IsShielded())
                     {
                         weaponDamageMultiplier *= def.shieldDamageMultiplier;
+
+                        SpawnBeamReflections(a, b, 5);
                     }
                 }
 
                 TriggerEffect(def.explosionEffect, ExactPosition);
             }
 
-            LaserBeamGraphic graphic = ThingMaker.MakeThing(def.beamGraphic, null) as LaserBeamGraphic;
-            if (graphic != null)
-            {
-                graphic.Spawn(def, launcher, hitThing, origin, destination, intendedTarget.CenterVector3, equipmentDef);
-                GenSpawn.Spawn(graphic, origin.ToIntVec3(), Map, WipeMode.Vanish);
-            }
-
             base.Impact(hitThing);
         }
+
     }
 }

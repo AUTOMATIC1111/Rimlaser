@@ -9,16 +9,28 @@ namespace Rimlaser
 {
     class LaserBeamGraphic :Thing
     {
-        new LaserBeamDef def;
+        new LaserBeamDef def => base.def as LaserBeamDef;
+
+        int ticks;
+        int colorIndex = 2;
+        Vector3 a;
+        Vector3 b;
 
         public Matrix4x4 drawingMatrix = default(Matrix4x4);
         Material materialBeam;
-        Vector3 calculatedOrigin;
-        Vector3 calculatedDestination;
         Mesh mesh;
-        int ticks;
-
+ 
         public float Opacity => (float)Math.Sin(Math.Pow(1.0 - 1.0 * ticks / def.lifetime, def.impulse) * Math.PI);
+
+        public override void ExposeData()
+        {
+            base.ExposeData();
+
+            Scribe_Values.Look(ref ticks, "ticks");
+            Scribe_Values.Look(ref colorIndex, "colorIndex");
+            Scribe_Values.Look(ref a, "a");
+            Scribe_Values.Look(ref b, "b");
+        }
 
         public override void Tick()
         {
@@ -28,83 +40,42 @@ namespace Rimlaser
             }
         }
 
-        public override void Draw()
-        {
-            if (mesh == null) return;
-
-            float opacity = Opacity;
-            Graphics.DrawMesh(mesh, drawingMatrix, FadedMaterialPool.FadedVersionOf(materialBeam, opacity), 0);
-        }
-
-        public void SetTextures(int index)
-        {
-            materialBeam = def.GetBeamMaterial(index);
-
-            if (materialBeam == null)
-                materialBeam = def.graphicData.Graphic.MatSingle;
-        }
-
-        void SetColor(Thing launcher, out IDrawnWeaponWithRotation drawnWeaponWithRotation)
+        void SetColor(Thing launcher)
         {
             IBeamColorThing gun = null;
-            drawnWeaponWithRotation = null;
 
             Pawn pawn = launcher as Pawn;
-            if (pawn != null && pawn.equipment != null)
-            {
-                if (gun == null) gun = pawn.equipment.Primary as IBeamColorThing;
-                if (drawnWeaponWithRotation == null) drawnWeaponWithRotation = pawn.equipment.Primary as IDrawnWeaponWithRotation;
-            }
-
+            if (pawn != null && pawn.equipment != null) gun = pawn.equipment.Primary as IBeamColorThing;
             if (gun == null) gun = launcher as IBeamColorThing;
-            if (drawnWeaponWithRotation == null) drawnWeaponWithRotation = launcher as IDrawnWeaponWithRotation;
 
-            int colorIndex = -1;
             if (gun != null && gun.BeamColor != -1)
             {
                 colorIndex = gun.BeamColor;
             }
-            if (colorIndex == -1)
-            {
-                colorIndex = 2;
-            }
-
-            SetTextures(colorIndex);
         }
 
-        public void Spawn(LaserBeamDef beamDef, Thing launcher, Thing hitThing, Vector3 origin, Vector3 destination, Vector3 intendedTarget, Def equipmentDef)
+        public void Setup(Thing launcher, Vector3 origin, Vector3 destination)
         {
-            def = beamDef;
+            SetColor(launcher);
 
-            IDrawnWeaponWithRotation weapon;
-            SetColor(launcher, out weapon);
+            a = origin;
+            b = destination;
+        }
+
+        public void SetupDrawing()
+        {
+            if (mesh != null) return;
+
+            materialBeam = def.GetBeamMaterial(colorIndex) ?? def.graphicData.Graphic.MatSingle;
 
             float beamWidth = def.beamWidth;
-
-            float altitude = def.Altitude;
-            Vector3 dest = destination; dest.y = altitude;
-            Vector3 orig = origin; orig.y = altitude;
-            Quaternion rotation = Quaternion.LookRotation(dest - orig);
-
-            var defWeapon = equipmentDef as LaserGunDef;
-            Vector3 dir = (dest - orig).normalized;
-            Vector3 a = orig + dir * (defWeapon == null ? 0.9f : defWeapon.barrelLength);
-            Vector3 b = dest - dir * ((hitThing.IsShielded() && def.IsWeakToShields) ? 0.45f : 0.01f);
+            Quaternion rotation = Quaternion.LookRotation(b - a);
+            Vector3 dir = (b - a).normalized;
             float length = (b - a).magnitude;
 
             Vector3 drawingScale = new Vector3(beamWidth, 1f, length);
-
             Vector3 drawingPosition = (a + b) / 2;
             drawingMatrix.SetTRS(drawingPosition, rotation, drawingScale);
-
-            if (weapon != null)
-            {
-                float angle = (destination - origin).AngleFlat() - (intendedTarget - origin).AngleFlat();
-                weapon.RotationOffset = (angle + 180) % 360 - 180;
-            }
-
-            calculatedOrigin = a;
-            calculatedDestination = b;
 
             float textureRatio = 1.0f * materialBeam.mainTexture.width / materialBeam.mainTexture.height;
             float seamTexture = def.seam < 0 ? textureRatio : def.seam;
@@ -118,23 +89,23 @@ namespace Rimlaser
         {
             base.SpawnSetup(map, respawningAfterLoad);
 
-            if (def==null || def.decorations == null) return;
+            if (def==null || def.decorations == null || respawningAfterLoad) return;
 
             foreach (var decoration in def.decorations)
             {
                 float spacing = decoration.spacing * def.beamWidth;
                 float initalOffset = decoration.initialOffset * def.beamWidth;
 
-                Vector3 dir = (calculatedDestination - calculatedOrigin).normalized;
-                float angle = (calculatedDestination - calculatedOrigin).AngleFlat();
+                Vector3 dir = (b - a).normalized;
+                float angle = (b - a).AngleFlat();
                 Vector3 offset = dir * spacing;
-                Vector3 position = calculatedOrigin + offset * 0.5f + dir * initalOffset;
-                float length = (calculatedDestination - calculatedOrigin).magnitude - spacing;
+                Vector3 position = a + offset * 0.5f + dir * initalOffset;
+                float length = (b - a).magnitude - spacing;
 
                 int i = 0;
                 while (length > 0)
                 {
-                    MoteLaserDectoration moteThrown = (MoteLaserDectoration)ThingMaker.MakeThing(decoration.mote, null);
+                    MoteLaserDectoration moteThrown = ThingMaker.MakeThing(decoration.mote, null) as MoteLaserDectoration;
                     if (moteThrown == null) break;
 
                     moteThrown.beam = this;
@@ -146,13 +117,21 @@ namespace Rimlaser
                     moteThrown.baseSpeed = decoration.speed;
                     moteThrown.speedJitter = decoration.speedJitter;
                     moteThrown.speedJitterOffset = decoration.speedJitterOffset * i;
-                    GenSpawn.Spawn(moteThrown, calculatedOrigin.ToIntVec3(), map, WipeMode.Vanish);
+                    GenSpawn.Spawn(moteThrown, a.ToIntVec3(), map, WipeMode.Vanish);
 
                     position += offset;
                     length -= spacing;
                     i++;
                 }
             }
+        }
+
+        public override void Draw()
+        {
+            SetupDrawing();
+
+            float opacity = Opacity;
+            Graphics.DrawMesh(mesh, drawingMatrix, FadedMaterialPool.FadedVersionOf(materialBeam, opacity), 0);
         }
     }
 }
