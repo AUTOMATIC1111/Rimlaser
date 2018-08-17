@@ -55,10 +55,14 @@ namespace Rimlaser
 
         protected override void Impact(Thing hitThing)
         {
+            bool shielded = hitThing.IsShielded() && def.IsWeakToShields;
+
             LaserGunDef defWeapon = equipmentDef as LaserGunDef;
             Vector3 dir = (destination - origin).normalized;
+            dir.y = 0;
+
             Vector3 a = origin + dir * (defWeapon == null ? 0.9f : defWeapon.barrelLength);
-            Vector3 b = destination - dir * ((hitThing.IsShielded() && def.IsWeakToShields) ? 0.45f : 0.01f);
+            Vector3 b = shielded ? hitThing.TrueCenter() - dir.RotatedBy(Rand.Range(-22.5f,22.5f)) * 0.8f : destination;
             a.y = b.y = def.Altitude;
 
             SpawnBeam(a, b);
@@ -69,7 +73,7 @@ namespace Rimlaser
             if (weapon == null) weapon = launcher as IDrawnWeaponWithRotation;
             if (weapon != null)
             {
-                float angle = (destination - origin).AngleFlat() - (intendedTarget.CenterVector3 - origin).AngleFlat();
+                float angle = (b - a).AngleFlat() - (intendedTarget.CenterVector3 - a).AngleFlat();
                 weapon.RotationOffset = (angle + 180) % 360 - 180;
             }
 
@@ -82,7 +86,7 @@ namespace Rimlaser
                 if (hitThing is Pawn)
                 {
                     Pawn hitPawn = hitThing as Pawn;
-                    if (hitPawn.IsShielded())
+                    if (shielded)
                     {
                         weaponDamageMultiplier *= def.shieldDamageMultiplier;
 
