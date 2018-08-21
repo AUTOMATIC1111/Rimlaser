@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 
+  <RimlaserBeamGraphic.label>レーザービーム</RimlaserBeamGraphic.label>
+
   <!-- LASER RIFLE -->
 
   <Bullet_LaserRifle.label>レーザーライフルビーム</Bullet_LaserRifle.label>
