@@ -238,6 +238,8 @@
 	
   </ThingDef>
   
+  <!-- MOUNTED LASER RIFLE -->
+  
   <ThingDef ParentName="BaseNonMakeableLaserGun" Class="Rimlaser.LaserGunDef">
     <defName>Rimlaser_LaserRifleMounted</defName>
     <label>laser turret barrel</label>
@@ -272,6 +274,7 @@
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Bullet_LaserRifle</defaultProjectile>
         <warmupTime>1.0</warmupTime>
+        <minRange>0</minRange>
         <range>30.9</range>
         <soundCast>LaserRifle_Fire</soundCast>
         <soundCastTail>GunTail_Heavy</soundCastTail>
@@ -404,6 +407,7 @@
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Bullet_LaserHeavy</defaultProjectile>
         <warmupTime>1.7</warmupTime>
+        <minRange>0</minRange>
         <range>36.9</range>
         <soundCast>LaserHeavy_fire</soundCast>
         <soundCastTail>GunTail_Heavy</soundCastTail>
@@ -443,7 +447,7 @@
   <ThingDef ParentName="BaseLaserGun" Class="Rimlaser.LaserGunDef">
     <defName>Rimlaser_LaserIncendiary</defName>
     <label>incendiary laser</label>
-    <description>A clever design that despite doing mot much damage for its size, has tendency to ignite its target.</description>
+    <description>A clever design that despite not doing much damage for its size, has tendency to ignite its target.</description>
     <graphicData>
       <texPath>Rimlaser/Weapons/LaserIncendiary</texPath>
     </graphicData>
@@ -641,6 +645,63 @@
   </ThingDef>
   
   
+  <!-- TURRET MINIGUN -->
+  <ThingDef ParentName="BaseNonMakeableLaserGun" Class="Rimlaser.SpinningLaserGunDef">
+    <defName>LaserHeavyMinigunMounted</defName>
+    <label>heavy laser minigun</label>
+    <description>Mounted heavy laser minigun.</description>
+    <thingClass>Rimlaser.SpinningLaserGunTurret</thingClass>
+	
+    <graphicData>
+      <texPath>Rimlaser/Weapons/LaserHeavyMinigunMounted-1</texPath>
+    </graphicData>
+	
+	<frames>
+		<li><texPath>Rimlaser/Weapons/LaserHeavyMinigunMounted-1</texPath><graphicClass>Graphic_Single</graphicClass></li>
+		<li><texPath>Rimlaser/Weapons/LaserHeavyMinigunMounted-2</texPath><graphicClass>Graphic_Single</graphicClass></li>
+		<li><texPath>Rimlaser/Weapons/LaserHeavyMinigunMounted-3</texPath><graphicClass>Graphic_Single</graphicClass></li>
+		<li><texPath>Rimlaser/Weapons/LaserHeavyMinigunMounted-4</texPath><graphicClass>Graphic_Single</graphicClass></li>
+		<li><texPath>Rimlaser/Weapons/LaserHeavyMinigunMounted-5</texPath><graphicClass>Graphic_Single</graphicClass></li>
+		<li><texPath>Rimlaser/Weapons/LaserHeavyMinigunMounted-6</texPath><graphicClass>Graphic_Single</graphicClass></li>
+		<li><texPath>Rimlaser/Weapons/LaserHeavyMinigunMounted-7</texPath><graphicClass>Graphic_Single</graphicClass></li>
+		<li><texPath>Rimlaser/Weapons/LaserHeavyMinigunMounted-8</texPath><graphicClass>Graphic_Single</graphicClass></li>
+	</frames>
+	<rotationSpeed>0.65</rotationSpeed>
+
+    <statBases>
+      <Mass>18</Mass>
+      <AccuracyTouch>0.1</AccuracyTouch>
+      <AccuracyShort>0.7</AccuracyShort>
+      <AccuracyMedium>0.7</AccuracyMedium>
+      <AccuracyLong>0.5</AccuracyLong>
+      <RangedWeapon_Cooldown>3.9</RangedWeapon_Cooldown>
+      <WorkToMake>60000</WorkToMake>
+    </statBases>
+
+    <costList>
+      <RimlaserPrism>12</RimlaserPrism>
+      <Plasteel>500</Plasteel>
+      <ComponentSpacer>40</ComponentSpacer>
+    </costList>
+
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_LaserHeavy</defaultProjectile>
+        <warmupTime>1.0</warmupTime>
+        <minRange>4.5</minRange>
+        <range>36.9</range>
+        <soundCast>LaserHeavy_fire</soundCast>
+        <muzzleFlashScale>9</muzzleFlashScale>
+        <burstShotCount>10</burstShotCount>
+        <ticksBetweenBurstShots>20</ticksBetweenBurstShots>
+      </li>
+    </verbs>
+	
+	<barrelLength>1.9</barrelLength>
+  </ThingDef>
+
   <!-- DEATH RAY -->
 
   <ThingDef ParentName="Bullet_LaserDeathRay" Class="Rimlaser.LaserBeamDef">

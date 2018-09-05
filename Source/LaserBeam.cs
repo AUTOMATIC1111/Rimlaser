@@ -67,10 +67,16 @@ namespace Rimlaser
 
             SpawnBeam(a, b);
 
+
             Pawn pawn = launcher as Pawn;
             IDrawnWeaponWithRotation weapon = null;
             if (pawn != null && pawn.equipment != null) weapon = pawn.equipment.Primary as IDrawnWeaponWithRotation;
-            if (weapon == null) weapon = launcher as IDrawnWeaponWithRotation;
+            if (weapon == null) {
+                Building_LaserGun turret = launcher as Building_LaserGun;
+                if (turret != null) {
+                    weapon = turret.gun as IDrawnWeaponWithRotation;
+                }
+            }
             if (weapon != null)
             {
                 float angle = (b - a).AngleFlat() - (intendedTarget.CenterVector3 - a).AngleFlat();

@@ -12,6 +12,9 @@ namespace Rimlaser
 
         new public Building_LaserGunDef def => base.def as Building_LaserGunDef;
 
+        public int BurstCooldownTicksLeft => burstCooldownTicksLeft;
+        public int BurstWarmupTicksLeft => burstWarmupTicksLeft;
+
         public int BeamColor
         {
             get { return LaserColor.IndexBasedOnThingQuality(beamColorIndex, this); }

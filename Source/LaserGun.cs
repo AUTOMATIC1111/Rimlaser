@@ -8,7 +8,7 @@ using Verse.AI;
 namespace Rimlaser
 {
 
-    class LaserGun :ThingWithComps, IBeamColorThing, IDrawnWeaponWithRotation
+    public class LaserGun :ThingWithComps, IBeamColorThing, IDrawnWeaponWithRotation
     {
         new public LaserGunDef def => base.def as LaserGunDef ?? LaserGunDef.defaultObj;
 
