@@ -160,6 +160,51 @@
     </subSounds>
   </SoundDef>
 
+
+  <SoundDef ParentName="RimlaserSound">
+    <defName>LaserHeavyMinigun_fire</defName>  
+    <context>MapOnly</context>
+    <eventNames />  
+    <maxSimultaneous>4</maxSimultaneous>  
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>Rimlaser/LaserHeavyMinigun_fire</clipFolderPath>
+          </li>
+        </grains>      
+        <volumeRange><min>8</min><max>8</max></volumeRange>
+        <pitchRange>
+          <min>0.9082353</min>        
+          <max>1.045882</max>
+        </pitchRange>      
+        <sustainLoop>False</sustainLoop>
+      </li>
+    </subSounds>
+  </SoundDef>
+  
+  <SoundDef ParentName="RimlaserSound">
+    <defName>LaserHeavyMinigun_warmup</defName>  
+    <context>MapOnly</context>
+    <eventNames />  
+    <maxSimultaneous>4</maxSimultaneous>  
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>Rimlaser/LaserHeavyMinigun_warmup</clipFolderPath>
+          </li>
+        </grains>      
+        <volumeRange><min>8</min><max>8</max></volumeRange>
+        <pitchRange>
+          <min>0.9082353</min>        
+          <max>1.045882</max>
+        </pitchRange>      
+        <sustainLoop>False</sustainLoop>
+      </li>
+    </subSounds>
+  </SoundDef>
+
   <SoundDef ParentName="RimlaserSound">
     <defName>DeathRay_fire</defName>  
     <context>MapOnly</context>

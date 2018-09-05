@@ -692,7 +692,8 @@
         <warmupTime>1.0</warmupTime>
         <minRange>4.5</minRange>
         <range>36.9</range>
-        <soundCast>LaserHeavy_fire</soundCast>
+        <soundCast>LaserHeavyMinigun_fire</soundCast>
+        <soundAiming>LaserHeavyMinigun_warmup</soundAiming>
         <muzzleFlashScale>9</muzzleFlashScale>
         <burstShotCount>10</burstShotCount>
         <ticksBetweenBurstShots>20</ticksBetweenBurstShots>

@@ -1,6 +1,7 @@
 ﻿using RimWorld;
 using System.Collections.Generic;
 using Verse;
+using Verse.Sound;
 
 namespace Rimlaser
 {
@@ -58,11 +59,11 @@ namespace Rimlaser
 
         public override void Tick()
         {
-            if (burstCooldownTicksLeft > previousBurstCooldownTicksLeft) {
+            if (burstCooldownTicksLeft > previousBurstCooldownTicksLeft)
+            {
                 isCharged = false;
             }
             previousBurstCooldownTicksLeft = burstCooldownTicksLeft;
-
 
             if (!isCharged)
             {
@@ -72,9 +73,16 @@ namespace Rimlaser
                 }
             }
 
-            if (isCharged || burstCooldownTicksLeft>1)
+            if (!(isCharged || burstCooldownTicksLeft > 1)) return;
+
+            int ticksLeft = burstWarmupTicksLeft;
+            base.Tick();
+            if (burstWarmupTicksLeft == def.building.turretBurstWarmupTime.SecondsToTicks() - 1 && ticksLeft == burstWarmupTicksLeft+1)
             {
-                base.Tick();
+                if (AttackVerb.verbProps.soundAiming != null)
+                {
+                    AttackVerb.verbProps.soundAiming.PlayOneShot(new TargetInfo(Position, Map, false));
+                }
             }
         }
 
@@ -121,5 +129,6 @@ namespace Rimlaser
 
         private int beamColorIndex = -1;
     }
+
 
 }
