@@ -20,6 +20,11 @@
         <minQualityForArtistic>Excellent</minQualityForArtistic>
       </li>
     </comps>
+    
+    <weaponTags>
+      <li>Gun</li>
+      <li>SpacerGun</li>
+    </weaponTags>
   </ThingDef>
 
   <ThingDef Name="RimlaserBaseGunWithQuality" Abstract="True" ParentName="RimlaserBaseGun">
@@ -28,6 +33,7 @@
         <compClass>CompQuality</compClass>
       </li>
     </comps>
+
   </ThingDef>
 
   <ThingDef Name="RimlaserBaseMakeableGun" ParentName="RimlaserBaseGunWithQuality" Abstract="True">
@@ -54,11 +60,6 @@
     <soundInteract>Interact_ChargeRifle</soundInteract>
     <repairEffect>Repair</repairEffect>
 
-    <weaponTags>
-      <li>Gun</li>
-      <li>SpacerGun</li>
-    </weaponTags>
-	
     <supportsColors>true</supportsColors>
   </ThingDef>
 
@@ -179,7 +180,7 @@
   <ThingDef ParentName="BaseLaserGun" Name="Rimlaser_LaserRifle" Class="Rimlaser.LaserGunDef">
     <defName Inherit="False">Rimlaser_LaserRifle</defName>
     <label>laser rifle</label>
-    <description>A futuristic laser rifle design. Does about as mucu damage as the pistol per beam, but fires twice as fast and is designed to work at greater range.</description>
+    <description>A futuristic laser rifle design. Does about as much damage as laser pistol per beam, but fires twice as fast and is designed to work at greater range.</description>
     <graphicData>
       <texPath>Rimlaser/Weapons/LaserRifle</texPath>
     </graphicData>
@@ -195,9 +196,9 @@
     </statBases>
 	
     <costList>
-      <RimlaserCrystal>1</RimlaserCrystal>
-      <Plasteel>60</Plasteel>
-      <ComponentSpacer>5</ComponentSpacer>
+      <RimlaserPrism>2</RimlaserPrism>
+      <Plasteel>30</Plasteel>
+      <ComponentSpacer>3</ComponentSpacer>
     </costList>
 
     <verbs>
@@ -239,10 +240,10 @@
   
   <ThingDef ParentName="BaseNonMakeableLaserGun" Class="Rimlaser.LaserGunDef">
     <defName>Rimlaser_LaserRifleMounted</defName>
-    <label>laser rifle</label>
-    <description>A futuristic laser rifle design. Does about as mucu damage as the pistol per beam, but fires twice as fast and is designed to work at greater range.</description>
+    <label>laser turret barrel</label>
+    <description>A barrel ripped from a laser turret. Similar to laser rifle in its combat capacity, but difficult to carry.</description>
     <graphicData>
-      <texPath>Rimlaser/Weapons/LaserRifle</texPath>
+      <texPath>Rimlaser/Weapons/LaserRifleMountedGun</texPath>
     </graphicData>
 	
     <statBases>
@@ -255,6 +256,16 @@
       <RangedWeapon_Cooldown>0.57</RangedWeapon_Cooldown>
     </statBases>
 	
+    <equippedStatOffsets>
+      <MoveSpeed>-0.4</MoveSpeed>
+    </equippedStatOffsets>
+    
+    <costList>
+      <RimlaserPrism>2</RimlaserPrism>
+      <Plasteel>30</Plasteel>
+      <ComponentSpacer>3</ComponentSpacer>
+    </costList>
+    
     <verbs>
       <li>
         <verbClass>Verb_Shoot</verbClass>
@@ -303,9 +314,9 @@
     </statBases>
 	
     <costList>
-      <RimlaserCrystal>1</RimlaserCrystal>
-      <Plasteel>40</Plasteel>
-      <ComponentSpacer>4</ComponentSpacer>
+      <RimlaserPrism>1</RimlaserPrism>
+      <Plasteel>20</Plasteel>
+      <ComponentSpacer>2</ComponentSpacer>
     </costList>
 
     <verbs>
@@ -363,26 +374,26 @@
   <ThingDef ParentName="BaseLaserGun" Class="Rimlaser.LaserGunDef">
     <defName>Rimlaser_LaserHeavy</defName>
     <label>heavy laser</label>
-    <description>A grotesque looking heavy laser gun. Inflicts gigantic amounts of damage, but hard to operate at any distance.</description>
+    <description>A heavy laser gun. Inflicts gigantic amounts of damage, but is very costly to make and hard to operate at close distances.</description>
     <graphicData>
       <texPath>Rimlaser/Weapons/LaserHeavy</texPath>
     </graphicData>
     <statBases>
       <Mass>18</Mass>
-      <AccuracyTouch>0.3</AccuracyTouch>
+      <AccuracyTouch>0.1</AccuracyTouch>
       <AccuracyShort>0.7</AccuracyShort>
       <AccuracyMedium>0.7</AccuracyMedium>
       <AccuracyLong>0.5</AccuracyLong>
-      <RangedWeapon_Cooldown>3.6</RangedWeapon_Cooldown>
+      <RangedWeapon_Cooldown>3.9</RangedWeapon_Cooldown>
       <WorkToMake>60000</WorkToMake>
     </statBases>
 	
     <costList>
-      <RimlaserCrystal>1</RimlaserCrystal>
-      <Plasteel>80</Plasteel>
-      <ComponentSpacer>6</ComponentSpacer>
+      <RimlaserPrism>4</RimlaserPrism>
+      <Plasteel>120</Plasteel>
+      <ComponentSpacer>10</ComponentSpacer>
     </costList>
-	
+
     <equippedStatOffsets>
       <MoveSpeed>-0.25</MoveSpeed>
     </equippedStatOffsets>
@@ -445,11 +456,11 @@
       <RangedWeapon_Cooldown>2.4</RangedWeapon_Cooldown>
       <WorkToMake>60000</WorkToMake>
     </statBases>
-	
+
     <costList>
-      <RimlaserCrystal>1</RimlaserCrystal>
-      <Plasteel>80</Plasteel>
-      <ComponentSpacer>5</ComponentSpacer>
+      <RimlaserPrism>1</RimlaserPrism>
+      <Plasteel>30</Plasteel>
+      <ComponentSpacer>2</ComponentSpacer>
     </costList>
 
     <equippedStatOffsets>
@@ -498,7 +509,7 @@
   <ThingDef ParentName="BaseLaserGun" Class="Rimlaser.LaserGunDef">
     <defName>Rimlaser_LaserSniper</defName>
     <label>laser sniper rifle</label>
-    <description>A long range laser rifle. Does a good amount of damage and at great range, but bulky and nearly impossible to operate at close range.</description>
+    <description>A long-range laser rifle. Does a good amount of damage and at great range, but is bulky and nearly impossible to operate at close range.</description>
     <graphicData>
       <texPath>Rimlaser/Weapons/LaserSniper</texPath>
     </graphicData>
@@ -513,21 +524,22 @@
     </statBases>
 	
     <costList>
-      <RimlaserCrystal>1</RimlaserCrystal>
+      <RimlaserPrism>2</RimlaserPrism>
       <Plasteel>100</Plasteel>
-      <ComponentSpacer>5</ComponentSpacer>
+      <ComponentSpacer>4</ComponentSpacer>
     </costList>
 
     <equippedStatOffsets>
       <MoveSpeed>-0.10</MoveSpeed>
     </equippedStatOffsets>
+    
     <verbs>
       <li>
         <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Bullet_LaserSniper</defaultProjectile>
         <warmupTime>3.0</warmupTime>
-        <range>52</range>
+        <range>52.9</range>
         <soundCast>LaserSniper_fire</soundCast>
         <muzzleFlashScale>9</muzzleFlashScale>
       </li>
@@ -564,7 +576,7 @@
   <ThingDef ParentName="BaseLaserGun" Class="Rimlaser.SpinningLaserGunDef">
     <defName>Rimlaser_LaserMinigun</defName>
     <label>laser minigun</label>
-    <description>A laser gun with three barrels spinned by an electric motor. Due to fragility of rotating parts it has to take a long time to spin up, but once it starts firing it fires very fast, and with somewhat better precision than its gunpowder variation.</description>
+    <description>A laser gun with three barrels spun by an electric motor. Due to fragility of rotating parts it has to take a long time to spin up, but once it starts firing it fires very fast, and with somewhat better accuracy than its gunpowder variation.</description>
     <thingClass>Rimlaser.SpinningLaserGun</thingClass>
 	
     <graphicData>
@@ -590,21 +602,22 @@
     </statBases>
 
     <costList>
-      <RimlaserCrystal>1</RimlaserCrystal>
-      <Plasteel>100</Plasteel>
-      <ComponentSpacer>5</ComponentSpacer>
+      <RimlaserPrism>2</RimlaserPrism>
+      <Plasteel>120</Plasteel>
+      <ComponentSpacer>4</ComponentSpacer>
     </costList>
 
     <equippedStatOffsets>
       <MoveSpeed>-0.25</MoveSpeed>
     </equippedStatOffsets>
+
     <verbs>
       <li>
         <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Bullet_LaserMinigun</defaultProjectile>
         <warmupTime>5.0</warmupTime>
-        <range>30</range>
+        <range>30.9</range>
         <soundCast>LaserMinigun_fire</soundCast>
         <muzzleFlashScale>9</muzzleFlashScale>
         <soundAiming>LaserMinigun_warmup</soundAiming>
@@ -661,9 +674,9 @@
       <RangedWeapon_Cooldown>0.5</RangedWeapon_Cooldown>
       <WorkToMake>600000</WorkToMake>
     </statBases>
-	
+    
     <costList>
-      <RimlaserCrystal>3</RimlaserCrystal>
+      <RimlaserPrism>4</RimlaserPrism>
       <Plasteel>200</Plasteel>
       <ComponentSpacer>12</ComponentSpacer>
     </costList>
@@ -674,7 +687,7 @@
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Bullet_DeathRay</defaultProjectile>
         <warmupTime>3.5</warmupTime>
-        <range>52</range>
+        <range>52.9</range>
         <soundCast>DeathRay_fire</soundCast>
         <muzzleFlashScale>9</muzzleFlashScale>
       </li>
@@ -736,11 +749,10 @@
       <RangedWeapon_Cooldown>0.5</RangedWeapon_Cooldown>
       <WorkToMake>60000</WorkToMake>
     </statBases>
-	
+    
     <costList>
-      <RimlaserCrystal>1</RimlaserCrystal>
-      <Plasteel>100</Plasteel>
-      <ComponentSpacer>5</ComponentSpacer>
+      <Plasteel>60</Plasteel>
+      <ComponentSpacer>3</ComponentSpacer>
     </costList>
 
     <verbs>
@@ -749,7 +761,7 @@
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Bullet_Tesla</defaultProjectile>
         <warmupTime>0.75</warmupTime>
-        <range>10</range>
+        <range>10.9</range>
         <soundCast>Tesla_fire</soundCast>
         <muzzleFlashScale>9</muzzleFlashScale>
       </li>

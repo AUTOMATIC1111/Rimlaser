@@ -81,7 +81,7 @@
   <ThingDef ParentName="RimlaserItemBase">
     <defName>RimlaserPrism</defName>
     <label>prism</label>
-    <description>A prism that can be usedto change laser weapon's color (without affecting it battle capabilities).</description>
+    <description>Main component of a laser weapon. A prism can also be used to change beam color (without affecting weapon's battle capabilities).</description>
     <graphicData>
       <texPath>Rimlaser/Items/Prism</texPath>
       <graphicClass>Graphic_StackCount</graphicClass>
