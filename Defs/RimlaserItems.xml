@@ -41,6 +41,7 @@
     <graphicData>
       <texPath>Rimlaser/Items/Crystal</texPath>
       <graphicClass>Graphic_StackCount</graphicClass>
+      <shaderType>Transparent</shaderType>
     </graphicData>
     <soundInteract>RimlaserCrystal_Drop</soundInteract>
     <stackLimit>5</stackLimit>
