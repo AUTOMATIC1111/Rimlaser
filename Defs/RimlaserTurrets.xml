@@ -92,7 +92,7 @@
       <RimlaserPrism>1</RimlaserPrism>
     </costList>
     <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
-    <specialDisplayRadius>30.9</specialDisplayRadius>
+    <specialDisplayRadius>38.9</specialDisplayRadius>
     <constructionSkillPrerequisite>10</constructionSkillPrerequisite>
     <building>
       <ai_combatDangerous>true</ai_combatDangerous>
@@ -164,7 +164,7 @@
     </stuffCategories>
 
     <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
-    <specialDisplayRadius>36.9</specialDisplayRadius>
+    <specialDisplayRadius>44.9</specialDisplayRadius>
     <constructionSkillPrerequisite>10</constructionSkillPrerequisite>
     <building>
       <ai_combatDangerous>true</ai_combatDangerous>

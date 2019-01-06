@@ -173,7 +173,7 @@
     <label>laser rifle beam</label>
     
     <projectile>
-      <damageAmountBase>12</damageAmountBase>
+      <damageAmountBase>16</damageAmountBase>
     </projectile>
   </ThingDef>
 
@@ -197,8 +197,8 @@
 	
     <costList>
       <RimlaserPrism>2</RimlaserPrism>
-      <Plasteel>30</Plasteel>
-      <ComponentSpacer>3</ComponentSpacer>
+      <Plasteel>20</Plasteel>
+      <ComponentIndustrial>3</ComponentIndustrial>
     </costList>
 
     <verbs>
@@ -207,7 +207,7 @@
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Bullet_LaserRifle</defaultProjectile>
         <warmupTime>1.0</warmupTime>
-        <range>30.9</range>
+        <range>38.9</range>
         <soundCast>LaserRifle_Fire</soundCast>
         <soundCastTail>GunTail_Heavy</soundCastTail>
         <muzzleFlashScale>9</muzzleFlashScale>
@@ -264,8 +264,8 @@
     
     <costList>
       <RimlaserPrism>2</RimlaserPrism>
-      <Plasteel>30</Plasteel>
-      <ComponentSpacer>3</ComponentSpacer>
+      <Plasteel>20</Plasteel>
+      <ComponentIndustrial>3</ComponentIndustrial>
     </costList>
     
     <verbs>
@@ -275,7 +275,7 @@
         <defaultProjectile>Bullet_LaserRifle</defaultProjectile>
         <warmupTime>1.0</warmupTime>
         <minRange>0</minRange>
-        <range>30.9</range>
+        <range>38.9</range>
         <soundCast>LaserRifle_Fire</soundCast>
         <soundCastTail>GunTail_Heavy</soundCastTail>
         <muzzleFlashScale>9</muzzleFlashScale>
@@ -293,7 +293,7 @@
     <label>laser pistol beam</label>
     
     <projectile>
-      <damageAmountBase>12</damageAmountBase>
+      <damageAmountBase>16</damageAmountBase>
     </projectile>
 	
 	<beamWidth>0.6</beamWidth>
@@ -318,8 +318,8 @@
 	
     <costList>
       <RimlaserPrism>1</RimlaserPrism>
-      <Plasteel>20</Plasteel>
-      <ComponentSpacer>2</ComponentSpacer>
+      <Plasteel>10</Plasteel>
+      <ComponentIndustrial>2</ComponentIndustrial>
     </costList>
 
     <verbs>
@@ -328,7 +328,7 @@
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Bullet_LaserPistol</defaultProjectile>
         <warmupTime>0.3</warmupTime>
-        <range>25.9</range>
+        <range>30.9</range>
         <soundCast>LaserPistol_fire</soundCast>
         <soundCastTail>GunTail_Heavy</soundCastTail>
         <muzzleFlashScale>9</muzzleFlashScale>
@@ -393,8 +393,8 @@
 	
     <costList>
       <RimlaserPrism>4</RimlaserPrism>
-      <Plasteel>120</Plasteel>
-      <ComponentSpacer>10</ComponentSpacer>
+      <Plasteel>50</Plasteel>
+      <ComponentIndustrial>10</ComponentIndustrial>
     </costList>
 
     <equippedStatOffsets>
@@ -408,7 +408,7 @@
         <defaultProjectile>Bullet_LaserHeavy</defaultProjectile>
         <warmupTime>1.7</warmupTime>
         <minRange>0</minRange>
-        <range>36.9</range>
+        <range>44.9</range>
         <soundCast>LaserHeavy_fire</soundCast>
         <soundCastTail>GunTail_Heavy</soundCastTail>
         <muzzleFlashScale>9</muzzleFlashScale>
@@ -463,8 +463,8 @@
 
     <costList>
       <RimlaserPrism>1</RimlaserPrism>
-      <Plasteel>30</Plasteel>
-      <ComponentSpacer>2</ComponentSpacer>
+      <Plasteel>20</Plasteel>
+      <ComponentIndustrial>2</ComponentIndustrial>
     </costList>
 
     <equippedStatOffsets>
@@ -476,7 +476,7 @@
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Bullet_LaserIncendiary</defaultProjectile>
         <warmupTime>1.4</warmupTime>
-        <range>36.9</range>
+        <range>38.9</range>
         <soundCast>LaserIncendiary_fire</soundCast>
         <muzzleFlashScale>9</muzzleFlashScale>
       </li>
@@ -504,7 +504,7 @@
     <label>sniper laser beam</label>
     
     <projectile>
-      <damageAmountBase>30</damageAmountBase>
+      <damageAmountBase>32</damageAmountBase>
     </projectile>
 	
 	<beamWidth>0.9</beamWidth>
@@ -529,8 +529,8 @@
 	
     <costList>
       <RimlaserPrism>2</RimlaserPrism>
-      <Plasteel>100</Plasteel>
-      <ComponentSpacer>4</ComponentSpacer>
+      <Plasteel>35</Plasteel>
+      <ComponentIndustrial>4</ComponentIndustrial>
     </costList>
 
     <equippedStatOffsets>
@@ -543,7 +543,7 @@
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Bullet_LaserSniper</defaultProjectile>
         <warmupTime>3.0</warmupTime>
-        <range>52.9</range>
+        <range>56.9</range>
         <soundCast>LaserSniper_fire</soundCast>
         <muzzleFlashScale>9</muzzleFlashScale>
       </li>
@@ -570,7 +570,7 @@
     <label>minigun laser beam</label>
     
     <projectile>
-      <damageAmountBase>10</damageAmountBase>
+      <damageAmountBase>12</damageAmountBase>
     </projectile>
 	
 	<beamWidth>0.4</beamWidth>
@@ -607,8 +607,8 @@
 
     <costList>
       <RimlaserPrism>2</RimlaserPrism>
-      <Plasteel>120</Plasteel>
-      <ComponentSpacer>4</ComponentSpacer>
+      <Plasteel>50</Plasteel>
+      <ComponentIndustrial>4</ComponentIndustrial>
     </costList>
 
     <equippedStatOffsets>
@@ -621,7 +621,7 @@
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Bullet_LaserMinigun</defaultProjectile>
         <warmupTime>5.0</warmupTime>
-        <range>30.9</range>
+        <range>36.9</range>
         <soundCast>LaserMinigun_fire</soundCast>
         <muzzleFlashScale>9</muzzleFlashScale>
         <soundAiming>LaserMinigun_warmup</soundAiming>
@@ -681,7 +681,7 @@
     <costList>
       <RimlaserPrism>12</RimlaserPrism>
       <Plasteel>500</Plasteel>
-      <ComponentSpacer>40</ComponentSpacer>
+      <ComponentIndustrial>40</ComponentIndustrial>
     </costList>
 
     <verbs>
@@ -740,7 +740,7 @@
     <costList>
       <RimlaserPrism>4</RimlaserPrism>
       <Plasteel>200</Plasteel>
-      <ComponentSpacer>12</ComponentSpacer>
+      <ComponentIndustrial>12</ComponentIndustrial>
     </costList>
 
     <verbs>
@@ -749,7 +749,7 @@
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Bullet_DeathRay</defaultProjectile>
         <warmupTime>3.5</warmupTime>
-        <range>52.9</range>
+        <range>64.9</range>
         <soundCast>DeathRay_fire</soundCast>
         <muzzleFlashScale>9</muzzleFlashScale>
       </li>
@@ -787,8 +787,8 @@
     <seam>0</seam>
 
     <projectile>
-      <damageAmountBase>6</damageAmountBase>
-      <stoppingPower>6</stoppingPower>
+      <damageAmountBase>8</damageAmountBase>
+      <stoppingPower>12</stoppingPower>
     </projectile>
 	
 	<beamWidth>1.0</beamWidth>
@@ -813,8 +813,8 @@
     </statBases>
     
     <costList>
-      <Plasteel>60</Plasteel>
-      <ComponentSpacer>3</ComponentSpacer>
+      <Plasteel>20</Plasteel>
+      <ComponentIndustrial>3</ComponentIndustrial>
     </costList>
 
     <verbs>
@@ -823,7 +823,7 @@
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Bullet_Tesla</defaultProjectile>
         <warmupTime>0.75</warmupTime>
-        <range>10.9</range>
+        <range>18.9</range>
         <soundCast>Tesla_fire</soundCast>
         <muzzleFlashScale>9</muzzleFlashScale>
       </li>
