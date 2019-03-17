@@ -243,6 +243,8 @@
   <ThingDef ParentName="BaseNonMakeableLaserGun" Class="Rimlaser.LaserGunDef">
     <defName>Rimlaser_LaserRifleMounted</defName>
     <label>laser turret barrel</label>
+    <tradeability>None</tradeability>
+
     <description>A barrel ripped from a laser turret. Similar to laser rifle in its combat capacity, but difficult to carry.</description>
     <graphicData>
       <texPath>Rimlaser/Weapons/LaserRifleMountedGun</texPath>
@@ -649,6 +651,9 @@
   <ThingDef ParentName="BaseNonMakeableLaserGun" Class="Rimlaser.SpinningLaserGunDef">
     <defName>LaserHeavyMinigunMounted</defName>
     <label>heavy laser minigun</label>
+    <tradeability>None</tradeability>
+
+    
     <description>Mounted heavy laser minigun.</description>
     <thingClass>Rimlaser.SpinningLaserGunTurret</thingClass>
 	

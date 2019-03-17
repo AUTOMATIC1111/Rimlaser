@@ -49,15 +49,18 @@
     <statBases>
       <Flammability>0.0</Flammability>
       <Beauty>0</Beauty>
-      <MarketValue>500</MarketValue>
+      <MarketValue>300</MarketValue>
       <Mass>0.5</Mass>
     </statBases>
-    <thingCategories>
-      <li>ResourcesRaw</li>
-    </thingCategories>
+    
     <tradeTags>
       <li>ExoticMisc</li>
     </tradeTags>
+    <thingCategories>
+      <li>ResourcesRaw</li>
+      <li>Items</li>
+    </thingCategories>
+
     <deepCommonality>1</deepCommonality>
     <deepCountPerPortion>1</deepCountPerPortion>
     <deepCountPerCell>1</deepCountPerCell>
@@ -95,14 +98,13 @@
       <Flammability>0.0</Flammability>
       <WorkToMake>1000</WorkToMake>
       <Beauty>4</Beauty>
-      <MarketValue>100</MarketValue>
+      <MarketValue>120</MarketValue>
       <Mass>0.1</Mass>
     </statBases>
     
     <tradeTags>
       <li>ExoticMisc</li>
     </tradeTags>
-    
     <thingCategories>
       <li>Items</li>
     </thingCategories>
