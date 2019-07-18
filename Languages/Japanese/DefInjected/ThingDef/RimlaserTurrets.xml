@@ -24,9 +24,8 @@
 
   <TurretLaserHeavyMinigun.label>軍用タレット (ガトリングレーザー)</TurretLaserHeavyMinigun.label>
   <TurretLaserHeavyMinigun.description>電気モーターで回転する3本に増強された強力なレーザーバレルを備えた大型レーザータレットです。バレルの交換は必要ありませんが、1発あたりバッテリーから30Wdの電力を消費します。</TurretLaserHeavyMinigun.description>
-  <TurretLaserHeavyMinigun_Blueprint.label>軍用タレット(ガトリングレーザー)(blueprint)</TurretLaserHeavyMinigun_Blueprint.label>
-  <TurretLaserHeavyMinigun_Frame.label>軍用タレット(ガトリングレーザー)(building)</TurretLaserHeavyMinigun_Frame.label>
-  <TurretLaserHeavyMinigun_Frame.description>電気モーターで回転する3本に増強された強力なレーザーバレルを備えた大型レーザータレットです。バレルの交換は必要ありませんが、1発あたりバッテリーから30Wdの電力を消費します。</TurretLaserHeavyMinigun_Frame.description>
-
+  <Blueprint_TurretLaserHeavyMinigun.label>軍用タレット(ガトリングレーザー)(blueprint)</Blueprint_TurretLaserHeavyMinigun.label>
+  <Frame_TurretLaserHeavyMinigun.label>軍用タレット(ガトリングレーザー)(building)</Frame_TurretLaserHeavyMinigun.label>
+  <Frame_TurretLaserHeavyMinigun.description>電気モーターで回転する3本に増強された強力なレーザーバレルを備えた大型レーザータレットです。バレルの交換は必要ありませんが、1発あたりバッテリーから30Wdの電力を消費します。</Frame_TurretLaserHeavyMinigun.description>
 
 </LanguageData>
