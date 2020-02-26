@@ -1,4 +1,4 @@
-﻿using Harmony;
+﻿using HarmonyLib;
 using System.Reflection;
 using Verse;
 
@@ -10,7 +10,7 @@ namespace Rimlaser
 
         static Rimlaser()
         {
-            var harmony = HarmonyInstance.Create("com.github.automatic1111.rimlaser");
+            var harmony = new Harmony("com.github.automatic1111.rimlaser");
             harmony.PatchAll(Assembly.GetExecutingAssembly());
         }
     }

@@ -1,0 +1,863 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingDef Name="RimlaserBaseGun" Abstract="True" ParentName="BaseWeapon">
+    <techLevel>Industrial</techLevel>
+    <smeltable>true</smeltable>
+    <thingCategories>
+      <li>WeaponsRanged</li>
+    </thingCategories>
+    <inspectorTabs>
+      <li>ITab_Art</li>
+    </inspectorTabs>
+    <statBases>
+      <Flammability>0.5</Flammability>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Art">
+        <nameMaker>NamerArtWeaponGun</nameMaker>
+        <descriptionMaker>ArtDescription_WeaponGun</descriptionMaker>
+        <minQualityForArtistic>Excellent</minQualityForArtistic>
+      </li>
+    </comps>
+    
+    <weaponTags>
+      <li>Gun</li>
+      <li>SpacerGun</li>
+    </weaponTags>
+  </ThingDef>
+
+  <ThingDef Name="RimlaserBaseGunWithQuality" Abstract="True" ParentName="RimlaserBaseGun">
+    <comps>
+      <li>
+        <compClass>CompQuality</compClass>
+      </li>
+    </comps>
+
+  </ThingDef>
+
+  <ThingDef Name="RimlaserBaseMakeableGun" ParentName="RimlaserBaseGunWithQuality" Abstract="True">
+    <recipeMaker>
+      <workSpeedStat>SmithingSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <recipeUsers>
+        <li>TableMachining</li>
+      </recipeUsers>
+      <unfinishedThingDef>UnfinishedGun</unfinishedThingDef>
+      <researchPrerequisite>Gunsmithing</researchPrerequisite>
+    </recipeMaker>
+  </ThingDef>
+
+
+  <ThingDef Name="BaseNonMakeableLaserGun" ParentName="RimlaserBaseGunWithQuality" Abstract="True">
+    <techLevel>Spacer</techLevel>
+    <thingClass>Rimlaser.LaserGun</thingClass>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>Interact_ChargeRifle</soundInteract>
+    <repairEffect>Repair</repairEffect>
+
+    <supportsColors>true</supportsColors>
+  </ThingDef>
+
+  <ThingDef Name="BaseLaserGun" ParentName="BaseNonMakeableLaserGun" Abstract="True">
+    <recipeMaker>
+      <researchPrerequisite>RimlaserLasers</researchPrerequisite>
+      <skillRequirements>
+        <Crafting>10</Crafting>
+      </skillRequirements>
+      <recipeUsers Inherit="False">
+        <li>FabricationBench</li>
+      </recipeUsers>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Machining</soundWorking>
+      <unfinishedThingDef>UnfinishedLaserGun</unfinishedThingDef>
+    </recipeMaker>
+  </ThingDef>
+
+  <ThingDef>
+    <defName>RimlaserBeamGraphic</defName>
+    <thingClass>Rimlaser.LaserBeamGraphic</thingClass>
+    <drawOffscreen>true</drawOffscreen>
+    <label>laser beam</label>
+    
+    <category>Projectile</category>
+    <tickerType>Normal</tickerType>
+    <altitudeLayer>Projectile</altitudeLayer>
+    <useHitPoints>False</useHitPoints>
+    <neverMultiSelect>True</neverMultiSelect>
+  </ThingDef>
+
+  <ThingDef Abstract="True" Name="Bullet_LaserGeneric" ParentName="BaseBullet">
+    <thingClass>Rimlaser.LaserBeam</thingClass>
+    <drawOffscreen>true</drawOffscreen>
+    <beamGraphic>RimlaserBeamGraphic</beamGraphic>
+   
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <texPath>Rimlaser/Effects/LaserRed</texPath>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>1.5</drawSize>
+    </graphicData>
+	
+    <explosionEffect>RimlaserLaserImpact</explosionEffect>
+    <hitLivingEffect>RimlaserLaserLivingImpact</hitLivingEffect>
+    
+    <projectile>
+      <damageDef>Bomb</damageDef>
+      <speed>10000</speed>
+    </projectile>
+    
+    <seam>0.25</seam>
+  </ThingDef>
+
+  <ThingDef Abstract="True" Name="Bullet_LaserColored" ParentName="Bullet_LaserGeneric">
+    <seam>0.25</seam>
+    <textures>
+      <li>Rimlaser/Effects/LaserAwful</li>
+      <li>Rimlaser/Effects/LaserPoor</li>
+      <li>Rimlaser/Effects/LaserNormal</li>
+      <li>Rimlaser/Effects/LaserGood</li>
+      <li>Rimlaser/Effects/LaserExcellent</li>
+      <li>Rimlaser/Effects/LaserMasterwork</li>
+      <li>Rimlaser/Effects/LaserLegendary</li>
+    </textures>
+  </ThingDef>  
+  
+  <ThingDef Abstract="True" Name="Bullet_LaserInc" ParentName="Bullet_LaserGeneric">
+    <textures>
+      <li>Rimlaser/Effects/LaserIncAwful</li>
+      <li>Rimlaser/Effects/LaserIncPoor</li>
+      <li>Rimlaser/Effects/LaserIncNormal</li>
+      <li>Rimlaser/Effects/LaserIncGood</li>
+      <li>Rimlaser/Effects/LaserIncExcellent</li>
+      <li>Rimlaser/Effects/LaserIncMasterwork</li>
+      <li>Rimlaser/Effects/LaserIncLegendary</li>
+    </textures>
+    <seam>0.02083333333</seam>
+  </ThingDef>  
+
+  <ThingDef Abstract="True" Name="Bullet_LaserDeathRay" ParentName="Bullet_LaserGeneric">
+    <textures>
+      <li>Rimlaser/Effects/LaserDeathRay</li>
+    </textures>
+
+    	<decorations>
+        <li>
+            <mote>Rimlaser_Mote_LaserDecorationYellow</mote>
+            <spacing>0.8</spacing>
+            <initialOffset>-0.1</initialOffset>
+            <speed>1.0</speed>
+            <speedJitter>0.55</speedJitter>
+            <speedJitterOffset>90</speedJitterOffset>
+        </li>
+        <li>
+            <mote>Rimlaser_Mote_LaserDecorationPurple</mote>
+            <spacing>0.8</spacing>
+            <initialOffset>0.3</initialOffset>
+            <speed>1.0</speed>
+            <speedJitter>0.45</speedJitter>
+            <speedJitterOffset>90</speedJitterOffset>
+        </li>
+     </decorations>
+   </ThingDef>
+
+  <!-- LASER RIFLE -->
+
+  <ThingDef ParentName="Bullet_LaserColored" Class="Rimlaser.LaserBeamDef">
+    <defName>Bullet_LaserRifle</defName>
+    <label>laser rifle beam</label>
+    
+    <projectile>
+      <damageAmountBase>16</damageAmountBase>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseLaserGun" Name="Rimlaser_LaserRifle" Class="Rimlaser.LaserGunDef">
+    <defName Inherit="False">Rimlaser_LaserRifle</defName>
+    <label>laser rifle</label>
+    <description>A futuristic laser rifle design. Does about as much damage as laser pistol per beam, but fires twice as fast and is designed to work at greater range.</description>
+    <graphicData>
+      <texPath>Rimlaser/Weapons/LaserRifle</texPath>
+    </graphicData>
+	
+    <statBases>
+      <WorkToMake>40000</WorkToMake>
+      <Mass>5.5</Mass>
+      <AccuracyTouch>0.60</AccuracyTouch>
+      <AccuracyShort>0.70</AccuracyShort>
+      <AccuracyMedium>0.65</AccuracyMedium>
+      <AccuracyLong>0.55</AccuracyLong>
+      <RangedWeapon_Cooldown>0.5</RangedWeapon_Cooldown>
+    </statBases>
+	
+    <costList>
+      <RimlaserPrism>2</RimlaserPrism>
+      <Plasteel>20</Plasteel>
+      <ComponentIndustrial>3</ComponentIndustrial>
+    </costList>
+
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_LaserRifle</defaultProjectile>
+        <warmupTime>1.0</warmupTime>
+        <range>38.9</range>
+        <soundCast>LaserRifle_Fire</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+	
+    <tools>
+      <li>
+        <label>stock</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>9</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+      <li>
+        <label>barrel</label>
+        <capacities>
+          <li>Blunt</li>
+          <li>Poke</li>
+        </capacities>
+        <power>9</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>
+	
+	<barrelLength>0.825</barrelLength>
+	
+  </ThingDef>
+  
+  <!-- MOUNTED LASER RIFLE -->
+  
+  <ThingDef ParentName="BaseNonMakeableLaserGun" Class="Rimlaser.LaserGunDef">
+    <defName>Rimlaser_LaserRifleMounted</defName>
+    <label>laser turret barrel</label>
+    <tradeability>None</tradeability>
+
+    <description>A barrel ripped from a laser turret. Similar to laser rifle in its combat capacity, but difficult to carry.</description>
+    <graphicData>
+      <texPath>Rimlaser/Weapons/LaserRifleMounted</texPath>
+    </graphicData>
+	
+    <statBases>
+      <WorkToMake>40000</WorkToMake>
+      <Mass>5.5</Mass>
+      <AccuracyTouch>0.60</AccuracyTouch>
+      <AccuracyShort>0.70</AccuracyShort>
+      <AccuracyMedium>0.65</AccuracyMedium>
+      <AccuracyLong>0.55</AccuracyLong>
+      <RangedWeapon_Cooldown>0.5</RangedWeapon_Cooldown>
+    </statBases>
+	
+    <equippedStatOffsets>
+      <MoveSpeed>-0.4</MoveSpeed>
+    </equippedStatOffsets>
+    
+    <costList>
+      <RimlaserPrism>2</RimlaserPrism>
+      <Plasteel>20</Plasteel>
+      <ComponentIndustrial>3</ComponentIndustrial>
+    </costList>
+    
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_LaserRifle</defaultProjectile>
+        <warmupTime>1.0</warmupTime>
+        <minRange>0</minRange>
+        <range>38.9</range>
+        <soundCast>LaserRifle_Fire</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+	
+    <barrelLength>0.85</barrelLength>
+  </ThingDef>
+  
+  
+  <!-- LASER PISTOL -->
+  
+  <ThingDef ParentName="Bullet_LaserColored" Class="Rimlaser.LaserBeamDef">
+    <defName>Bullet_LaserPistol</defName>
+    <label>laser pistol beam</label>
+    
+    <projectile>
+      <damageAmountBase>16</damageAmountBase>
+    </projectile>
+	
+	<beamWidth>0.6</beamWidth>
+  </ThingDef>
+  
+  <ThingDef ParentName="BaseLaserGun" Class="Rimlaser.LaserGunDef">
+    <defName>Rimlaser_LaserPistol</defName>
+    <label>laser pistol</label>
+    <description>A futuristic laser pistol design. Quite powerful, has a decent range for a pistol and is quick on the draw.</description>
+    <graphicData>
+      <texPath>Rimlaser/Weapons/LaserPistol</texPath>
+    </graphicData>
+    <statBases>
+      <WorkToMake>4000</WorkToMake>
+      <Mass>2.4</Mass>
+      <AccuracyTouch>0.88</AccuracyTouch>
+      <AccuracyShort>0.8</AccuracyShort>
+      <AccuracyMedium>0.45</AccuracyMedium>
+      <AccuracyLong>0.35</AccuracyLong>
+      <RangedWeapon_Cooldown>1.7</RangedWeapon_Cooldown>
+    </statBases>
+	
+    <costList>
+      <RimlaserPrism>1</RimlaserPrism>
+      <Plasteel>10</Plasteel>
+      <ComponentIndustrial>2</ComponentIndustrial>
+    </costList>
+
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_LaserPistol</defaultProjectile>
+        <warmupTime>0.3</warmupTime>
+        <range>30.9</range>
+        <soundCast>LaserPistol_fire</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+	
+    <tools>
+      <li>
+        <label>grip</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>9</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+      <li>
+        <label>barrel</label>
+        <capacities>
+          <li>Blunt</li>
+          <li>Poke</li>
+        </capacities>
+        <power>9</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>
+	
+	<barrelLength>0.75</barrelLength>
+	
+  </ThingDef>
+  
+  <!-- HEAVY LASER -->
+  
+  <ThingDef ParentName="Bullet_LaserColored" Class="Rimlaser.LaserBeamDef">
+    <defName>Bullet_LaserHeavy</defName>
+    <label>heavy laser beam</label>
+    
+    <projectile>
+      <damageAmountBase>48</damageAmountBase>
+    </projectile>
+	
+	<beamWidth>1.8</beamWidth>
+	<lifetime>120</lifetime>
+	<impulse>6</impulse>
+  </ThingDef>
+
+  <ThingDef Name="LaserHeavy" ParentName="BaseLaserGun" Class="Rimlaser.LaserGunDef">
+    <defName>Rimlaser_LaserHeavy</defName>
+    <label>heavy laser</label>
+    <description>A heavy laser gun. Inflicts gigantic amounts of damage, but is very costly to make and hard to operate at close distances.</description>
+    <graphicData>
+      <texPath>Rimlaser/Weapons/LaserHeavy</texPath>
+    </graphicData>
+    <statBases>
+      <Mass>18</Mass>
+      <AccuracyTouch>0.1</AccuracyTouch>
+      <AccuracyShort>0.7</AccuracyShort>
+      <AccuracyMedium>0.7</AccuracyMedium>
+      <AccuracyLong>0.5</AccuracyLong>
+      <RangedWeapon_Cooldown>3.9</RangedWeapon_Cooldown>
+      <WorkToMake>60000</WorkToMake>
+    </statBases>
+	
+    <costList>
+      <RimlaserPrism>4</RimlaserPrism>
+      <Plasteel>50</Plasteel>
+      <ComponentIndustrial>10</ComponentIndustrial>
+    </costList>
+
+    <equippedStatOffsets>
+      <MoveSpeed>-0.25</MoveSpeed>
+    </equippedStatOffsets>
+	
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_LaserHeavy</defaultProjectile>
+        <warmupTime>1.7</warmupTime>
+        <minRange>0</minRange>
+        <range>44.9</range>
+        <soundCast>LaserHeavy_fire</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+	
+    <tools>
+      <li>
+        <label>barrel</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>16</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>
+	
+	<barrelLength>0.86</barrelLength>
+	
+  </ThingDef>
+
+  <ThingDef ParentName="LaserHeavy" Class="Rimlaser.LaserGunDef">
+    <defName>Rimlaser_LaserHeavyMounted</defName>
+    <label>mounted heavy laser</label>
+    <graphicData>
+      <texPath>Rimlaser/Weapons/LaserHeavyMounted</texPath>
+    </graphicData>
+    
+  </ThingDef>
+
+  <!-- INCENDIARY LASER -->
+
+  <ThingDef ParentName="Bullet_LaserInc" Class="Rimlaser.LaserBeamDef">
+    <defName>Bullet_LaserIncendiary</defName>
+    <label>incendiary laser beam</label>
+    
+    <projectile>
+      <damageDef>Flame</damageDef>
+      <damageAmountBase>16</damageAmountBase>
+    </projectile>
+	
+	<beamWidth>1.4</beamWidth>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseLaserGun" Class="Rimlaser.LaserGunDef">
+    <defName>Rimlaser_LaserIncendiary</defName>
+    <label>incendiary laser</label>
+    <description>A clever design that despite not doing much damage for its size, has tendency to ignite its target.</description>
+    <graphicData>
+      <texPath>Rimlaser/Weapons/LaserIncendiary</texPath>
+    </graphicData>
+    <statBases>
+      <Mass>10</Mass>
+      <AccuracyTouch>0.6</AccuracyTouch>
+      <AccuracyShort>0.8</AccuracyShort>
+      <AccuracyMedium>0.8</AccuracyMedium>
+      <AccuracyLong>0.7</AccuracyLong>
+      <RangedWeapon_Cooldown>2.4</RangedWeapon_Cooldown>
+      <WorkToMake>60000</WorkToMake>
+    </statBases>
+
+    <costList>
+      <RimlaserPrism>1</RimlaserPrism>
+      <Plasteel>20</Plasteel>
+      <ComponentIndustrial>2</ComponentIndustrial>
+    </costList>
+
+    <equippedStatOffsets>
+      <MoveSpeed>-0.10</MoveSpeed>
+    </equippedStatOffsets>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_LaserIncendiary</defaultProjectile>
+        <warmupTime>1.4</warmupTime>
+        <range>38.9</range>
+        <soundCast>LaserIncendiary_fire</soundCast>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+	
+    <tools>
+      <li>
+        <label>barrel</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>12</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>
+	
+	<barrelLength>0.875</barrelLength>
+	
+  </ThingDef>
+
+  <!-- SNIPER LASER -->
+
+  <ThingDef ParentName="Bullet_LaserColored" Class="Rimlaser.LaserBeamDef">
+    <defName>Bullet_LaserSniper</defName>
+    <label>sniper laser beam</label>
+    
+    <projectile>
+      <damageAmountBase>32</damageAmountBase>
+    </projectile>
+	
+	<beamWidth>0.9</beamWidth>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseLaserGun" Class="Rimlaser.LaserGunDef">
+    <defName>Rimlaser_LaserSniper</defName>
+    <label>laser sniper rifle</label>
+    <description>A long-range laser rifle. Does a good amount of damage and at great range, but is bulky and nearly impossible to operate at close range.</description>
+    <graphicData>
+      <texPath>Rimlaser/Weapons/LaserSniper</texPath>
+    </graphicData>
+    <statBases>
+      <Mass>10</Mass>
+      <AccuracyTouch>0.1</AccuracyTouch>
+      <AccuracyShort>0.2</AccuracyShort>
+      <AccuracyMedium>0.7</AccuracyMedium>
+      <AccuracyLong>1.0</AccuracyLong>
+      <RangedWeapon_Cooldown>3.0</RangedWeapon_Cooldown>
+      <WorkToMake>60000</WorkToMake>
+    </statBases>
+	
+    <costList>
+      <RimlaserPrism>2</RimlaserPrism>
+      <Plasteel>35</Plasteel>
+      <ComponentIndustrial>4</ComponentIndustrial>
+    </costList>
+
+    <equippedStatOffsets>
+      <MoveSpeed>-0.10</MoveSpeed>
+    </equippedStatOffsets>
+    
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_LaserSniper</defaultProjectile>
+        <warmupTime>3.0</warmupTime>
+        <range>56.9</range>
+        <soundCast>LaserSniper_fire</soundCast>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+	
+    <tools>
+      <li>
+        <label>barrel</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>10</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>
+	
+	<barrelLength>0.875</barrelLength>
+	
+  </ThingDef>
+
+  <!-- MINIGUN -->
+  <ThingDef ParentName="Bullet_LaserColored" Class="Rimlaser.LaserBeamDef">
+
+    <defName>Bullet_LaserMinigun</defName>
+    <label>minigun laser beam</label>
+    
+    <projectile>
+      <damageAmountBase>12</damageAmountBase>
+    </projectile>
+	
+	<beamWidth>0.4</beamWidth>
+	<lifetime>16</lifetime>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseLaserGun" Class="Rimlaser.SpinningLaserGunDef">
+    <defName>Rimlaser_LaserMinigun</defName>
+    <label>laser minigun</label>
+    <description>A laser gun with three barrels spun by an electric motor. Due to fragility of rotating parts it has to take a long time to spin up, but once it starts firing it fires very fast, and with somewhat better accuracy than its gunpowder variation.</description>
+    <thingClass>Rimlaser.SpinningLaserGun</thingClass>
+	
+    <graphicData>
+      <texPath>Rimlaser/Weapons/LaserMinigun-1</texPath>
+    </graphicData>
+	
+	<frames>
+		<li><texPath>Rimlaser/Weapons/LaserMinigun-1</texPath><graphicClass>Graphic_Single</graphicClass></li>
+		<li><texPath>Rimlaser/Weapons/LaserMinigun-2</texPath><graphicClass>Graphic_Single</graphicClass></li>
+		<li><texPath>Rimlaser/Weapons/LaserMinigun-3</texPath><graphicClass>Graphic_Single</graphicClass></li>
+		<li><texPath>Rimlaser/Weapons/LaserMinigun-4</texPath><graphicClass>Graphic_Single</graphicClass></li>
+	</frames>
+	<rotationSpeed>1.0</rotationSpeed>
+
+    <statBases>
+      <Mass>20</Mass>
+      <AccuracyTouch>0.35</AccuracyTouch>
+      <AccuracyShort>0.35</AccuracyShort>
+      <AccuracyMedium>0.3</AccuracyMedium>
+      <AccuracyLong>0.25</AccuracyLong>
+      <RangedWeapon_Cooldown>2.0</RangedWeapon_Cooldown>
+      <WorkToMake>60000</WorkToMake>
+    </statBases>
+
+    <costList>
+      <RimlaserPrism>2</RimlaserPrism>
+      <Plasteel>50</Plasteel>
+      <ComponentIndustrial>4</ComponentIndustrial>
+    </costList>
+
+    <equippedStatOffsets>
+      <MoveSpeed>-0.25</MoveSpeed>
+    </equippedStatOffsets>
+
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_LaserMinigun</defaultProjectile>
+        <warmupTime>5.0</warmupTime>
+        <range>36.9</range>
+        <soundCast>LaserMinigun_fire</soundCast>
+        <muzzleFlashScale>9</muzzleFlashScale>
+        <soundAiming>LaserMinigun_warmup</soundAiming>
+        <burstShotCount>30</burstShotCount>
+        <ticksBetweenBurstShots>10</ticksBetweenBurstShots>
+      </li>
+    </verbs>
+	
+    <tools>
+      <li>
+        <label>barrel</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>16</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>
+	
+	<barrelLength>0.86</barrelLength>
+  </ThingDef>
+  
+  
+  <!-- TURRET MINIGUN -->
+  <ThingDef ParentName="BaseNonMakeableLaserGun" Class="Rimlaser.SpinningLaserGunDef">
+    <defName>LaserHeavyMinigunMounted</defName>
+    <label>heavy laser minigun</label>
+    <tradeability>None</tradeability>
+
+    
+    <description>Mounted heavy laser minigun.</description>
+    <thingClass>Rimlaser.SpinningLaserGunTurret</thingClass>
+	
+    <graphicData>
+      <texPath>Rimlaser/Weapons/LaserHeavyMinigunMounted-1</texPath>
+    </graphicData>
+	
+	<frames>
+		<li><texPath>Rimlaser/Weapons/LaserHeavyMinigunMounted-1</texPath><graphicClass>Graphic_Single</graphicClass></li>
+		<li><texPath>Rimlaser/Weapons/LaserHeavyMinigunMounted-2</texPath><graphicClass>Graphic_Single</graphicClass></li>
+		<li><texPath>Rimlaser/Weapons/LaserHeavyMinigunMounted-3</texPath><graphicClass>Graphic_Single</graphicClass></li>
+		<li><texPath>Rimlaser/Weapons/LaserHeavyMinigunMounted-4</texPath><graphicClass>Graphic_Single</graphicClass></li>
+		<li><texPath>Rimlaser/Weapons/LaserHeavyMinigunMounted-5</texPath><graphicClass>Graphic_Single</graphicClass></li>
+		<li><texPath>Rimlaser/Weapons/LaserHeavyMinigunMounted-6</texPath><graphicClass>Graphic_Single</graphicClass></li>
+		<li><texPath>Rimlaser/Weapons/LaserHeavyMinigunMounted-7</texPath><graphicClass>Graphic_Single</graphicClass></li>
+		<li><texPath>Rimlaser/Weapons/LaserHeavyMinigunMounted-8</texPath><graphicClass>Graphic_Single</graphicClass></li>
+	</frames>
+	<rotationSpeed>0.65</rotationSpeed>
+
+    <statBases>
+      <Mass>18</Mass>
+      <AccuracyTouch>0.1</AccuracyTouch>
+      <AccuracyShort>0.7</AccuracyShort>
+      <AccuracyMedium>0.7</AccuracyMedium>
+      <AccuracyLong>0.5</AccuracyLong>
+      <RangedWeapon_Cooldown>3.9</RangedWeapon_Cooldown>
+      <WorkToMake>60000</WorkToMake>
+    </statBases>
+
+    <costList>
+      <RimlaserPrism>12</RimlaserPrism>
+      <Plasteel>500</Plasteel>
+      <ComponentIndustrial>40</ComponentIndustrial>
+    </costList>
+
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_LaserHeavy</defaultProjectile>
+        <warmupTime>1.0</warmupTime>
+        <minRange>4.5</minRange>
+        <range>36.9</range>
+        <soundCast>LaserHeavyMinigun_fire</soundCast>
+        <soundAiming>LaserHeavyMinigun_warmup</soundAiming>
+        <muzzleFlashScale>9</muzzleFlashScale>
+        <burstShotCount>10</burstShotCount>
+        <ticksBetweenBurstShots>20</ticksBetweenBurstShots>
+      </li>
+    </verbs>
+	
+	<barrelLength>1.9</barrelLength>
+  </ThingDef>
+
+  <!-- DEATH RAY -->
+
+  <ThingDef ParentName="Bullet_LaserDeathRay" Class="Rimlaser.LaserBeamDef">
+    <defName>Bullet_DeathRay</defName>
+    <label>death ray</label>
+
+    <projectile>
+      <damageAmountBase>100</damageAmountBase>
+      <stoppingPower>10</stoppingPower>
+    </projectile>
+	
+	<beamWidth>1.5</beamWidth>
+	<lifetime>120</lifetime>
+	<impulse>6</impulse>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseNonMakeableLaserGun" Class="Rimlaser.LaserGunDef">
+    <defName>Rimlaser_DeathRay</defName>
+    <label>Garin's Hyperboloid</label>
+    <description>A monstrous device that violates first, second and third laws of thermodynamics to bring a concentrated ray of death to anyone who dares to stand in its owner's path.</description>
+    <graphicData>
+      <texPath>Rimlaser/Weapons/Hyperboloid</texPath>
+    </graphicData>
+    
+    <statBases>
+      <Mass>30</Mass>
+      <AccuracyTouch>0.70</AccuracyTouch>
+      <AccuracyShort>0.65</AccuracyShort>
+      <AccuracyMedium>0.60</AccuracyMedium>
+      <AccuracyLong>0.55</AccuracyLong>
+      <RangedWeapon_Cooldown>0.5</RangedWeapon_Cooldown>
+      <WorkToMake>600000</WorkToMake>
+    </statBases>
+    
+    <costList>
+      <RimlaserPrism>4</RimlaserPrism>
+      <Plasteel>200</Plasteel>
+      <ComponentIndustrial>12</ComponentIndustrial>
+    </costList>
+
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_DeathRay</defaultProjectile>
+        <warmupTime>3.5</warmupTime>
+        <range>64.9</range>
+        <soundCast>DeathRay_fire</soundCast>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+	
+    <tools>
+      <li>
+        <label>barrel</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>16</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>
+	
+    <tradeTags>
+      <li>ExoticMisc</li>
+    </tradeTags>
+
+	<barrelLength>0.9</barrelLength>
+	<supportsColors>false</supportsColors>
+    
+  </ThingDef>
+
+  <!-- TESLA GUN -->
+
+  <ThingDef ParentName="Bullet_LaserGeneric" Class="Rimlaser.LaserBeamDef">
+    <defName>Bullet_Tesla</defName>
+    <label>bolt of lightning</label>
+
+    <textures>
+      <li>Rimlaser/Effects/Lightning</li>
+    </textures>
+    <seam>0</seam>
+
+    <projectile>
+      <damageAmountBase>8</damageAmountBase>
+      <stoppingPower>12</stoppingPower>
+    </projectile>
+	
+	<beamWidth>1.0</beamWidth>
+  <shieldDamageMultiplier>100</shieldDamageMultiplier>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseLaserGun" Class="Rimlaser.LaserGunDef">
+    <defName>Rimlaser_TeslaGun</defName>
+    <label>Tesla gun</label>
+    <description>A lightning gun. Can only attack at very short range, but has good stopping power.</description>
+    <graphicData>
+      <texPath>Rimlaser/Weapons/Tesla</texPath>
+    </graphicData>
+    <statBases>
+      <Mass>20</Mass>
+      <AccuracyTouch>0.75</AccuracyTouch>
+      <AccuracyShort>0.55</AccuracyShort>
+      <AccuracyMedium>0.15</AccuracyMedium>
+      <AccuracyLong>0.05</AccuracyLong>
+      <RangedWeapon_Cooldown>0.5</RangedWeapon_Cooldown>
+      <WorkToMake>60000</WorkToMake>
+    </statBases>
+    
+    <costList>
+      <Plasteel>20</Plasteel>
+      <ComponentIndustrial>3</ComponentIndustrial>
+    </costList>
+
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_Tesla</defaultProjectile>
+        <warmupTime>0.75</warmupTime>
+        <range>18.9</range>
+        <soundCast>Tesla_fire</soundCast>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+	
+    <tools>
+      <li>
+        <label>barrel</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>16</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>
+	
+	<barrelLength>0.875</barrelLength>
+	<supportsColors>false</supportsColors>
+    
+  </ThingDef>
+
+</Defs>
