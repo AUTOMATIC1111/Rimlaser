@@ -24,6 +24,7 @@
     <weaponTags>
       <li>Gun</li>
       <li>SpacerGun</li>
+      <li>LaserGun</li>
     </weaponTags>
   </ThingDef>
 
@@ -35,21 +36,6 @@
     </comps>
 
   </ThingDef>
-
-  <ThingDef Name="RimlaserBaseMakeableGun" ParentName="RimlaserBaseGunWithQuality" Abstract="True">
-    <recipeMaker>
-      <workSpeedStat>SmithingSpeed</workSpeedStat>
-      <workSkill>Crafting</workSkill>
-      <effectWorking>Smith</effectWorking>
-      <soundWorking>Recipe_Smith</soundWorking>
-      <recipeUsers>
-        <li>TableMachining</li>
-      </recipeUsers>
-      <unfinishedThingDef>UnfinishedGun</unfinishedThingDef>
-      <researchPrerequisite>Gunsmithing</researchPrerequisite>
-    </recipeMaker>
-  </ThingDef>
-
 
   <ThingDef Name="BaseNonMakeableLaserGun" ParentName="RimlaserBaseGunWithQuality" Abstract="True">
     <techLevel>Spacer</techLevel>
@@ -69,13 +55,14 @@
       <skillRequirements>
         <Crafting>10</Crafting>
       </skillRequirements>
-      <recipeUsers Inherit="False">
+      <recipeUsers>
         <li>FabricationBench</li>
       </recipeUsers>
       <workSkill>Crafting</workSkill>
       <effectWorking>Smith</effectWorking>
       <soundWorking>Recipe_Machining</soundWorking>
       <unfinishedThingDef>UnfinishedLaserGun</unfinishedThingDef>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
     </recipeMaker>
   </ThingDef>
 
@@ -200,6 +187,10 @@
       <Plasteel>20</Plasteel>
       <ComponentIndustrial>3</ComponentIndustrial>
     </costList>
+    <butcherProducts>
+      <RimlaserPrism>2</RimlaserPrism>
+      <ComponentIndustrial>2</ComponentIndustrial>
+    </butcherProducts>
 
     <verbs>
       <li>
@@ -243,7 +234,6 @@
   <ThingDef ParentName="BaseNonMakeableLaserGun" Class="Rimlaser.LaserGunDef">
     <defName>Rimlaser_LaserRifleMounted</defName>
     <label>laser turret barrel</label>
-    <tradeability>None</tradeability>
 
     <description>A barrel ripped from a laser turret. Similar to laser rifle in its combat capacity, but difficult to carry.</description>
     <graphicData>
@@ -269,7 +259,7 @@
       <Plasteel>20</Plasteel>
       <ComponentIndustrial>3</ComponentIndustrial>
     </costList>
-    
+
     <verbs>
       <li>
         <verbClass>Verb_Shoot</verbClass>
@@ -285,6 +275,14 @@
     </verbs>
 	
     <barrelLength>0.85</barrelLength>
+    
+    <destroyOnDrop>True</destroyOnDrop>
+    <menuHidden>true</menuHidden>
+    <tradeability>None</tradeability>
+    <useHitPoints>false</useHitPoints>
+    <weaponTags>
+      <li>TurretGun</li>
+    </weaponTags>
   </ThingDef>
   
   
@@ -323,6 +321,10 @@
       <Plasteel>10</Plasteel>
       <ComponentIndustrial>2</ComponentIndustrial>
     </costList>
+    <butcherProducts>
+      <RimlaserPrism>1</RimlaserPrism>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </butcherProducts>
 
     <verbs>
       <li>
@@ -398,7 +400,11 @@
       <Plasteel>50</Plasteel>
       <ComponentIndustrial>10</ComponentIndustrial>
     </costList>
-
+    <butcherProducts>
+      <RimlaserPrism>4</RimlaserPrism>
+      <ComponentIndustrial>8</ComponentIndustrial>
+    </butcherProducts>
+    
     <equippedStatOffsets>
       <MoveSpeed>-0.25</MoveSpeed>
     </equippedStatOffsets>
@@ -439,6 +445,15 @@
       <texPath>Rimlaser/Weapons/LaserHeavyMounted</texPath>
     </graphicData>
     
+    <recipeMaker Inherit="False" />
+    
+    <destroyOnDrop>True</destroyOnDrop>
+    <menuHidden>true</menuHidden>
+    <tradeability>None</tradeability>
+    <useHitPoints>false</useHitPoints>
+    <weaponTags>
+      <li>TurretGun</li>
+    </weaponTags>
   </ThingDef>
 
   <!-- INCENDIARY LASER -->
@@ -477,6 +492,10 @@
       <Plasteel>20</Plasteel>
       <ComponentIndustrial>2</ComponentIndustrial>
     </costList>
+    <butcherProducts>
+      <RimlaserPrism>1</RimlaserPrism>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </butcherProducts>
 
     <equippedStatOffsets>
       <MoveSpeed>-0.10</MoveSpeed>
@@ -543,6 +562,10 @@
       <Plasteel>35</Plasteel>
       <ComponentIndustrial>4</ComponentIndustrial>
     </costList>
+    <butcherProducts>
+      <RimlaserPrism>2</RimlaserPrism>
+      <ComponentIndustrial>3</ComponentIndustrial>
+    </butcherProducts>
 
     <equippedStatOffsets>
       <MoveSpeed>-0.10</MoveSpeed>
@@ -622,6 +645,10 @@
       <Plasteel>50</Plasteel>
       <ComponentIndustrial>4</ComponentIndustrial>
     </costList>
+    <butcherProducts>
+      <RimlaserPrism>2</RimlaserPrism>
+      <ComponentIndustrial>3</ComponentIndustrial>
+    </butcherProducts>
 
     <equippedStatOffsets>
       <MoveSpeed>-0.25</MoveSpeed>
@@ -661,8 +688,6 @@
   <ThingDef ParentName="BaseNonMakeableLaserGun" Class="Rimlaser.SpinningLaserGunDef">
     <defName>LaserHeavyMinigunMounted</defName>
     <label>heavy laser minigun</label>
-    <tradeability>None</tradeability>
-
     
     <description>Mounted heavy laser minigun.</description>
     <thingClass>Rimlaser.SpinningLaserGunTurret</thingClass>
@@ -716,6 +741,14 @@
     </verbs>
 	
 	<barrelLength>1.9</barrelLength>
+    
+    <destroyOnDrop>True</destroyOnDrop>
+    <menuHidden>true</menuHidden>
+    <tradeability>None</tradeability>
+    <useHitPoints>false</useHitPoints>
+    <weaponTags>
+      <li>TurretGun</li>
+    </weaponTags>
   </ThingDef>
 
   <!-- DEATH RAY -->
@@ -757,6 +790,10 @@
       <Plasteel>200</Plasteel>
       <ComponentIndustrial>12</ComponentIndustrial>
     </costList>
+    <butcherProducts>
+      <RimlaserPrism>4</RimlaserPrism>
+      <ComponentIndustrial>12</ComponentIndustrial>
+    </butcherProducts>
 
     <verbs>
       <li>
