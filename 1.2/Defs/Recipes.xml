@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <RecipeDef>
+    <defName>RimlaserButcherLaserGun</defName>
+    <label>disassemble laser gun</label>
+    <description>Disassemble a aser gun, extracting all prisms and most components from it.</description>
+    <jobString>Disassembling laser gun.</jobString>
+    <workAmount>300</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>ButcherMechanoid</effectWorking>
+    <soundWorking>Recipe_Machining</soundWorking>
+    
+    <researchPrerequisite>RimlaserLasers</researchPrerequisite>
+    <skillRequirements><Crafting>10</Crafting></skillRequirements>
+
+    <ingredients>
+      <li>
+        <filter>
+          <categories>
+            <li>Weapons</li>
+          </categories>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Rimlaser_LaserRifle</li>
+        <li>Rimlaser_LaserPistol</li>
+        <li>Rimlaser_LaserHeavy</li>
+        <li>Rimlaser_LaserIncendiary</li>
+        <li>Rimlaser_LaserSniper</li>
+        <li>Rimlaser_LaserMinigun</li>
+        <li>Rimlaser_DeathRay</li>
+        <li>Rimlaser_TeslaGun</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <specialProducts><li>Butchery</li></specialProducts>
+    <recipeUsers><li>FabricationBench</li></recipeUsers>
+  </RecipeDef>
+  
+</Defs>
