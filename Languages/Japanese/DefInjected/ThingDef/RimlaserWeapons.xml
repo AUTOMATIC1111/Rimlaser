@@ -9,8 +9,8 @@
 
   <Rimlaser_LaserRifle.label>レーザーライフル</Rimlaser_LaserRifle.label>
   <Rimlaser_LaserRifle.description>未来的なレーザーライフルのデザインです。レーザーピストルと同じ程度のダメージを与えますが、発射速度は2倍で、より広い射程まで届くように設計されています。</Rimlaser_LaserRifle.description>
-  <Rimlaser_LaserRifle.tools.0.label>ストック</Rimlaser_LaserRifle.tools.0.label>
-  <Rimlaser_LaserRifle.tools.1.label>バレル</Rimlaser_LaserRifle.tools.1.label>
+  <Rimlaser_LaserRifle.tools.stock.label>ストック</Rimlaser_LaserRifle.tools.stock.label>
+  <Rimlaser_LaserRifle.tools.barrel.label>バレル</Rimlaser_LaserRifle.tools.barrel.label>
 
 
   <!-- MOUNTED LASER RIFLE -->
@@ -25,8 +25,8 @@
 
   <Rimlaser_LaserPistol.label>レーザーピストル</Rimlaser_LaserPistol.label>
   <Rimlaser_LaserPistol.description>未来的なレーザーピストルのデザインです。非常に強力で、ピストルとして普通の射程範囲を持っており、素早い早撃ちに最適です。</Rimlaser_LaserPistol.description>
-  <Rimlaser_LaserPistol.tools.0.label>グリップ</Rimlaser_LaserPistol.tools.0.label>
-  <Rimlaser_LaserPistol.tools.1.label>バレル</Rimlaser_LaserPistol.tools.1.label>
+  <Rimlaser_LaserPistol.tools.grip.label>グリップ</Rimlaser_LaserPistol.tools.grip.label>
+  <Rimlaser_LaserPistol.tools.barrel.label>バレル</Rimlaser_LaserPistol.tools.barrel.label>
 
 
   <!-- HEAVY LASER -->
@@ -35,7 +35,11 @@
 
   <Rimlaser_LaserHeavy.label>ヘビーレーザーガン</Rimlaser_LaserHeavy.label>
   <Rimlaser_LaserHeavy.description>強力なレーザー銃です。巨大なダメージを与えますが、近距離では命中させる操作が非常に困難です。</Rimlaser_LaserHeavy.description>
-  <Rimlaser_LaserHeavy.tools.0.label>バレル</Rimlaser_LaserHeavy.tools.0.label>
+  <Rimlaser_LaserHeavy.tools.barrel.label>バレル</Rimlaser_LaserHeavy.tools.barrel.label>
+
+  <Rimlaser_LaserHeavyMounted.label>搭載ヘビーレーザー</Rimlaser_LaserHeavyMounted.label>
+  <Rimlaser_LaserHeavyMounted.description>強力なレーザー砲です。 膨大なダメージを与えますが、非常にコストが高く、近距離射程での操作は困難です。</Rimlaser_LaserHeavyMounted.description>
+  <Rimlaser_LaserHeavyMounted.tools.barrel.label>バレル</Rimlaser_LaserHeavyMounted.tools.barrel.label>
 
 
   <!-- INCENDIARY LASER -->
@@ -44,7 +48,7 @@
 
   <Rimlaser_LaserIncendiary.label>火炎レーザーガン</Rimlaser_LaserIncendiary.label>
   <Rimlaser_LaserIncendiary.description>その大きさに見合わず、大きなダメージを与えませんが、目標に対して、着火させる可能性が高いです。</Rimlaser_LaserIncendiary.description>
-  <Rimlaser_LaserIncendiary.tools.0.label>バレル</Rimlaser_LaserIncendiary.tools.0.label>
+  <Rimlaser_LaserIncendiary.tools.barrel.label>バレル</Rimlaser_LaserIncendiary.tools.barrel.label>
 
 
   <!-- SNIPER LASER -->
@@ -53,7 +57,7 @@
 
   <Rimlaser_LaserSniper.label>レーザースナイパーライフル</Rimlaser_LaserSniper.label>
   <Rimlaser_LaserSniper.description>長距離射程のレーザーライフルです。かなりの強力なダメージを与え、広い射程範囲を持ちますが、取り回し辛く、近距離での照準操作はほとんど不可能です。</Rimlaser_LaserSniper.description>
-  <Rimlaser_LaserSniper.tools.0.label>バレル</Rimlaser_LaserSniper.tools.0.label>
+  <Rimlaser_LaserSniper.tools.barrel.label>バレル</Rimlaser_LaserSniper.tools.barrel.label>
 
   <!-- MINIGUN -->
 
@@ -61,7 +65,7 @@
 
   <Rimlaser_LaserMinigun.label>ガトリングレーザーガン</Rimlaser_LaserMinigun.label>
   <Rimlaser_LaserMinigun.description>電気モーターで高速回転する3本の銃身を備えたレーザー銃です。回転する部品が脆弱なために、射撃の準備には長い時間を要しますが、一度起動すると非常に発射速度で発砲できて、火薬式のばら撒きよりも幾分良好な命中精度になっています。</Rimlaser_LaserMinigun.description>
-  <Rimlaser_LaserMinigun.tools.0.label>バレル</Rimlaser_LaserMinigun.tools.0.label>
+  <Rimlaser_LaserMinigun.tools.barrel.label>バレル</Rimlaser_LaserMinigun.tools.barrel.label>
 
 
   <!-- TURRET MINIGUN -->
@@ -76,7 +80,7 @@
 
   <Rimlaser_DeathRay.label>デスレーザーガン</Rimlaser_DeathRay.label>
   <Rimlaser_DeathRay.description>熱力学の第1、第2、第3の法則に反して、その所有者の前に立つ人を誰にでも蒸発させる悪魔の装置です。元ネタは「ガーリン技師の双曲線(1926)」という古いロシア人SF作家トルストイの作品に出てくる死の光線銃です。</Rimlaser_DeathRay.description>
-  <Rimlaser_DeathRay.tools.0.label>バレル</Rimlaser_DeathRay.tools.0.label>
+  <Rimlaser_DeathRay.tools.barrel.label>バレル</Rimlaser_DeathRay.tools.barrel.label>
 
 
   <!-- TESLA GUN -->
@@ -85,7 +89,6 @@
 
   <Rimlaser_TeslaGun.label>テスラガン</Rimlaser_TeslaGun.label>
   <Rimlaser_TeslaGun.description>雷撃銃です。非常に短い射程範囲でしか攻撃することができませんが、相手を停止力させる力が優秀です。</Rimlaser_TeslaGun.description>
-  <Rimlaser_TeslaGun.tools.0.label>バレル</Rimlaser_TeslaGun.tools.0.label>
-
+  <Rimlaser_TeslaGun.tools.barrel.label>バレル</Rimlaser_TeslaGun.tools.barrel.label>
 
 </LanguageData>

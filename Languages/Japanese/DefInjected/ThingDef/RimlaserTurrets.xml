@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 
   <!-- Laser Rifle turret -->
@@ -27,6 +27,5 @@
   <TurretLaserHeavyMinigun_Blueprint.label>軍用タレット(ガトリングレーザー)(blueprint)</TurretLaserHeavyMinigun_Blueprint.label>
   <TurretLaserHeavyMinigun_Frame.label>軍用タレット(ガトリングレーザー)(building)</TurretLaserHeavyMinigun_Frame.label>
   <TurretLaserHeavyMinigun_Frame.description>電気モーターで回転する3本に増強された強力なレーザーバレルを備えた大型レーザータレットです。バレルの交換は必要ありませんが、1発あたりバッテリーから30Wdの電力を消費します。</TurretLaserHeavyMinigun_Frame.description>
-
 
 </LanguageData>

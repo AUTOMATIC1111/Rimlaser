@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <RimlaserButcherLaserGun.label>レーザーガンを分解する</RimlaserButcherLaserGun.label>
+  <RimlaserButcherLaserGun.description>レーザーガンを分解すして, すべてのプリズムとコンポーネントの大半を回収します。</RimlaserButcherLaserGun.description>
+  <RimlaserButcherLaserGun.jobString>レーザーガンを分解中</RimlaserButcherLaserGun.jobString>
+
+</LanguageData>
