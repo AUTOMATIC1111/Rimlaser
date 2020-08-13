@@ -102,25 +102,14 @@ namespace Rimlaser
                 weapon.RotationOffset = (angle + 180) % 360 - 180;
             }
 
-            if (hitThing == null)
+            if (hitThing is Pawn && shielded)
             {
-                TriggerEffect(def.explosionEffect, destination);
-            }
-            else
-            {
-                if (hitThing is Pawn)
-                {
-                    Pawn hitPawn = hitThing as Pawn;
-                    if (shielded)
-                    {
-                        weaponDamageMultiplier *= def.shieldDamageMultiplier;
+                weaponDamageMultiplier *= def.shieldDamageMultiplier;
 
-                        SpawnBeamReflections(a, b, 5);
-                    }
-                }
-
-                TriggerEffect(def.explosionEffect, ExactPosition);
+                SpawnBeamReflections(a, b, 5);
             }
+
+            TriggerEffect(def.explosionEffect, b);
 
             base.Impact(hitThing);
         }
