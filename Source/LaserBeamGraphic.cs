@@ -9,7 +9,7 @@ namespace Rimlaser
 {
     class LaserBeamGraphic :Thing
     {
-        new LaserBeamDef def => base.def as LaserBeamDef;
+        public LaserBeamDef projDef;
 
         int ticks;
         int colorIndex = 2;
@@ -20,7 +20,7 @@ namespace Rimlaser
         Material materialBeam;
         Mesh mesh;
  
-        public float Opacity => (float)Math.Sin(Math.Pow(1.0 - 1.0 * ticks / def.lifetime, def.impulse) * Math.PI);
+        public float Opacity => (float)Math.Sin(Math.Pow(1.0 - 1.0 * ticks / projDef.lifetime, projDef.impulse) * Math.PI);
 
         public override void ExposeData()
         {
@@ -30,11 +30,12 @@ namespace Rimlaser
             Scribe_Values.Look(ref colorIndex, "colorIndex");
             Scribe_Values.Look(ref a, "a");
             Scribe_Values.Look(ref b, "b");
+            Scribe_Defs.Look(ref projDef, "projectileDef");
         }
 
         public override void Tick()
         {
-            if (def==null || ticks++ > def.lifetime)
+            if (def==null || ticks++ > projDef.lifetime)
             {
                 Destroy(DestroyMode.Vanish);
             }
@@ -66,9 +67,9 @@ namespace Rimlaser
         {
             if (mesh != null) return;
 
-            materialBeam = def.GetBeamMaterial(colorIndex) ?? def.graphicData.Graphic.MatSingle;
+            materialBeam = projDef.GetBeamMaterial(colorIndex) ?? def.graphicData.Graphic.MatSingle;
 
-            float beamWidth = def.beamWidth;
+            float beamWidth = projDef.beamWidth;
             Quaternion rotation = Quaternion.LookRotation(b - a);
             Vector3 dir = (b - a).normalized;
             float length = (b - a).magnitude;
@@ -78,7 +79,7 @@ namespace Rimlaser
             drawingMatrix.SetTRS(drawingPosition, rotation, drawingScale);
 
             float textureRatio = 1.0f * materialBeam.mainTexture.width / materialBeam.mainTexture.height;
-            float seamTexture = def.seam < 0 ? textureRatio : def.seam;
+            float seamTexture = projDef.seam < 0 ? textureRatio : projDef.seam;
             float capLength = beamWidth / textureRatio / 2f * seamTexture;
             float seamGeometry = length <= capLength * 2 ? 0.5f : capLength * 2 / length;
 
@@ -89,12 +90,12 @@ namespace Rimlaser
         {
             base.SpawnSetup(map, respawningAfterLoad);
 
-            if (def==null || def.decorations == null || respawningAfterLoad) return;
+            if (projDef == null || projDef.decorations == null || respawningAfterLoad) return;
 
-            foreach (var decoration in def.decorations)
+            foreach (var decoration in projDef.decorations)
             {
-                float spacing = decoration.spacing * def.beamWidth;
-                float initalOffset = decoration.initialOffset * def.beamWidth;
+                float spacing = decoration.spacing * projDef.beamWidth;
+                float initalOffset = decoration.initialOffset * projDef.beamWidth;
 
                 Vector3 dir = (b - a).normalized;
                 float angle = (b - a).AngleFlat();
@@ -109,8 +110,8 @@ namespace Rimlaser
                     if (moteThrown == null) break;
 
                     moteThrown.beam = this;
-                    moteThrown.airTimeLeft = def.lifetime;
-                    moteThrown.Scale = def.beamWidth;
+                    moteThrown.airTimeLeft = projDef.lifetime;
+                    moteThrown.Scale = projDef.beamWidth;
                     moteThrown.exactRotation = angle;
                     moteThrown.exactPosition = position;
                     moteThrown.SetVelocity(angle, decoration.speed);
