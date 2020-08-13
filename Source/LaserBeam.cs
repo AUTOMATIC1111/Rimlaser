@@ -62,7 +62,26 @@ namespace Rimlaser
             dir.y = 0;
 
             Vector3 a = origin + dir * (defWeapon == null ? 0.9f : defWeapon.barrelLength);
-            Vector3 b = shielded ? hitThing.TrueCenter() - dir.RotatedBy(Rand.Range(-22.5f,22.5f)) * 0.8f : destination;
+            Vector3 b;
+            if (hitThing == null)
+            {
+                b = destination;
+            }
+            else if (shielded)
+            {
+                b = hitThing.TrueCenter() - dir.RotatedBy(Rand.Range(-22.5f, 22.5f)) * 0.8f;
+            }
+            else if ((destination - hitThing.TrueCenter()).magnitude < 1)
+            {
+                b = destination;
+            }
+            else
+            {
+                b = hitThing.TrueCenter();
+                b.x += Rand.Range(-0.5f, 0.5f);
+                b.z += Rand.Range(-0.5f, 0.5f);
+            }
+
             a.y = b.y = def.Altitude;
 
             SpawnBeam(a, b);
