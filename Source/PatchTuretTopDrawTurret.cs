@@ -10,24 +10,15 @@ using Verse;
 
 namespace Rimlaser
 {
-    [HarmonyPatch(typeof(TurretTop), "DrawTurret", new Type[] { }), StaticConstructorOnStartup]
+    [HarmonyPatch(typeof(TurretTop), "DrawTurret")]
     class PatchTuretTopDrawTurret
     {
-        static FieldInfo parentTurretField;
-        static FieldInfo curRotationIntField;
-
-        static PatchTuretTopDrawTurret()
+        static bool Prefix(Building_Turret ___parentTurret, float ___curRotationInt)
         {
-            parentTurretField = typeof(TurretTop).GetField("parentTurret", BindingFlags.NonPublic | BindingFlags.Instance);
-            curRotationIntField = typeof(TurretTop).GetField("curRotationInt", BindingFlags.NonPublic | BindingFlags.Instance);
-        }
-
-        static bool Prefix(TurretTop __instance)
-        {
-            Building_LaserGun turret = parentTurretField.GetValue(__instance) as Building_LaserGun;
+            Building_LaserGun turret = ___parentTurret as Building_LaserGun;
             if (turret == null) return true;
 
-            float rotation = (float)curRotationIntField.GetValue(__instance);
+            float rotation = ___curRotationInt;
             if (turret.TargetCurrentlyAimingAt.HasThing)
             {
                 rotation = (turret.TargetCurrentlyAimingAt.CenterVector3 - turret.TrueCenter()).AngleFlat();

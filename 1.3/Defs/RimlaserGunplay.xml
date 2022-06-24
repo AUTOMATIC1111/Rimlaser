@@ -1,0 +1,41 @@
+<Defs>
+    <Gunplay.GunPropDef>
+        <defName>Rimlaser_LaserRifle</defName>
+        <barrelLength>0</barrelLength>
+    </Gunplay.GunPropDef>
+
+    <Gunplay.GunPropDef>
+        <defName>Rimlaser_LaserPistol</defName>
+        <barrelLength>0</barrelLength>
+    </Gunplay.GunPropDef>
+
+    <Gunplay.GunPropDef>
+        <defName>Rimlaser_LaserHeavy</defName>
+        <barrelLength>0</barrelLength>
+    </Gunplay.GunPropDef>
+
+    <Gunplay.GunPropDef>
+        <defName>Rimlaser_LaserIncendiary</defName>
+        <barrelLength>0</barrelLength>
+    </Gunplay.GunPropDef>
+
+    <Gunplay.GunPropDef>
+        <defName>Rimlaser_LaserSniper</defName>
+        <barrelLength>0</barrelLength>
+    </Gunplay.GunPropDef>
+
+    <Gunplay.GunPropDef>
+        <defName>Rimlaser_LaserMinigun</defName>
+        <barrelLength>0</barrelLength>
+    </Gunplay.GunPropDef>
+
+    <Gunplay.GunPropDef>
+        <defName>Rimlaser_DeathRay</defName>
+        <barrelLength>0</barrelLength>
+    </Gunplay.GunPropDef>
+    
+    <Gunplay.GunPropDef>
+        <defName>Rimlaser_TeslaGun</defName>
+        <barrelLength>0</barrelLength>
+    </Gunplay.GunPropDef>
+</Defs>
