@@ -77,7 +77,7 @@ namespace Rimlaser
 
             int ticksLeft = burstWarmupTicksLeft;
             base.Tick();
-            if (burstWarmupTicksLeft == def.building.turretBurstWarmupTime.SecondsToTicks() - 1 && ticksLeft == burstWarmupTicksLeft+1)
+            if (burstWarmupTicksLeft == def.building.turretBurstWarmupTime.Average.SecondsToTicks() - 1 && ticksLeft == burstWarmupTicksLeft+1)
             {
                 if (AttackVerb.verbProps.soundAiming != null)
                 {

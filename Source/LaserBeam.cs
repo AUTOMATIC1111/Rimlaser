@@ -53,7 +53,7 @@ namespace Rimlaser
             }
         }
 
-        protected override void Impact(Thing hitThing)
+        protected override void Impact(Thing hitThing, bool blockedByShield)
         {
             bool shielded = hitThing.IsShielded() && def.IsWeakToShields;
 

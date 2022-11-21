@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <JobDef>
+    <defName>ChangeLaserColor</defName>
+    <driverClass>Rimlaser.JobDriver_ChangeLaserColor</driverClass>
+    <reportString>changing laser color.</reportString>
+    <allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+  </JobDef>
+</Defs>
