@@ -127,7 +127,7 @@ namespace Rimlaser
             }
         }
 
-        public override void Draw()
+        protected override void DrawAt(Vector3 drawLoc, bool flip = false)
         {
             SetupDrawing();
 

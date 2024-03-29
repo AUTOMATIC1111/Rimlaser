@@ -11,9 +11,8 @@ namespace Rimlaser
     {
         new LaserBeamDef def => base.def as LaserBeamDef;
 
-        public override void Draw()
-        {
-
+        protected override void DrawAt(Vector3 drawLoc, bool flip = false) { 
+        
         }
 
         void TriggerEffect(EffecterDef effect, Vector3 position)
@@ -99,6 +98,9 @@ namespace Rimlaser
             if (weapon != null)
             {
                 float angle = (b - a).AngleFlat() - (intendedTarget.CenterVector3 - a).AngleFlat();
+                if (angle < -180) {
+                    angle += 360;
+                }
                 weapon.RotationOffset = (angle + 180) % 360 - 180;
             }
 

@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <ThingDef Name="RimlaserItemBase" Abstract="True">
+    <thingClass>ThingWithComps</thingClass>
+    <category>Item</category>
+    <resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <useHitPoints>false</useHitPoints>
+    <selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+    <stackLimit>75</stackLimit>
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+    </comps>
+    <alwaysHaulable>true</alwaysHaulable>
+    <drawGUIOverlay>true</drawGUIOverlay>
+    <rotatable>false</rotatable>
+    <pathCost>15</pathCost>
+  </ThingDef>
+  
+  <ThingDef Name="RimlaserUnfinishedItemBase" ParentName="RimlaserItemBase" Abstract="True">
+    <thingClass>UnfinishedThing</thingClass>
+    <label>unfinished thing</label>
+    <altitudeLayer>Item</altitudeLayer>
+    <isUnfinishedThing>true</isUnfinishedThing>
+    <scatterableOnMapGen>false</scatterableOnMapGen>
+    <tradeability>None</tradeability>
+    <statBases>
+      <MaxHitPoints>50</MaxHitPoints>
+      <Beauty>-8</Beauty>
+      <Mass>1</Mass>
+    </statBases>
+    <thingCategories>
+      <li>Unfinished</li>
+    </thingCategories>
+  </ThingDef>
+  
+  <ThingDef ParentName="RimlaserItemBase">
+    <defName>RimlaserCrystal</defName>
+    <label>crystal</label>
+    <description>A crystal that is used as a lasing medium for solid-state lasers.</description>
+    <graphicData>
+      <texPath>Rimlaser/Items/Crystal</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+      <shaderType>Transparent</shaderType>
+    </graphicData>
+    <soundInteract>RimlaserCrystal_Drop</soundInteract>
+    <stackLimit>5</stackLimit>
+    <soundDrop>RimlaserCrystal_Drop</soundDrop>
+    <statBases>
+      <Flammability>0.0</Flammability>
+      <Beauty>0</Beauty>
+      <MarketValue>300</MarketValue>
+      <Mass>0.5</Mass>
+    </statBases>
+    
+    <tradeTags>
+      <li>ExoticMisc</li>
+    </tradeTags>
+    <thingCategories>
+      <li>ResourcesRaw</li>
+      <li>Items</li>
+    </thingCategories>
+
+    <deepCommonality>1</deepCommonality>
+    <deepCountPerPortion>1</deepCountPerPortion>
+    <deepCountPerCell>1</deepCountPerCell>
+    <deepLumpSizeRange>
+      <min>4</min>
+      <max>12</max>
+    </deepLumpSizeRange>
+  </ThingDef>
+  
+  <ThingDef ParentName="RimlaserUnfinishedItemBase">
+    <defName>UnfinishedRimlaserPrism</defName>
+    <label>unfinished prism</label>
+    <statBases>
+      <Flammability>0.0</Flammability>
+    </statBases>
+    <graphicData>
+      <texPath>Rimlaser/Items/UnfinishedPrism</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+  </ThingDef>
+  
+  <ThingDef ParentName="RimlaserItemBase">
+    <defName>RimlaserPrism</defName>
+    <label>prism</label>
+    <description>Main component of a laser weapon. A prism can also be used to change beam color (without affecting weapon's battle capabilities).</description>
+    <graphicData>
+      <texPath>Rimlaser/Items/Prism</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <soundInteract>RimlaserCrystal_Drop</soundInteract>
+    <stackLimit>3</stackLimit>
+    <soundDrop>RimlaserCrystal_Drop</soundDrop>
+    
+    <statBases>
+      <Flammability>0.0</Flammability>
+      <WorkToMake>1000</WorkToMake>
+      <Beauty>4</Beauty>
+      <MarketValue>120</MarketValue>
+      <Mass>0.1</Mass>
+    </statBases>
+    
+    <tradeTags>
+      <li>ExoticMisc</li>
+    </tradeTags>
+    <thingCategories>
+      <li>Items</li>
+    </thingCategories>
+
+    <costList>
+      <RimlaserCrystal>1</RimlaserCrystal>
+      <ComponentSpacer>1</ComponentSpacer>
+    </costList>
+
+    <recipeMaker>
+      <researchPrerequisite>RimlaserLasers</researchPrerequisite>
+      <skillRequirements>
+        <Crafting>10</Crafting>
+      </skillRequirements>
+      <recipeUsers>
+        <li>FabricationBench</li>
+      </recipeUsers>
+      <productCount>3</productCount>
+      <unfinishedThingDef>UnfinishedRimlaserPrism</unfinishedThingDef>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Machining</soundWorking>
+    </recipeMaker>
+  </ThingDef>
+
+  <ThingDef ParentName="RimlaserUnfinishedItemBase">
+    <defName>UnfinishedLaserGun</defName>
+    <label>unfinished laser gun</label>
+    <graphicData>
+      <texPath>Rimlaser/Items/UnfinishedLaserGun</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+  </ThingDef>
+</Defs>
